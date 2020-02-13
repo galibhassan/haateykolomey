@@ -1,0 +1,74 @@
+h1{
+    margin-top: 40px;
+    margin-left: 45%;
+    font-family: "fantacy";
+}
+body{
+    background-image: url(catbook.jpg);
+
+    height: 100vh;
+    background-position: center;
+    background-size:cover;
+    
+}
+
+.login-page{
+    width: 360px;
+    padding: 10% ;
+    margin: auto;
+}
+
+.form{
+    position: relative;
+    background: rgba(100, 107, 130, 0.3);
+    max-width: 360px;
+    margin: 0 auto ;
+    padding: 45px;
+    text-align: center;
+    
+}
+
+.form input{
+    font-family: "Roboto";
+    background: #f2f2f2;
+    width: 100%;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+   
+}
+.form button{
+    font-family: "Roboto";
+    text-transform: uppercase;
+    background: #4CAF50;
+    width: 100px;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+
+
+
+.form button:hover, .form button:active{
+    background:rgb(66, 245, 78);
+}
+
+.form .message{
+    margin: 15px;
+    color: aliceblue;
+}
+.form .message a{
+    color: #150d36
+}
+
+.form .register-form{
+    display: none;
+}
+
+#registerLink{
+    color:blue;
+    text-decoration-line: underline;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="loginPage.css" ">
+</head>
+<body>
+    <h1>HATEEY KOLOMEY</h1>
+    <div class="login-page">
+        <div class="form">
+            <form class="register-form">
+                <input type="text" placeholder="user name">
+                <input type="text" placeholder="password">
+                <input type="text" placeholder="email id">
+                <button>Create</button>
+                <p class="message"> Already Registered? <a href="#">Login</a></p>
+
+            </form>
+            <form class="login-form">
+
+                <input type="text" placeholder="user name">
+                <input type="password" placeholder="password">
+                <button>Login</button>
+                <p class="message">Not Registered? <span id="registerLink">Register</span></p>
+                
+            </form>
+        </div>
+    </div>
+
+    <script>
+        var registerLink = document.getElementById("registerLink");
+        var registerForm = (document.getElementsByClassName("register-form"))[0]
+        registerLink.addEventListener("click", function(){
+            registerForm.style.display = "block";
+        });
+    </script>
+</body>
+</html>

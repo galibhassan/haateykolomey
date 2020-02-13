@@ -1,0 +1,17 @@
+
+#chatOutput{
+    border: 1px solid orange;
+    width: 500px;
+    height: 200px;
+    overflow: auto;
+}
+#chatTitle{
+    font-size: 2rem;
+}
+.clientMessage{
+    background: rgb(233, 233, 233);
+
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+}
