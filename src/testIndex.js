@@ -1,0 +1,1 @@
+const Brush = require('./classes/brush').Brush
