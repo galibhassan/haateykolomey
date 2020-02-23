@@ -1,27 +1,36 @@
 class Brush {
-    constructor(brushSize, brushColor, brushType) {
+    constructor(brushSize, brushColor, brushType, canvas) {
         this.brushSize = brushSize;
         this.brushColor = brushColor;
         this.brushType = brushType;
+        this.canvas = canvas;
     }
 
-    getBrushSize(){
+    getBrushSize() {
         return this.brushSize;
     }
-    setBrushSize(newSize){
+    setBrushSize(newSize) {
         this.brushSize = newSize;
     }
-    getBrushColor(){
+    getBrushColor() {
         return this.brushColor;
     }
-    setBrushColor(newColor){
+    setBrushColor(newColor) {
         this.brushColor = newColor;
     }
-    drawLine(){
+    drawLine() {
         console.log("line tana hocche");
     }
-    drawCircle(){
-        console.log("circle aka hocche");
+    drawCircle(x, y) {
+        // console.log("brush.drawCircle() is called");
+
+        const ctx = this.canvas.getContext("2d")
+        ctx.beginPath();
+        ctx.arc(x, y, this.brushSize, 0, 2 * Math.PI);
+        ctx.strokeStyle = this.brushColor;
+        ctx.stroke(); 
+
+
     }
 }
 
@@ -33,14 +42,14 @@ module.exports = {
     // properties
         brushSize: number       radius of the brush tip
         brushColor: String      color that the brush will paint with
-        
+
         to implement later
         brushType: string       whether the brushstrokes looks like a pen, pencil, marker, paintbrush
 
     // functionality
         drawLine
         drawCircle
-        
+
     // test code
         const kashemBrush = new Brush(10, 'orange', 'fountainPen')
         kashemBrush.drawCircle()
