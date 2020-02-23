@@ -6,8 +6,13 @@ const canvas = document.getElementById("canvas");
 const myBoard = new Board(canvas, 100, 200);
 const myBrush = new Brush(2, "red", "kolom", myBoard.getCanvas());
 
-myBoard.enableEventListeners()
+const colorUserChosen = document.getElementById('colorUserChosen')
+colorUserChosen.addEventListener('change', ()=>{
+    
+    myBrush.setBrushColor(colorUserChosen.value)
+})
 
+myBoard.enableEventListeners()
 const mainDrawingLoop = () => {
     if (myBoard.isDrawingPossible) {
         myBrush.drawCircle(myBoard.drawingInfo.currentX, myBoard.drawingInfo.currentY)
