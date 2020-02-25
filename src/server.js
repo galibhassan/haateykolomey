@@ -25,6 +25,12 @@ serversideIO.on('connection', (clientSocket)=>{
     clientSocket.on('somoneSaidSomething', (roFromOneClient)=>{
         serversideIO.emit('serverEmittingSomeonesWords', roFromOneClient)
     })
+    clientSocket.on("somebodyIsDrawing", (drawingInfo)=>{
+        console.log(drawingInfo)
+        serversideIO.emit("serveremittedDrawingInfo", drawingInfo)
+    })
+
+
 
     
 })

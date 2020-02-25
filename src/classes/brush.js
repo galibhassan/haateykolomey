@@ -28,7 +28,9 @@ class Brush {
         ctx.beginPath();
         ctx.arc(x, y, this.brushSize, 0, 2 * Math.PI);
         ctx.strokeStyle = this.brushColor;
-        ctx.stroke(); 
+        ctx.stroke();
+        ctx.fillStyle = this.brushColor;
+        ctx.fill();
 
 
     }
