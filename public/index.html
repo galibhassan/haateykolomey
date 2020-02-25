@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,20 +8,29 @@
     <title>Haatey Kolomey</title>
     <link rel="stylesheet" href="./style.css">
     <script src="./ext/socket.io.js"></script>
+    <script>
+        var clientSocket = io.connect('http://localhost:8000')
+    </script>
 </head>
+
 <body>
-    <p id="chatTitle">হাতে কলমে</p> 
-    
+    <p id="chatTitle">হাতে কলমে</p>
+    <input type="color" id="colorUserChosen">
+    <canvas id="canvas"></canvas>
     <div id="chatOutput">
 
     </div>
     <br>
-    <textarea name="clientChatInput" id="clientChatInput" cols="50" rows="10" placeholder="write your stuffs"></textarea>
+    <textarea name="clientChatInput" id="clientChatInput" cols="50" rows="10"
+        placeholder="write your stuffs"></textarea>
     <br>
     <input id="clientName" type="text" placeholder="Your name?">
     <button id="sendButton">Send</button>
 
 
     <script src="./chat.js"></script>
+    <script src="./webpackBuild/brushBoard.js"></script>
+
 </body>
+
 </html>

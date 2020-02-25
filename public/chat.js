@@ -1,4 +1,3 @@
-var clientSocket = io.connect('http://localhost:8000')
 var clientChatInput = document.getElementById('clientChatInput')
 var sendButton = document.getElementById('sendButton')
 var chatOutput = document.getElementById('chatOutput')
