@@ -8,8 +8,9 @@ class Board {
             currentX: 0,
             currentY: 0,
         }
-        
+
         this.fitCanvasToParent();
+        // ei kotha ti mone rekho
     }
 
     getCanvas(){

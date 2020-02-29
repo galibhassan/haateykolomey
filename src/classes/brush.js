@@ -20,6 +20,7 @@ class Brush {
     }
     drawLine() {
         console.log("line tana hocche");
+        // ki shob ghorar dim
     }
     drawCircle(x, y, color) {
         // console.log("brush.drawCircle() is called");
