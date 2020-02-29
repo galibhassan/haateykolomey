@@ -8,10 +8,10 @@ var clientName = document.getElementById('clientName')
 sendButton.addEventListener('click', () => {
     clientSocket.emit('somoneSaidSomething', {
             clientName: clientName.value,
-            chatboxMessage: clientChatInput.value
+            chatboxMessage: clientChatInput.innerHTML
         }
     );
-    clientChatInput.value = ''
+    clientChatInput.innerHTML = ''
 })
 
 clientSocket.on('serverEmittingSomeonesWords', (roFromServer) => {

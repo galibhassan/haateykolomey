@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Haatey Kolomey</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./ext/socket.io.js"></script>
+    <script>
+        var clientSocket = io.connect('http://localhost:8000')
+    </script>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="nav">
+            <span id="chatTitle">হাতে কলমে</span>
+        </div>
+
+        <input type="color" id="colorUserChosen">
+        <div class="canvas-container">
+            <canvas id="canvas"></canvas>
+        </div>
+        
+        <div id="chatOutput">
+
+        </div>
+
+        <div class="input-container">  
+            <div id="clientChatInput" contenteditable="true">
+                hoho hoahaha
+            </div>
+            <input id="clientName" type="text" placeholder="Your name?">
+            <button id="sendButton">Send</button>
+        </div>
+
+        
+
+        <script src="./chat.js"></script>
+        <script src="./webpackBuild/brushBoard.js"></script>
+    </div>
+
+</body>
+
+</html>

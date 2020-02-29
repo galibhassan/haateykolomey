@@ -6,6 +6,11 @@ const app = express();
 app.use(express.static('public'))
 
 
+app.use('/chatPage', (reqest, response, next)=>{
+    console.log(path.resolve(__dirname, '../', 'public', 'chat.html'));
+    response.sendFile(path.resolve(__dirname, '../', 'public', 'chat.html'))
+})
+
 app.use('/', (reqest, response, next)=>{
     response.sendFile(path.resolve(__dirname, '../', 'public', 'index.html'))
 })

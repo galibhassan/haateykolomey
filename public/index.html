@@ -1,36 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Haatey Kolomey</title>
-    <link rel="stylesheet" href="./style.css">
-    <script src="./ext/socket.io.js"></script>
-    <script>
-        var clientSocket = io.connect('http://localhost:8000')
-    </script>
+    <title>Document</title>
+    <link rel="stylesheet" href="loginPage.css" ">
 </head>
-
 <body>
-    <p id="chatTitle">হাতে কলমে</p>
-    <input type="color" id="colorUserChosen">
-    <canvas id="canvas"></canvas>
-    <div id="chatOutput">
+    <h1>HATEEY KOLOMEY</h1> 
+   
+    <a href="/chatPage">go to chatpage</a>
+     
+    <div class="login-page">
+        <div class="form">
+            <form class="register-form">
+                <input type="text" placeholder="user name">
+                <input type="text" placeholder="password">
+                <input type="text" placeholder="email id">
+                <button>Create</button>
+                <p class="message"> Already Registered? <a href="#">Login</a></p>
 
+            </form>
+            <form class="login-form">
+
+                <input type="text" placeholder="user name">
+                <input type="password" placeholder="password">
+                <input id="login" type = "button" onclick="window.location.href = './chat.html'" value ="Log in"/>
+                <p class="message">Not Registered? <span id="registerLink">Register</span></p>
+                
+            </form>
+        </div>
     </div>
-    <br>
-    <textarea name="clientChatInput" id="clientChatInput" cols="50" rows="10"
-        placeholder="write your stuffs"></textarea>
-    <br>
-    <input id="clientName" type="text" placeholder="Your name?">
-    <button id="sendButton">Send</button>
 
-
-    <script src="./chat.js"></script>
-    <script src="./webpackBuild/brushBoard.js"></script>
-
+    <script>
+        var registerLink = document.getElementById("registerLink");
+        var registerForm = (document.getElementsByClassName("register-form"))[0]
+        registerLink.addEventListener("click", function(){
+            registerForm.style.display = "block";
+        });
+    </script>
 </body>
-
 </html>

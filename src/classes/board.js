@@ -6,12 +6,19 @@ class Board {
         this.isDrawingPossible = false;
         this.drawingInfo = {
             currentX: 0,
-            currentY: 0
+            currentY: 0,
         }
+        
+        this.fitCanvasToParent();
     }
 
     getCanvas(){
         return this.canvas;
+    }
+
+    fitCanvasToParent(){
+        this.getCanvas().width = this.getCanvas().parentElement.offsetWidth;
+        this.getCanvas().height = this.getCanvas().parentElement.offsetHeight;
     }
 
     enableEventListeners() {

@@ -21,15 +21,15 @@ class Brush {
     drawLine() {
         console.log("line tana hocche");
     }
-    drawCircle(x, y) {
+    drawCircle(x, y, color) {
         // console.log("brush.drawCircle() is called");
 
         const ctx = this.canvas.getContext("2d")
         ctx.beginPath();
         ctx.arc(x, y, this.brushSize, 0, 2 * Math.PI);
-        ctx.strokeStyle = this.brushColor;
+        ctx.strokeStyle = color;
         ctx.stroke();
-        ctx.fillStyle = this.brushColor;
+        ctx.fillStyle = color;
         ctx.fill();
 
 

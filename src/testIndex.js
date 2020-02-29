@@ -17,8 +17,14 @@ colorUserChosen.addEventListener('change', () => {
 myBoard.enableEventListeners()
 const mainDrawingLoop = () => {
     if (myBoard.isDrawingPossible) {
-        myBrush.drawCircle(myBoard.drawingInfo.currentX, myBoard.drawingInfo.currentY)
-        clientSocket.emit("somebodyIsDrawing", myBoard.drawingInfo)
+        myBrush.drawCircle(myBoard.drawingInfo.currentX, myBoard.drawingInfo.currentY, myBrush.getBrushColor())
+ 
+        const combainedDrawingInfo = {
+            currentX: myBoard.drawingInfo.currentX,
+            currentY: myBoard.drawingInfo.currentY,
+            currentColor: myBrush.getBrushColor()
+        }
+        clientSocket.emit("somebodyIsDrawing", combainedDrawingInfo)
     }
     requestAnimationFrame(mainDrawingLoop)
 
@@ -27,8 +33,8 @@ const mainDrawingLoop = () => {
 mainDrawingLoop()
 
 
-const otherClientBrush = new Brush( 4, "green", "pencil");
+const otherClientBrush = new Brush( 4, "green", "pencil", myBoard.getCanvas());
 clientSocket.on("serveremittedDrawingInfo", (receivedDrawingInfo) => {
     console.log(receivedDrawingInfo)
-    otherClientBrush.drawCircle(receivedDrawingInfo.currentX, receivedDrawingInfo.currentY)
+    otherClientBrush.drawCircle(receivedDrawingInfo.currentX, receivedDrawingInfo.currentY, receivedDrawingInfo.color)
 })
