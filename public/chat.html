@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Haatey Kolomey</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+          
     <script src="./ext/socket.io.js"></script>
     <script>
         var clientSocket = io.connect('http://localhost:8000')
@@ -14,12 +16,22 @@
 </head>
 
 <body>
+    
+    
     <div class="container">
+        
 
         <div class="nav">
-            <span id="chatTitle">হাতে কলমে</span>
+            <span id="chatTitle">H A T E E Y - K O L O M E Y</span>
+            <i class="far fa-user" aria-hidden="true"></i>
+               
+            
+            
+           
+    
         </div>
-
+        
+            
         <input type="color" id="colorUserChosen">
         <div class="canvas-container">
             <canvas id="canvas"></canvas>
@@ -28,10 +40,11 @@
         <div id="chatOutput">
 
         </div>
+        
 
         <div class="input-container">  
             <div id="clientChatInput" contenteditable="true">
-                hoho hoahaha
+               Write some stuff
             </div>
             <input id="clientName" type="text" placeholder="Your name?">
             <button id="sendButton">Send</button>
