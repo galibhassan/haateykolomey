@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="refreshButton.css">
+</head>
+<body>
+       
+   <input type="color" id="color">
+    <button id="boardButton"></button>
+        <button id="brushButton"></button>
+        <button id="eraseButton"></button>
+        <button id="voiceButton"></button>
+       
+
+<script>
+   
+
+    var boardButton = document.getElementById("boardButton")
+    boardButton.addEventListener("click", ()=>{
+       // changeColor();
+       color.style.display= "block";
+       changeBoardColor();
+        
+    });
+
+
+    function changeBoardColor(){
+        //var colorUserChosen = document.getElementById("colorUserChosen")
+        var colorUserChosen = document.getElementById("color").value;
+        document.body.style.backgroundColor = colorUserChosen;
+        //color.style.display = "none";
+    }
+</script>
+
+</body>
+</html>

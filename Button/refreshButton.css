@@ -1,0 +1,65 @@
+/*#eraseButton{
+  
+  padding: 15px 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 25px;
+  background: #EE4E4E;
+}*/
+
+#color{
+    display: none;
+}
+
+
+#brushButton{
+
+    padding: 15px 15px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #102B5F;
+   
+}
+
+#boardButton{
+    padding: 15px 15px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px 1px;
+    background: #FFFFFF;
+
+}
+
+#eraseButton {
+    height: 40px;
+    width: 40px;
+    background-color: #EE4E4E;;
+    border-radius: 25px;
+    padding: 20px 20px;
+    position: relative;
+}
+
+#eraseButton:after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: "\1F7A9"; /* use the hex value here... */
+    
+    font-size: 30px; 
+    color: #FFF;
+    line-height: 37px;
+    text-align: center;
+}
+
+#voiceButton{
+    height: 40px;
+    width: 40px;
+    background: #FF6600;;
+    border-radius: 25px;
+    padding: 20px 20px;
+}
+

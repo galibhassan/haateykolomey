@@ -1,6 +1,7 @@
 *{
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+   
 }
 .container{
     border: 1px solid orange;
@@ -14,7 +15,11 @@
     background-color: #25313F;
 }
 #colorUserChosen{
-    display: block;
+    display: none;
+}
+
+#color{
+    display: none;
 }
 .canvas-container{
     grid-column: 2/3;
@@ -24,11 +29,14 @@
     background: #1A222C;
     grid-column: 1/2;
     grid-row: 2/4;
+    
+    
 }
 .input-container{
     grid-column: 2/3;
     grid-row: 3/4;
     background: #ECEBEB;
+    
 }
 
 #chatTitle{
@@ -43,9 +51,25 @@
     
 }
 
+
+
 #canvas{
-    border: 1px solid tomato;
+   /* border: 1px solid tomato;*/
+   
+    top: 38px;
+    left: 100;
+    position: absolute;
+    display: block;
+    border-radius: 150px;
+    
+    
+    
+    
+    
 }
+
+
+
 
 #clientChatInput {
     display: block;
@@ -86,3 +110,99 @@
     margin-left: 75px;
     margin-top: -20px;
 }
+
+
+
+  #boardButton{
+    padding: 15px 15px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px 1px;
+    background: #FFFFFF;
+    margin: 5px;
+    
+
+}
+
+#brushButton{
+
+    padding: 15px 15px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background-color: #102B5F;
+    float: right;
+    margin-right: 5px;
+   
+}
+
+#eraseButton {
+    height: 40px;
+    width: 40px;
+    background-color: #EE4E4E;;
+    border-radius: 25px;
+    padding: 20px 20px;
+    position: relative;
+    display: block;
+    margin: 5px;
+}
+
+#eraseButton:after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    content: "\1F7A9"; /* use the hex value here... */
+    
+    font-size: 30px; 
+    color: #FFF;
+    line-height: 37px;
+    text-align: center;
+}
+
+#sendButton{
+    
+    height: 25px;
+    width: 25px;
+    background-color: paleturquoise   ;
+    border-radius: 60%;
+    position: relative;
+    padding: 10px 10px;
+    float: right;
+    margin-right: 15px;
+    margin-top: -10px;
+    
+      
+      
+  }
+  
+  #sendButton:after{
+  
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      content: "\27A2"; /* use the hex value here... */
+      font-size: 20px; 
+      color:black;
+      line-height: 20px;
+      text-align: center;
+      
+  } 
+
+  #voiceButton{
+    height: 40px;
+    width: 40px;
+    background: #FF6600;;
+    border-radius: 25px;
+    padding: 20px 20px;
+    height: 10px;
+    position: relative;
+    display: block;
+    margin-top: 530px;
+    margin-left: 5px;
+}
+
