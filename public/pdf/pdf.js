@@ -1,12 +1,13 @@
-
-        var myState = {
+    var myState = {
             pdf: null,
             currentPage: 1,
             zoom: 1
         }
 
-        var myPdfPath =
-            "../pdf/DCNbyForouzan.pdf";
+
+        // var myPdfPath = "../public/pdf/DCNbyForouzan.pdf";
+        var myPdfPath = "./DCNbyForouzan.pdf";
+            
 
         pdfjsLib.getDocument(myPdfPath).then(pdf => {
             myState.pdf = pdf;
