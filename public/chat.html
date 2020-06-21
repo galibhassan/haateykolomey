@@ -5,56 +5,138 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <link rel="stylesheet" href="file:///D:/haateykolomey/fontAwesome/fontawesome-free-5.13.0-web/css/all.css">-->
+    <link rel="stylesheet" href="./styling/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Haatey Kolomey</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
-          
+
+
+
     <script src="./ext/socket.io.js"></script>
     <script>
         var clientSocket = io.connect('http://localhost:8000')
+
     </script>
+    
+
 </head>
 
 <body>
-    
-    
+
+
     <div class="container">
-        
+
 
         <div class="nav">
             <span id="chatTitle">H A T E E Y - K O L O M E Y</span>
-            <i class="far fa-user" aria-hidden="true"></i>
-               
-            
-            
-           
-    
-        </div>
-        
-            
-        <input type="color" id="colorUserChosen">
-        <div class="canvas-container">
-            <canvas id="canvas"></canvas>
-        </div>
-        
-        <div id="chatOutput">
 
-        </div>
-        
 
-        <div class="input-container">  
-            <div id="clientChatInput" contenteditable="true">
-               Write some stuff
+
+            <button id="drawingBoard">Board</button>
+            <button id="slideButton">Slide</button>
+
+         <div id="userButton">
+
+                <ul>
+                    <li><i id="usericon" class="fas fa-user"></i>
+                        <ul>
+                            <li type="button" onclick="window.location.href = 'http://localhost:8000/users/login'">
+                                Logout</li>
+                        </ul>
+
+                </ul>
+
             </div>
-            <input id="clientName" type="text" placeholder="Your name?">
-            <button id="sendButton">Send</button>
+
+
         </div>
 
+        <input type="color" id="color">
+        <input type="color" id="colorUserChosen">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
+        
+        
+        <div class="canvas-container">
+
+                
+
+            </button>
+            <div id="slideContainer">
+                <form>
+                    <!--<label id="label"> Slide URL</label>-->
+                    <label id="label">Google</label>
+
+                    <input class="urlinput" type="text" placeholder="https://www.google.com/">
+                    <input type="button" id="load" value="Load"
+                        onclick="window.location.href = 'https://www.google.com/'">
+                </form>
+
+            </div>
+
+
+            <div id="my_pdf_viewer">
+                <div id="canvasForPdf">
+                    <canvas id="pdf_renderer"></canvas>
+                </div>
+                <div id="navigation_controls">
+                    <button id="go_previous">Previous</button>
+                    <input id="current_page" value="1" type="number" />
+                    <button id="go_next">Next</button>
+                </div>
+                <div id="zoom_controls">
+                    <button id="zoom_in">+</button>
+                    <button id="zoom_out">-</button>
+                </div>
+            </div>
+
+            <canvas id="canvas"></canvas>
+
+            <button id="boardButton">
+                <span class="tooltipForBoardButton">pour color on the board</span>
+            </button>
+            
+            <button id="brushButton">
+                <span class="tooltipForBrushButton">pick a colored brush</span>
+            
+            
+            <button id="eraseButton">
+                <span class="tooltipForEraseButton">Clear all</span>
+            </button>
+
+            <div id="voiceButton">
+                <button><i class="fas fa-microphone"></i>
+                    <span class ="tooltipForVoiceButton">make a call</span>
+                </button>
+            </div>
+            
+            
+
+        </div>
+        
+     <div id="chatOutput">
+        </div>
+
+
+        <div class="input-container">
+            <div id="clientChatInput" contenteditable="true">
+                Write some stuff
+            </div>
+
+            <input id="clientName" type="text" placeholder="Your name?">
+            <button id="sendButton"></button>
+        </div>
         
 
-        <script src="./chat.js"></script>
+        <script src="./pdf/pdf.js"></script>
+        <script src="./jsForChatPageButtonElements/buttons.js"></script>
         <script src="./webpackBuild/brushBoard.js"></script>
+        
+        <script src="./chat.js"></script>
+
+       
     </div>
+
 
 </body>
 
