@@ -5,8 +5,8 @@
         }
 
 
-        // var myPdfPath = "../public/pdf/DCNbyForouzan.pdf";
-        var myPdfPath = "./DCNbyForouzan.pdf";
+        
+        var myPdfPath = "./pdf/DCNbyForouzan.pdf";
             
 
         pdfjsLib.getDocument(myPdfPath).then(pdf => {

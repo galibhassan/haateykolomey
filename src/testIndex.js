@@ -5,6 +5,7 @@ const Board = require('./classes/board').Board
 const canvas = document.getElementById("canvas");
 
 const myBoard = new Board(canvas, 100, 200);
+//const myBoard = new Board( 100, 200, myBoard.getCanvas(), "white");
 console.log("board created hoilo")
 const myBrush = new Brush(2, "black", "kolom", myBoard.getCanvas());
 
@@ -13,6 +14,7 @@ colorUserChosen.addEventListener('change', () => {
 
     myBrush.setBrushColor(colorUserChosen.value)
 })
+
 
 myBoard.enableEventListeners()
 const mainDrawingLoop = () => {

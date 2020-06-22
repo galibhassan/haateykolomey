@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chat styling by js</title>
+        <link rel="stylesheet" href="icon.css">
+</head>
+
+<body>
+
+
+
+
+
+    <div id="firstLastCharecter"></div>
+    <input type="text" id="username" placeholder="username">
+
+    <button id="sendButton"></button>
+
+
+    <textarea id="message" type="text" placeholder="message"></textarea>
+    <div id="chatOutput">
+    </div>
+
+    <script>
+        function name() {
+            var name1 = username.value;
+            //return [name1.split(" ")[0][0] + name1.split(" ")[1][0]];
+            var firstNameChar = name1.split(" ")[0];
+            var lastNameChar = name1.split(" ")[1];
+            var intials = firstNameChar.charAt(0).toUpperCase() + lastNameChar.charAt(0).toUpperCase();
+            return intials;
+
+        }
+
+
+
+        var usename = document.getElementById("username")
+        var chatOutput = document.getElementById("chatOutput")
+        var sendButton = document.getElementById("sendButton")
+        var message = document.getElementById("message")
+        var firstLastCharecter = document.getElementById("firstLastCharecter")
+
+        sendButton.addEventListener("click", handleSendButtonClick)
+
+        function handleSendButtonClick(){
+            //firstLastCharecter.innerHTML = [username.value.split(" ")[0][0], username.value.split(" ")[1][0]]
+            var firstLastCharecterDiv = document.createElement("div")
+            var usernameDiv = document.createElement("div")
+            var messageDiv = document.createElement("div")
+            var chatPortionContainer = document.createElement("div")
+
+            firstLastCharecterDiv.innerHTML = name();
+            usernameDiv.innerHTML = username.value
+            messageDiv.innerHTML = message.value
+        
+            
+            // firstLastCharecterDiv.setAttribute("class", "golla")
+            firstLastCharecterDiv.setAttribute("class", "userIntial")
+            usernameDiv.setAttribute("class", "usernameDiv")
+            messageDiv.setAttribute("class", "chatChunk")
+            chatPortionContainer.setAttribute("class", "chatContainer")
+        
+
+            chatPortionContainer.appendChild(firstLastCharecterDiv)
+            chatPortionContainer.appendChild(usernameDiv)
+            chatPortionContainer.appendChild(messageDiv)
+
+            chatOutput.appendChild(chatPortionContainer)
+
+        }
+
+
+
+
+    </script>
+
+</body>
+
+</html>

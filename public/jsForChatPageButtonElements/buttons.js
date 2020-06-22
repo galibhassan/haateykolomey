@@ -1,9 +1,8 @@
              var boardButton = document.getElementById("boardButton")
             boardButton.addEventListener("click", () => {
 
-                color.style.display = "block";
-                changeBoardColor();
-                 //coloringcanvas()
+                userChosenBoardColor.style.display = "block";
+                
             });
            
 
@@ -18,15 +17,22 @@
 
 
 
-            function changeBoardColor() {
+            
                 
                 
                 
-                var boardColor = document.getElementById("color").value;
                 
-                document.getElementById("canvas").style.backgroundColor = boardColor;   
+                   
+                const userChosenBoardColor = document.getElementById('userChosenBoardColor')
+                userChosenBoardColor.addEventListener('change', ()=>{
+                        
+                        var boardColor = userChosenBoardColor.value;
+                        
+                        document.getElementById("canvas").style.backgroundColor = boardColor;
+                        })
+
                 
-            }
+            
 
 
             var eraseButton = document.getElementById("eraseButton")

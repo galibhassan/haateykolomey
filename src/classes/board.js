@@ -1,8 +1,9 @@
 class Board {
-    constructor(canvas, boardWidth, boardHeight) {
+    constructor(canvas, boardWidth, boardHeight, boardColor) {
         this.boardWidth = boardWidth;
         this.boardHeight = boardHeight;
         this.canvas = canvas;
+        this.boardColor = boardColor;
         this.isDrawingPossible = false;
         this.drawingInfo = {
             currentX: 0,
@@ -16,6 +17,29 @@ class Board {
     getCanvas(){
         return this.canvas;
     }
+
+    getBoardColor(){
+        return this.boardColor;
+    }
+
+    setBoardColor(newBoardColor){
+        this.boardColor = newBoardColor;
+    }
+
+    coloringBoard(x, y, boardcolor){
+        //var c = document.getElementById("myCanvas");
+        var ctx = this.canvas.getContext("2d");
+        ctx.beginPath();
+        ctx.fillStyle = boardcolor;
+
+        ctx.fillRect(x, y, this.canvas.boardWidth, this.canvas.boardHeight);
+
+        ctx.fill()
+
+
+    }
+
+ 
 
     fitCanvasToParent(){
         this.getCanvas().width = this.getCanvas().parentElement.offsetWidth;

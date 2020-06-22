@@ -1,0 +1,66 @@
+
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.chatContainer{
+
+    background: #1A222C;
+    width: 400px ;
+    padding: 15px;
+    position: relative;
+    overflow-y: visible;
+}
+.userIntial{
+    background: #D22040;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* font-size:  ; */
+}
+.usernameDiv{
+    color: #C9D4E1;
+    position: absolute;
+    left: 90px;
+    top: 25px;
+    font-weight: bold;
+}
+.chatChunk{
+    color: #878F98;
+    margin-left: 75px;
+    margin-top: -20px;
+}
+
+#sendButton{
+    
+    height: 25px;
+    width: 25px;
+    background-color: paleturquoise   ;
+    border-radius: 60%;
+    position: relative;
+    padding: 10px 10px;
+    float: right;
+    
+      
+      
+  }
+  
+  #sendButton:after{
+  
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      content: "\27A2"; /* use the hex value here... */
+      font-size: 20px; 
+      color:black;
+      line-height: 20px;
+      text-align: center;
+      
+  } 
+  
