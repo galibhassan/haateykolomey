@@ -23,13 +23,13 @@
                 
                 
                    
-                const userChosenBoardColor = document.getElementById('userChosenBoardColor')
+               /* const userChosenBoardColor = document.getElementById('userChosenBoardColor')
                 userChosenBoardColor.addEventListener('change', ()=>{
                         
                         var boardColor = userChosenBoardColor.value;
                         
                         document.getElementById("canvas").style.backgroundColor = boardColor;
-                        })
+                        })*/
 
                 
             
@@ -67,14 +67,14 @@
                 eraseButton.style.display = "none";
                 document.body.style.backgroundColor = "white";
                
-                voiceButton.style.marginTop = "-612px";
+                voiceButton.style.marginTop = "-600px";
                 voiceButton.style.display = "block";
                 slideContainer.style.display = "block"
                 slideButton.style.backgroundColor = "#C9C9C9";
                 slideButton.style.color = "white";
                 drawingBoard.style.backgroundColor = "white";
                 my_pdf_viewer.style.display = "block"
-
+                drawingBoard.style.color = "#C9C9C9"
 
             });
             var drawingBoard = document.getElementById("drawingBoard")
@@ -91,6 +91,8 @@
                 drawingBoard.style.color = "white";
                 slideButton.style.backgroundColor = "white";
                 my_pdf_viewer.style.display = "none"
+                slideButton.style.color = "#C9C9C9"
+
 
             });
 

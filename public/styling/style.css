@@ -21,7 +21,7 @@
 
 #canvasForPdf {
     width: 1130px;
-    height: 550px;
+    height: 540px;
     overflow: auto;
     text-align: center;
     border: 3px;
@@ -46,6 +46,7 @@
     background: #1A222C;
     grid-column: 1/2;
     grid-row: 2/4;
+    
     
     
 }
@@ -130,6 +131,8 @@
     color: #878F98;
     margin-left: 75px;
     margin-top: -20px;
+    
+    
 }
 
 
@@ -322,9 +325,11 @@
 
   
 
-#voiceButton{
+/*#voiceButton{
     
     line-height: 40px;
+    content: "\1F7A9";
+
     
    
     
@@ -341,7 +346,8 @@
     width: 40px;
     background-color:  #FF6600 ;
     text-align: center;
-    /*margin-top: 570px;*/
+    
+    
     margin-top: 625px;
     
     margin-left: 5px;
@@ -354,7 +360,45 @@
     
     
     
-}
+}*/
+
+#voiceButton {
+     height: 40px;
+     width: 40px;
+     background-color: #FF6600 ;
+     border-radius: 50%;
+     padding: 20px 20px;
+     position: relative;
+     display: block;
+     margin: 10px;
+     border: 1px solid gray;
+     
+     top: 618px;
+     
+     
+     
+ }
+ 
+ #voiceButton:after {
+     position: absolute;
+     top: 0;
+     bottom: 0;
+     left: 0;
+     right: 0;
+     color: white;
+    
+     
+     content: "\0260E";  /*use the hex value here... */
+     
+     font-size: 25px; 
+     color: #FFF;
+     line-height: 40px;
+     text-align: center;
+    
+ 
+ }
+ 
+
 
 .tooltipForVoiceButton{
    

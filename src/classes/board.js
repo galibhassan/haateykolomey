@@ -10,6 +10,8 @@ class Board {
             currentY: 0,
         }
 
+        this._updateBoardColor(this.boardColor)
+
         this.fitCanvasToParent();
         // ei kotha ti mone rekho
     }
@@ -24,22 +26,13 @@ class Board {
 
     setBoardColor(newBoardColor){
         this.boardColor = newBoardColor;
+        this._updateBoardColor(this.boardColor)
     }
-
-    coloringBoard(x, y, boardcolor){
-        //var c = document.getElementById("myCanvas");
-        var ctx = this.canvas.getContext("2d");
-        ctx.beginPath();
-        ctx.fillStyle = boardcolor;
-
-        ctx.fillRect(x, y, this.canvas.boardWidth, this.canvas.boardHeight);
-
-        ctx.fill()
-
-
+    
+    _updateBoardColor(newColor){
+        this.canvas.style.backgroundColor = newColor
+        
     }
-
- 
 
     fitCanvasToParent(){
         this.getCanvas().width = this.getCanvas().parentElement.offsetWidth;

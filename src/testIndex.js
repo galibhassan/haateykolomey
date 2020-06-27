@@ -1,11 +1,15 @@
-
 const Brush = require('./classes/brush').Brush
 const Board = require('./classes/board').Board
 
-const canvas = document.getElementById("canvas");
 
-const myBoard = new Board(canvas, 100, 200);
-//const myBoard = new Board( 100, 200, myBoard.getCanvas(), "white");
+const drawingCanvas = document.getElementById("canvas");
+
+// const myBoard = new Board(drawingCanvas, 100, 200);
+
+
+const myBoard = new Board( drawingCanvas, 100, 200, 'white' );
+
+
 console.log("board created hoilo")
 const myBrush = new Brush(2, "black", "kolom", myBoard.getCanvas());
 
@@ -13,6 +17,11 @@ const colorUserChosen = document.getElementById('colorUserChosen')
 colorUserChosen.addEventListener('change', () => {
 
     myBrush.setBrushColor(colorUserChosen.value)
+})
+
+const userChosenBoardColor = document.getElementById('userChosenBoardColor')
+userChosenBoardColor.addEventListener('change', ()=>{
+    myBoard.setBoardColor(userChosenBoardColor.value)
 })
 
 
