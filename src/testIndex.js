@@ -23,7 +23,10 @@ const userChosenBoardColor = document.getElementById('userChosenBoardColor')
 userChosenBoardColor.addEventListener('change', ()=>{
     myBoard.setBoardColor(userChosenBoardColor.value)
 })
-
+/*const boardButton = document.getElementById('boardButton')
+boardButton.addEventListener('change', ()=>{
+    myBoard.setBoardColor(boardButton.value)
+})*/
 
 myBoard.enableEventListeners()
 const mainDrawingLoop = () => {
@@ -34,6 +37,9 @@ const mainDrawingLoop = () => {
             currentX: myBoard.drawingInfo.currentX,
             currentY: myBoard.drawingInfo.currentY,
             currentColor: myBrush.getBrushColor()
+            
+            
+            
         }
         clientSocket.emit("somebodyIsDrawing", combainedDrawingInfo)
     }

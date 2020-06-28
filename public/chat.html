@@ -51,9 +51,10 @@
 
 
         </div>
+             <input type="color" id="userChosenBoardColor">
+                <input type="color" id="colorUserChosen">
 
-        <input type="color" id="userChosenBoardColor">
-        <input type="color" id="colorUserChosen">
+        
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
         
@@ -61,8 +62,8 @@
         <div class="canvas-container">
 
                 
-
-            </button>
+                
+            
             <div id="slideContainer">
                 <form>
                     <!--<label id="label"> Slide URL</label>-->
@@ -72,7 +73,7 @@
                     <input type="button" id="load" value="Load"
                         onclick="window.location.href = 'https://www.google.com/'">
                 </form>
-
+                
             </div>
 
 
@@ -95,9 +96,11 @@
             <canvas id="canvas">
              
             </canvas>
-                   <button id="boardButton">
+            <button type="color" id="boardButton">
                 <span class="tooltipForBoardButton">pour some color on board</span>
             </button>
+               
+                
             
             <button id="brushButton">
                 <span class="tooltipForBrushButton">pick a colored brush</span>

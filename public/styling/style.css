@@ -31,11 +31,15 @@
 
 #colorUserChosen{
     display: none;
+    
 }
 
 #userChosenBoardColor{
     display: none;
+    
 }
+
+
 .canvas-container{
     grid-column: 2/3;
     grid-row: 2/3;
@@ -149,6 +153,7 @@
     position: relative;
     border-bottom: 1px dotted black;
     float: right;
+    
     
 
 }

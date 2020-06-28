@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/themes/classic.min.css"/>
+    <title>Document</title>
+    <style>
+        #boardButton{
+    padding: 15px 15px;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 10px 1px;
+    background: #FFFFFF;
+    margin: 5px;
+    border: 1px solid gray;
+    position: relative;
+    border-bottom: 1px dotted black;
+    float: right;
+    display: block;
+    
+    
+
+}
+
+.tooltipForBoardButton{
+    visibility: hidden;
+
+    width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  
+  bottom: 20%;
+  left: 50%;
+  margin-left: -160px;
+  
+  
+  /*margin-left: 25px; */
+  
+}
+
+#boardButton:hover .tooltipForBoardButton {
+    visibility: visible;
+    opacity: 1;
+  }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="color-picker"></div>
+    
+    <button type="color" id="boardButton">
+        <span class="tooltipForBoardButton">pour some color on board</span>
+    </button>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
+    
+    
+    <script>
+        // Simple example, see optional options for more configuration.
+const pickr = Pickr.create({
+    el: '.color-picker',
+    theme: 'classic', // or 'monolith', or 'nano'
+
+    swatches: [
+        'rgba(244, 67, 54, 1)',
+        'rgba(233, 30, 99, 0.95)',
+        'rgba(156, 39, 176, 0.9)',
+        'rgba(103, 58, 183, 0.85)',
+        'rgba(63, 81, 181, 0.8)',
+        'rgba(33, 150, 243, 0.75)',
+        'rgba(3, 169, 244, 0.7)',
+        'rgba(0, 188, 212, 0.7)',
+        'rgba(0, 150, 136, 0.75)',
+        'rgba(76, 175, 80, 0.8)',
+        'rgba(139, 195, 74, 0.85)',
+        'rgba(205, 220, 57, 0.9)',
+        'rgba(255, 235, 59, 0.95)',
+        'rgba(255, 193, 7, 1)'
+    ],
+
+    components: {
+
+        // Main components
+        preview: true,
+        opacity: true,
+        hue: true,
+
+        // Input / output Options
+        interaction: {
+            hex: true,
+            rgba: true,
+            hsla: true,
+            hsva: true,
+            cmyk: true,
+            input: true,
+            clear: true,
+            save: true
+        }
+    }
+});
+</script>
+</body>
+</html>

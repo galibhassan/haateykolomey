@@ -60,7 +60,9 @@
             var slideContainer = document.getElementById("slideContainer")
            var my_pdf_viewer = document.getElementById('my_pdf_viewer')
 
-            slideButton.addEventListener("click", () => {
+           
+         const slideButtonClicked = ()=>{
+           slideButton.addEventListener("click", () => {
                 canvas.style.display = "none";
                 boardButton.style.display = "none";
                 brushButton.style.display = "none";
@@ -77,6 +79,11 @@
                 drawingBoard.style.color = "#C9C9C9"
 
             });
+
+        }
+
+        slideButtonClicked();
+        
             var drawingBoard = document.getElementById("drawingBoard")
             drawingBoard.addEventListener("click", () => {
                 canvas.style.display = "block";
