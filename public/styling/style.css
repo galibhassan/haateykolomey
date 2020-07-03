@@ -141,58 +141,62 @@
 
 
 
-  #boardButton{
+  
+
+  .boardButton {
     padding: 15px 15px;
     width: 40px;
     height: 40px;
     border-radius: 10px;
-    box-shadow: 1px 1px 10px 1px;
+    box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.5);
+    border: none;
     background: #FFFFFF;
     margin: 5px;
-    border: 1px solid gray;
     position: relative;
-    border-bottom: 1px dotted black;
+
     float: right;
-    
-    
+    display: block;
+    outline: none;
+
 
 }
 
-.tooltipForBoardButton{
-    visibility: hidden;
 
+.tooltipForBoardButton {
+    /* visibility: hidden; */
+    
     width: 120px;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-  
-  bottom: 20%;
-  left: 50%;
-  margin-left: -160px;
-  
-  
-  /*margin-left: 25px; */
-  
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+
+    bottom: 20%;
+    left: 50%;
+    margin-left: -160px;
+    opacity: 0;
+    padding: 5px;
+    transition: opacity 0.3s;
+
+    /*margin-left: 25px; */
+
 }
 
-#boardButton:hover .tooltipForBoardButton {
-    visibility: visible;
-    opacity: 1;
-  }
+.boardButton:hover .tooltipForBoardButton {
+    /* visibility: visible; */
+    opacity: 0.7;
+}
 
-
-
-
-#brushButton {
+.brushButton {
 
     padding: 15px 15px;
     width: 40px;
     height: 40px;
     border-radius: 10px;
     background-color: #102B5F;
+    
     float: right;
     margin-right: 5px;
     margin-top: 1px; 
@@ -200,32 +204,38 @@
     position: relative;
     margin-top: 60px;
     margin-right: -45px;
-   
-}
-
-.tooltipForBrushButton{
+    
+    }
+    
+    .tooltipForBrushButton{
     visibility: hidden;
-
+    
     width: 140px;
-  background-color: #555;
-  color: #fff;
-  text-align: center;
-  border-radius: 6px;
-  padding: 5px 0;
-  position: absolute;
-  
-  bottom: 20%;
-  left: 50%;
-  
-  /*margin-left: -60px;*/
-  margin-left: -160px;
-  
-}
-
-#brushButton:hover .tooltipForBrushButton {
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    
+    bottom: 20%;
+    left: 50%;
+    
+    /*margin-left: -60px;*/
+    margin-left: -160px;
+    
+    }
+    
+    .brushButton:hover .tooltipForBrushButton {
     visibility: visible;
     opacity: 1;
-  }
+    
+    }
+    
+
+  
+
+
 
 
 

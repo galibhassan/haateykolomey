@@ -51,8 +51,8 @@
 
 
         </div>
-             <input type="color" id="userChosenBoardColor">
-                <input type="color" id="colorUserChosen">
+            <!-- <input type="color" id="userChosenBoardColor">
+                <input type="color" id="colorUserChosen">-->
 
         
 
@@ -96,16 +96,23 @@
             <canvas id="canvas">
              
             </canvas>
-            <button type="color" id="boardButton">
+             <button class="boardButton" id="boardButtonFake">
                 <span class="tooltipForBoardButton">pour some color on board</span>
+                <input type="color" id="boardButtonReal">
+            </button> 
+
+            <button class="brushButton" id="brushButtonFake">
+                <span class="tooltipForBrushButton">pick a colored brush</span>
+                <input type="color" id="brushButtonReal">
+        
             </button>
-               
-                
             
-            <button id="brushButton">
+                    
+            
+           <!--  <button id="brushButton">
                 <span class="tooltipForBrushButton">pick a colored brush</span>
             </button>
-            
+ -->            
             <button id="eraseButton">
                 <span class="tooltipForEraseButton">Clear all</span>
             </button>
