@@ -40,7 +40,9 @@ serversideIO.on('connection', (clientSocket) => {
 
     })
 
-
+    clientSocket.on("nextButtonClicked", ()=>{
+        clientSocket.broadcast.emit('goToNextPage')
+    })
 
 
 

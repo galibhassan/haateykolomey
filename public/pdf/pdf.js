@@ -8,6 +8,10 @@ var myState = {
 
 var myPdfPath = "./pdf/DCNbyForouzan.pdf";
 
+const nextButtonClicked = 'nextButtonClicked'
+const prevButtonClicked = 'prevButtonClicked'
+const pageNumberEntered = 'pageNumberEntered'
+
 
 pdfjsLib.getDocument(myPdfPath).then(pdf => {
     myState.pdf = pdf;
@@ -36,15 +40,23 @@ document.getElementById('go_previous').addEventListener('click', (e) => {
     render();
 })
 
-document.getElementById('go_next').addEventListener('click', (e) => {
+
+const handleNextButtonClicked = () => {
     if (myState.pdf == null || myState.currentPage > myState.pdf._pdfInfo.numPages) return;
     myState.currentPage = myState.currentPage + 1;
     document.getElementById('current_page').value = myState.currentPage;
     render();
-
-
+}
+document.getElementById('go_next').addEventListener('click', (e) => {
+    handleNextButtonClicked()
+    clientSocket.emit(nextButtonClicked)
 
 })
+
+clientSocket.on('goToNextPage',()=>{
+    handleNextButtonClicked()
+})
+
 
 document.getElementById('current_page').addEventListener('keypress', (e) => {
     if (myState.pdf == null) return;
