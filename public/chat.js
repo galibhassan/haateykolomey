@@ -56,3 +56,4 @@ function getInitials(username) {
     return intials;
 
 }
+

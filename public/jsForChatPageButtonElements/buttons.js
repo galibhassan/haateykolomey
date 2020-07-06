@@ -1,12 +1,5 @@
            
-           /* var brushButton = document.getElementById("brushButton")
-            brushButton.addEventListener("click", () => {
-
-                colorUserChosen.style.display = "block";
-
-
-            });*/
-
+           
            
             
 
@@ -32,7 +25,7 @@
             var canvas = document.getElementById("canvas")
             var boardButton = document.getElementById("boardButton")
             var brushButton = document.getElementById("brushButton")
-           // var eraseButton = document.getElementById("eraseButton")
+           
             var voiceButton = document.getElementById("voiceButton")
             var slideContainer = document.getElementById("slideContainer")
            var my_pdf_viewer = document.getElementById('my_pdf_viewer')
@@ -61,7 +54,8 @@
 
         slideButtonClicked();
         
-            var drawingBoard = document.getElementById("drawingBoard")
+     const boardButtonClicked =   () =>{    
+        var drawingBoard = document.getElementById("drawingBoard")
             drawingBoard.addEventListener("click", () => {
                 canvas.style.display = "block";
                 slideContainer.style.display = "none"
@@ -79,7 +73,9 @@
 
 
             });
+     }
 
+     boardButtonClicked();
 
 
 
