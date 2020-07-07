@@ -5,18 +5,36 @@ var myState = {
 }
 
 
+let myPdfPath = "./pdf/DCNbyForouzan.pdf";
 
-var myPdfPath = "./pdf/DCNbyForouzan.pdf";
+const pdfUrlInput = document.getElementById('pdfUrlInput')
+const loadPdf = document.getElementById('loadPdf')
+
+loadPdf.addEventListener('click', () => {
+    console.log(pdfUrlInput.value)
+    myPdfPath = pdfUrlInput.value
+    showPdf()
+})
+
+
+
+
 
 const nextButtonClicked = 'nextButtonClicked'
 const prevButtonClicked = 'prevButtonClicked'
 const pageNumberEntered = 'pageNumberEntered'
+const zoomInClicked = 'zoomInClicked'
+const zoomOutClicked = 'zoomOutClicked'
 
+const showPdf = ()=> {
+    pdfjsLib.getDocument(myPdfPath).then(pdf => {
+        myState.pdf = pdf;
+        render();
+    });
+}
 
-pdfjsLib.getDocument(myPdfPath).then(pdf => {
-    myState.pdf = pdf;
-    render();
-});
+showPdf()
+
 function render() {
     myState.pdf.getPage(myState.currentPage).then(page => {
         var canvas = document.getElementById("pdf_renderer");
@@ -32,12 +50,17 @@ function render() {
         })
     })
 }
-document.getElementById('go_previous').addEventListener('click', (e) => {
+
+const handlePreviousButtonClicked = () =>{
     if (myState.pdf == null || myState.currentPage == 1) return;
     myState.currentPage = myState.currentPage - 1;
 
     document.getElementById('current_page').value = myState.currentPage;
     render();
+}
+document.getElementById('go_previous').addEventListener('click', (e) => {
+    handlePreviousButtonClicked()
+    clientSocket.emit(prevButtonClicked)
 })
 
 
@@ -53,17 +76,20 @@ document.getElementById('go_next').addEventListener('click', (e) => {
 
 })
 
-clientSocket.on('goToNextPage',()=>{
+clientSocket.on('goToNextPage', () => {
     handleNextButtonClicked()
 })
 
+clientSocket.on("goToPrevButton", ()=>{
+    handlePreviousButtonClicked()
+})
 
-document.getElementById('current_page').addEventListener('keypress', (e) => {
+const handlePageNumber = (e)=>{
     if (myState.pdf == null) return;
 
+    
     //get the key
-    var code = (e.keyCode ? e.keyCode : e.which)
-
+var code = (e.keyCode ? e.keyCode : e.which)
     if (code == 13) {
         var desiredPage = document.getElementById('current_page').valueAsNumber;
         if (desiredPage >= 1 && desiredPage <= myState.pdf._pdfInfo.numPages) {
@@ -72,18 +98,52 @@ document.getElementById('current_page').addEventListener('keypress', (e) => {
             render();
         }
     }
+}
+
+
+
+
+document.getElementById('current_page').addEventListener('keypress', (e) => {
+  
+    handlePageNumber(e)
+   
+   clientSocket.emit(pageNumberEntered)
 })
 
-document.getElementById('zoom_in').addEventListener('click', (e) => {
+clientSocket.on("pressEnter", (e)=>{
+    
+    handlePageNumber(e)
+})
+
+zoomInButtonClicked = (e)=>{
     if (myState.pdf == null) return;
     myState.zoom = myState.zoom + 0.5;
     render()
+}
+
+document.getElementById('zoom_in').addEventListener('click', (e) => {
+    zoomInButtonClicked()
+    clientSocket.emit(zoomInClicked)
 })
 
-document.getElementById('zoom_out').addEventListener('click', (e) => {
+clientSocket.on("zoomIn", ()=>{
+    zoomInButtonClicked()
+})
+
+const zoomOutClickedButton =()=>{
     if (myState.pdf == null) return;
     myState.zoom = myState.zoom - 0.5;
     render()
+
+}
+
+document.getElementById('zoom_out').addEventListener('click', (e) => {
+   zoomOutClickedButton()
+   clientSocket.emit(zoomOutClicked)
+})
+
+clientSocket.on("zoomOut", ()=>{
+    zoomOutClickedButton()
 })
 
 

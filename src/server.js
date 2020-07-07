@@ -1,8 +1,11 @@
 const path = require('path');
 const serversideSocketIO = require('socket.io')
+const cors = require('cors')
 
 const express = require('express');
 const app = express();
+
+app.use(cors());
 app.use(express.static('public'))
 
 
@@ -42,6 +45,26 @@ serversideIO.on('connection', (clientSocket) => {
 
     clientSocket.on("nextButtonClicked", ()=>{
         clientSocket.broadcast.emit('goToNextPage')
+    })
+
+    clientSocket.on("prevButtonClicked", ()=>{
+        clientSocket.broadcast.emit("goToPrevButton")
+    })
+
+    clientSocket.on("pageNumberEntered", ()=>{
+        clientSocket.broadcast.emit("pressEnter")
+    })
+
+    clientSocket.on("zoomInClicked", ()=>{
+        clientSocket.broadcast.emit("zoomIn")
+    })
+
+    clientSocket.on("zoomOutClicked", ()=>{
+        clientSocket.broadcast.emit("zoomOut")
+    })
+
+    clientSocket.on("boardButoonClicked", ()=>{
+        serversideIO.emit("showBoard")
     })
 
 

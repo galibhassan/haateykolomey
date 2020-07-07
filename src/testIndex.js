@@ -13,11 +13,6 @@ const myBoard = new Board(drawingCanvas, 100, 200, 'white');
 console.log("board created hoilo")
 const myBrush = new Brush(2, "black", "kolom", myBoard.getCanvas());
 
-/*const colorUserChosen = document.getElementById('colorUserChosen')
-colorUserChosen.addEventListener('change', () => {
-
-    myBrush.setBrushColor(colorUserChosen.value)
-})*/
 
 
 const boardButtonReal = document.getElementById('boardButtonReal')
@@ -77,9 +72,11 @@ var canvas = document.getElementById("canvas")
 var voiceButton = document.getElementById("voiceButton")
 var slideContainer = document.getElementById("slideContainer")
 var my_pdf_viewer = document.getElementById('my_pdf_viewer')
+var drawingBoard = document.getElementById("drawingBoard")
 
-let isSlideShowing = false;
-let shouldShowSlide
+
+//let isSlideShowing = false;
+//let shouldShowSlide
 
 
 slideButtonClicked_props = {
@@ -130,31 +127,57 @@ clientSocket.on("showSlide", ()=>{
 
 })
 
+boardButtonClicked_props = {
+    canvasDisplay : "block",
+    slideContainerDisplay :"none",
+    boardButtonFakeDisplay : "block",
+    brushButtonFakeDisplay : "block",
+    eraseButtonDisplay : "block",
+    voiceButtonMarginTop : "5px",
+    // brushButton.style.marginTop = "-49px";
+    eraseButtonMarginTop : "10px",
+    drawingBoardBackgroundColor : "#C9C9C9",
+    drawingBoardColor : "white",
+    slideButtonBackgroundColor : "white",
+    my_pdf_viewerDisplay : "none",
+    slideButtonColor : "#C9C9C9"
 
-const boardButtonClicked = () => {
-    var drawingBoard = document.getElementById("drawingBoard")
-    drawingBoard.addEventListener("click", () => {
-        canvas.style.display = "block";
-        slideContainer.style.display = "none"
-        boardButtonFake.style.display = "block";
-        brushButtonFake.style.display = "block";
-        eraseButton.style.display = "block";
-        voiceButton.style.marginTop = "5px";
-        // brushButton.style.marginTop = "-49px";
-        eraseButton.style.marginTop = "10px";
-        drawingBoard.style.backgroundColor = "#C9C9C9";
-        drawingBoard.style.color = "white";
-        slideButton.style.backgroundColor = "white";
-        my_pdf_viewer.style.display = "none"
-        slideButton.style.color = "#C9C9C9"
-
-
-    });
 }
 
-boardButtonClicked();
+const changeprops_boardButtonClicked = ()=>{
+    canvas.style.display = boardButtonClicked_props.canvasDisplay
+    slideContainer.style.display = boardButtonClicked_props.slideContainerDisplay
+    boardButtonFake.style.display = boardButtonClicked_props.boardButtonFakeDisplay
+    brushButtonFake.style.display = boardButtonClicked_props.brushButtonFakeDisplay
+    eraseButton.style.display = boardButtonClicked_props.eraseButtonDisplay
+    voiceButton.style.marginTop = boardButtonClicked_props.voiceButtonMarginTop
+    // brushButton.style.marginTop = "-49px";
+    eraseButton.style.marginTop =boardButtonClicked_props.eraseButtonMarginTop
+    drawingBoard.style.backgroundColor = boardButtonClicked_props.drawingBoardBackgroundColor
+    drawingBoard.style.color = boardButtonClicked_props.drawingBoardColor
+    slideButton.style.backgroundColor = boardButtonClicked_props.slideButtonBackgroundColor
+    my_pdf_viewer.style.display = boardButtonClicked_props.my_pdf_viewerDisplay
+    slideButton.style.color = boardButtonClicked_props.slideButtonColor
+
+}
 
 
+
+    drawingBoard.addEventListener("click", handleBoardButtonClicked )
+
+
+//changeprops_boardButtonClicked();
+
+function handleBoardButtonClicked(){
+    changeprops_boardButtonClicked();
+    clientSocket.emit("boardButtonClicked")
+    
+}
+
+clientSocket.on("showBoard", ()=>{
+    changeprops_boardButtonClicked()
+    
+})
 
 
 
@@ -210,14 +233,4 @@ clientSocket.on("serveremittedDrawingInfo", (receivedDrawingInfo) => {
     otherClientBrush.drawCircle(receivedDrawingInfo.currentX, receivedDrawingInfo.currentY, receivedDrawingInfo.color)
 })
 
-
-/*clientSocket.on("serverEmittingslideButton", (receivedslideButton) =>{
-    //console.log("hola")
-    console.log(receivedslideButton)
-})*/
-
-
-/*clientSocket.on('serveremittingslideButton', (slideButtonWorked)=>{
-    console.log(slideButtonWorked)
-})*/
 
