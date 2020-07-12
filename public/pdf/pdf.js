@@ -10,16 +10,39 @@ let myPdfPath = "./pdf/DCNbyForouzan.pdf";
 const pdfUrlInput = document.getElementById('pdfUrlInput')
 const loadPdf = document.getElementById('loadPdf')
 
-loadPdf.addEventListener('click', () => {
-    console.log(pdfUrlInput.value)
-    myPdfPath = pdfUrlInput.value
-    showPdf()
+const handlePdf = (pdfPath)=>{
+    return new Promise((resolve, reject) =>{
+        debugger
+        myPdfPath = pdfPath
+        debugger
+        showPdf()
+        resolve(myPdfPath)
+    })
+}
+
+const handlePdfInfo = ()=>{
+    handlePdf(pdfUrlInput.value).then(newPath=>{
+        
+        clientSocket.emit('appearPdf', newPath)
+    })
+    //clientSocket.emit(pdfUrlInput.value)
+}
+
+loadPdf.addEventListener('click', handlePdfInfo )
+
+clientSocket.on("receivePdf", (ro_myPdfPath)=>{
+    console.log(ro_myPdfPath)
+    handlePdf(ro_myPdfPath)
+    //myPdfPath = pdfUrlInput.value
+
 })
+    
 
 
 
 
 
+const appearPdf = "appearPdf"
 const nextButtonClicked = 'nextButtonClicked'
 const prevButtonClicked = 'prevButtonClicked'
 const pageNumberEntered = 'pageNumberEntered'
@@ -100,10 +123,16 @@ var code = (e.keyCode ? e.keyCode : e.which)
     }
 }
 
+/*const handlePageNumberInfo = (e)=>{
+    handlePageNumber()
+   clientSocket.emit(pageNumberEntered)
+
+}*/
 
 
 
-document.getElementById('current_page').addEventListener('keypress', (e) => {
+
+document.getElementById('current_page').addEventListener('keypress', (e)=>{ 
   
     handlePageNumber(e)
    

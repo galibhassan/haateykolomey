@@ -10,7 +10,7 @@ app.use(express.static('public'))
 
 
 app.use('/chatPage', (reqest, response, next) => {
-    console.log(path.resolve(__dirname, '../', 'public', 'chat.html'));
+    // console.log(path.resolve(__dirname, '../', 'public', 'chat.html'));
     response.sendFile(path.resolve(__dirname, '../', 'public', 'chat.html'))
 })
 
@@ -34,7 +34,7 @@ serversideIO.on('connection', (clientSocket) => {
         serversideIO.emit('serverEmittingSomeonesWords', roFromOneClient)
     })
     clientSocket.on("somebodyIsDrawing", (drawingInfo) => {
-        console.log(drawingInfo)
+        // console.log(drawingInfo)
         serversideIO.emit("serveremittedDrawingInfo", drawingInfo)
     })
 
@@ -63,15 +63,28 @@ serversideIO.on('connection', (clientSocket) => {
         clientSocket.broadcast.emit("zoomOut")
     })
 
-    clientSocket.on("boardButoonClicked", ()=>{
+    clientSocket.on("boardButtonClicked", ()=>{
         serversideIO.emit("showBoard")
     })
 
+    
+    clientSocket.on("eraseButtonPress", ()=>{
+        serversideIO.emit("eraseButtonDown")
+    })
+
+    clientSocket.on("boardButtonFakeP", ()=>{
+        serversideIO.emit("boardButtonFakeDown")
+    })    
+
+    clientSocket.on("appearPdf", (myPdfPath) =>{ 
+        console.log(myPdfPath)
+        clientSocket.broadcast.emit("receivePdf", myPdfPath)
+    
+    })
+
+    
 
 
 })
 
-/*clientSocket.on('serveremittingslideButton', (slideButtonWorked)=>{
-    console.log(slideButtonWorked)
-})*/
 

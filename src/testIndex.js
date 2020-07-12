@@ -13,14 +13,16 @@ const myBoard = new Board(drawingCanvas, 100, 200, 'white');
 console.log("board created hoilo")
 const myBrush = new Brush(2, "black", "kolom", myBoard.getCanvas());
 
+//const myCanvas = document.getElementById("canvas")
 
-
+//const ctx = myCanvas.getContext('2d')
 const boardButtonReal = document.getElementById('boardButtonReal')
 const boardButtonFake = document.getElementById('boardButtonFake')
 const brushButtonReal = document.getElementById('brushButtonReal')
 const brushButtonFake = document.getElementById('brushButtonFake')
 //const userChosenBoardColor = document.getElementById('userChosenBoardColor')
 var eraseButton = document.getElementById("eraseButton")
+
 
 brushButtonReal.style.opacity = 0
 brushButtonFake.addEventListener('click', (e) => {
@@ -34,23 +36,69 @@ brushButtonFake.addEventListener('change', (e) => {
 
 })
 
-boardButtonReal.style.opacity = 0
-boardButtonFake.addEventListener('click', (e) => {
+/*const boardButtonFakeClickedInfo = ()=>{
     boardButtonReal.click()
+    boardButtonFake.addEventListener('change', (e) => {
+    boardButtonFake.style.backgroundColor = e.target.value
+    myBoard.setBoardColor(e.target.value)
+    
+
 })
+
+}
+
+const boardButtonFakeClicked = ()=>{
+    boardButtonFakeClickedInfo()
+    clientSocket.emit("boardButtonFakePress")
+}
+
+clientSocket.on("boardButtonFakeDown", ()=>{
+    boardButtonFakeClickedInfo();
+})*/
+
+
+
+
+
+boardButtonReal.style.opacity = 0
+boardButtonFake.addEventListener('click', ()=>{
+    boardButtonReal.click()
+
+})
+
+  const boardButtonFakeInfo = ()=>{
+    boardButtonFake.style.backgroundColor = e.target.value
+    myBoard.setBoardColor(e.target.value)
+    
+  }  
+
+  /*const boardButtonFakeClicked = ()=>{
+      boardButtonFakeInfo()
+      clientSocket.emit("boardButtonP")
+  }*/
+
+
+
 
 boardButtonFake.addEventListener('change', (e) => {
     boardButtonFake.style.backgroundColor = e.target.value
-    //myBoard.setBoardColor(userChosenBoardColor.value)
     myBoard.setBoardColor(e.target.value)
+    
 
 })
 
+//boardButtonFake.addEventListener('change', boardButtonFakeClicked )
+
+clientSocket.on("boardButtonFakeDown", ()=>{
+    boardButtonFakeInfo()
+})
+
+
+
 var eraseButton = document.getElementById("eraseButton")
-eraseButton.addEventListener("click", () => {
 
-    //color.style.display = "block";
 
+const eraseButtonClickedInfo = ()=>{
     const myCanvas = document.getElementById("canvas")
     const ctx = myCanvas.getContext('2d')
     myCanvas.style.backgroundColor = "white";
@@ -58,12 +106,20 @@ eraseButton.addEventListener("click", () => {
     boardButtonFake.style.backgroundColor = "white"
     brushButtonFake.style.backgroundColor = "#102B5F"
 
+}
+
+const eraseButtonClicked = ()=>{
+    eraseButtonClickedInfo()
+    clientSocket.emit("eraseButtonPress")
+}
 
 
+eraseButton.addEventListener("click", eraseButtonClicked);
 
+clientSocket.on("eraseButtonDown", ()=>{
+    eraseButtonClickedInfo();
+})
 
-
-});
 
 var slideButton = document.getElementById("slideButton")
 var canvas = document.getElementById("canvas")
