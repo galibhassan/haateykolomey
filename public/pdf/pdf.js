@@ -11,21 +11,14 @@ const pdfUrlInput = document.getElementById('pdfUrlInput')
 const loadPdf = document.getElementById('loadPdf')
 
 const handlePdf = (pdfPath)=>{
-    return new Promise((resolve, reject) =>{
-        debugger
-        myPdfPath = pdfPath
-        debugger
-        showPdf()
-        resolve(myPdfPath)
-    })
+    myPdfPath = pdfPath
+    showPdf()
 }
 
 const handlePdfInfo = ()=>{
-    handlePdf(pdfUrlInput.value).then(newPath=>{
-        
-        clientSocket.emit('appearPdf', newPath)
-    })
-    //clientSocket.emit(pdfUrlInput.value)
+    handlePdf(pdfUrlInput.value)
+    clientSocket.emit('appearPdf', pdfUrlInput.value)
+
 }
 
 loadPdf.addEventListener('click', handlePdfInfo )
