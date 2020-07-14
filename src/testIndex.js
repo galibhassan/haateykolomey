@@ -234,23 +234,17 @@ mainDrawingLoop()
 
 //const boardrong = myBoard.setBoardColor(e.target.value)
 
-const otherClientBoard = (e) => {
-    new Board(myBoard.getCanvas(), 500, 400, myBoard.setBoardColor(e.target.value))
-    ;
-}
+const otherClientBoard = new Board(myBoard.getCanvas(), 500, 400, myBoard.getCanvas());
+    
+
 
 //const otherClientBoard = new Board( myBoard.getCanvas(), 500, 400,  "purple"  );
-clientSocket.on("serverEmittingBoardColor", (receivedBoardColorInfo) => {
-    console.log(receivedBoardColorInfo)
-    otherClientBoard._updateBoardColor(receivedBoardColorInfo.color)
 
-
-
-})
 const otherClientBrush = new Brush(4, "green", "pencil", myBoard.getCanvas());
 clientSocket.on("serveremittedDrawingInfo", (receivedDrawingInfo) => {
+    console.log('to see the color of the brush\n')
     console.log(receivedDrawingInfo)
-    otherClientBrush.drawCircle(receivedDrawingInfo.currentX, receivedDrawingInfo.currentY, receivedDrawingInfo.color)
+    otherClientBrush.drawCircle(receivedDrawingInfo.currentX, receivedDrawingInfo.currentY, receivedDrawingInfo.currentColor)
 })
 
 

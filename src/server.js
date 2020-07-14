@@ -34,8 +34,8 @@ serversideIO.on('connection', (clientSocket) => {
         serversideIO.emit('serverEmittingSomeonesWords', roFromOneClient)
     })
     clientSocket.on("somebodyIsDrawing", (drawingInfo) => {
-        // console.log(drawingInfo)
-        serversideIO.emit("serveremittedDrawingInfo", drawingInfo)
+        console.log(drawingInfo)
+        clientSocket.broadcast.emit("serveremittedDrawingInfo", drawingInfo)
     })
 
     clientSocket.on("slideButtonClicked", () => {

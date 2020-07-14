@@ -25,9 +25,7 @@ const handlePdfInfo = () => {
 loadPdf.addEventListener('click', handlePdfInfo)
 
 clientSocket.on("receivePdf", (ro_myPdfPath) => {
-    console.log(ro_myPdfPath)
     handlePdf(ro_myPdfPath)
-    //myPdfPath = pdfUrlInput.value
 
 })
 
@@ -167,7 +165,6 @@ document.getElementById('current_page').addEventListener('keypress', handlePageN
 })*/
 
 clientSocket.on("pressEnter", (ro_desiredPage) => {
-    console.log(ro_desiredPage)
     myState.currentPage = ro_desiredPage
     render();
 })

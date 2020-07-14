@@ -1,3 +1,4 @@
+
 class Brush {
     constructor(brushSize, brushColor, brushType, canvas) {
         this.brushSize = brushSize;
@@ -23,8 +24,6 @@ class Brush {
         // ki shob ghorar dim
     }
     drawCircle(x, y, color) {
-        // console.log("brush.drawCircle() is called");
-
         const ctx = this.canvas.getContext("2d")
         ctx.beginPath();
         ctx.arc(x, y, this.brushSize, 0, 2 * Math.PI);
