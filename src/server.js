@@ -51,8 +51,9 @@ serversideIO.on('connection', (clientSocket) => {
         clientSocket.broadcast.emit("goToPrevButton")
     })
 
-    clientSocket.on("pageNumberEntered", ()=>{
-        clientSocket.broadcast.emit("pressEnter")
+    clientSocket.on("pageNumberEntered", (desiredPage)=>{
+        console.log(desiredPage)
+       clientSocket.broadcast.emit("pressEnter", desiredPage)
     })
 
     clientSocket.on("zoomInClicked", ()=>{
@@ -72,16 +73,14 @@ serversideIO.on('connection', (clientSocket) => {
         serversideIO.emit("eraseButtonDown")
     })
 
-    clientSocket.on("boardButtonFakeP", ()=>{
-        serversideIO.emit("boardButtonFakeDown")
-    })    
-
+    
     clientSocket.on("appearPdf", (myPdfPath) =>{ 
         console.log(myPdfPath)
-        clientSocket.broadcast.emit("receivePdf", myPdfPath)
+        clientSocket.broadcast.emit("receivePdf", myPdfPath )
     
     })
 
+    
     
 
 

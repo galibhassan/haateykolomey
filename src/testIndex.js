@@ -36,28 +36,6 @@ brushButtonFake.addEventListener('change', (e) => {
 
 })
 
-/*const boardButtonFakeClickedInfo = ()=>{
-    boardButtonReal.click()
-    boardButtonFake.addEventListener('change', (e) => {
-    boardButtonFake.style.backgroundColor = e.target.value
-    myBoard.setBoardColor(e.target.value)
-    
-
-})
-
-}
-
-const boardButtonFakeClicked = ()=>{
-    boardButtonFakeClickedInfo()
-    clientSocket.emit("boardButtonFakePress")
-}
-
-clientSocket.on("boardButtonFakeDown", ()=>{
-    boardButtonFakeClickedInfo();
-})*/
-
-
-
 
 
 boardButtonReal.style.opacity = 0
@@ -66,32 +44,18 @@ boardButtonFake.addEventListener('click', ()=>{
 
 })
 
-  const boardButtonFakeInfo = ()=>{
-    boardButtonFake.style.backgroundColor = e.target.value
-    myBoard.setBoardColor(e.target.value)
-    
-  }  
-
-  /*const boardButtonFakeClicked = ()=>{
-      boardButtonFakeInfo()
-      clientSocket.emit("boardButtonP")
-  }*/
+  
 
 
-
-
-boardButtonFake.addEventListener('change', (e) => {
+boardButtonFake.addEventListener('change', (e)=>{
     boardButtonFake.style.backgroundColor = e.target.value
     myBoard.setBoardColor(e.target.value)
     
 
 })
 
-//boardButtonFake.addEventListener('change', boardButtonFakeClicked )
 
-clientSocket.on("boardButtonFakeDown", ()=>{
-    boardButtonFakeInfo()
-})
+
 
 
 
