@@ -38,6 +38,19 @@ serversideIO.on('connection', (clientSocket) => {
         clientSocket.broadcast.emit("serveremittedDrawingInfo", drawingInfo)
     })
 
+    clientSocket.on("someoneColoringBoard", (boardColorInfo)=>{
+        clientSocket.broadcast.emit("serverEmittingBoardColor", boardColorInfo)
+        
+    })
+
+    clientSocket.on("emitBoardColorChange", (boardColorChange)=>{
+        clientSocket.broadcast.emit("serverEmitBoardColorChange", boardColorChange)
+    })
+
+    clientSocket.on("emitBrushColorChange", (brushColorChange)=>{
+        clientSocket.broadcast.emit("serverEmitBrushColorChange", brushColorChange)
+    })
+
     clientSocket.on("slideButtonClicked", () => {
         serversideIO.emit("showSlide")
 

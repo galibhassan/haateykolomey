@@ -121,35 +121,10 @@ const handlePageNumber = (e) => {
     }
 }
 
-//myState.currentPage = desiredPage
-//handlePageNumber(desiredPage)
-//var desiredPage = document.getElementById('current_page').valueAsNumber;
-//var desiredPage = 4;
-//var desiredPage = current_page.valueAsNumber;
 
 
 
 
-const handlePageNumberInfo = (e) => {
-
-    // desiredPage = e
-    //desiredPage = current_page.valueAsNumber;
-    //e = current_page.valueAsNumber;
-
-    //desiredPage = document.getElementById('current_page').valueAsNumber;
-
-
-
-    //handlePageNumber(document.getElementById('current_page').value)
-    handlePageNumber(e)
-
-
-    //clientSocket.emit("pageNumberEntered", document.getElementById('current_page').value)
-    //clientSocket.emit("pageNumberEntered", handlePageNumber(desiredPage))
-    
-
-
-}
 
 document.getElementById('current_page').addEventListener('keypress', handlePageNumber)
 
@@ -157,12 +132,6 @@ document.getElementById('current_page').addEventListener('keypress', handlePageN
 
 
 
-/*document.getElementById('current_page').addEventListener('keypress', (e)=>{ 
-  
-    handlePageNumber(e)
-   
-   clientSocket.emit(pageNumberEntered)
-})*/
 
 clientSocket.on("pressEnter", (ro_desiredPage) => {
     myState.currentPage = ro_desiredPage

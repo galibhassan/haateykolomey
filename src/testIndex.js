@@ -33,15 +33,28 @@ brushButtonFake.addEventListener('change', (e) => {
     brushButtonFake.style.backgroundColor = e.target.value
     //myBrush.setBrushColor(colorUserChosen.value)
     myBrush.setBrushColor(e.target.value)
+    clientSocket.emit("emitBrushColorChange", e.target.value)
+
 
 })
+
+clientSocket.on("serverEmitBrushColorChange", (brushColorChage)=>{
+    brushButtonFake.style.backgroundColor = brushColorChage
+    
+    brushButtonFake.style.backgroundColor = brushColorChage
+    myBrush.setBrushColor(brushColorChage)
+
+})
+
 
 
 
 boardButtonReal.style.opacity = 0
 boardButtonFake.addEventListener('click', ()=>{
     boardButtonReal.click()
+    
 
+    
 })
 
   
@@ -50,7 +63,16 @@ boardButtonFake.addEventListener('click', ()=>{
 boardButtonFake.addEventListener('change', (e)=>{
     boardButtonFake.style.backgroundColor = e.target.value
     myBoard.setBoardColor(e.target.value)
+    clientSocket.emit("emitBoardColorChange", e.target.value)
     
+
+})
+
+clientSocket.on("serverEmitBoardColorChange", (boardColorChage)=>{
+    boardButtonFake.style.backgroundColor = boardColorChage
+    
+    boardButtonFake.style.backgroundColor = boardColorChage
+    myBoard.setBoardColor(boardColorChage)
 
 })
 
@@ -212,15 +234,24 @@ const mainDrawingLoop = () => {
     if (myBoard.isDrawingPossible) {
         myBrush.drawCircle(myBoard.drawingInfo.currentX, myBoard.drawingInfo.currentY, myBrush.getBrushColor())
 
+
         const combainedDrawingInfo = {
             currentX: myBoard.drawingInfo.currentX,
             currentY: myBoard.drawingInfo.currentY,
             currentColor: myBrush.getBrushColor(),
-            currentBoardColor: myBoard.getBoardColor()
+            //currentBoardColor: myBoard.getBoardColor()
 
 
         }
 
+       myBoard._updateBoardColor(myBoard.getBoardColor())
+        const drawingBoardColor = {
+            currentBoardColor: myBoard.getBoardColor(),
+            
+
+        }
+
+        clientSocket.emit("someoneColoringBoard", drawingBoardColor)
 
         clientSocket.emit("somebodyIsDrawing", combainedDrawingInfo)
 
@@ -234,8 +265,18 @@ mainDrawingLoop()
 
 //const boardrong = myBoard.setBoardColor(e.target.value)
 
-const otherClientBoard = new Board(myBoard.getCanvas(), 500, 400, myBoard.getCanvas());
+const otherClientBoard = new Board(drawingCanvas, 500, 400, "white" );
+clientSocket.on("serverEmittingBoardColor", (receivedBoardColorInfo) => {
+    console.log(receivedBoardColorInfo)
     
+    otherClientBoard._updateBoardColor(receivedBoardColorInfo.currentBoardColor)
+    
+
+    
+
+
+
+})  
 
 
 //const otherClientBoard = new Board( myBoard.getCanvas(), 500, 400,  "purple"  );
