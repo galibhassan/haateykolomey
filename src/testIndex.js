@@ -81,15 +81,15 @@ clientSocket.on("serverEmitBoardColorChange", (boardColorChage)=>{
 
 
 
-var eraseButton = document.getElementById("eraseButton")
+//var eraseButton = document.getElementById("eraseButton")
 
 
 const eraseButtonClickedInfo = ()=>{
     const myCanvas = document.getElementById("canvas")
     const ctx = myCanvas.getContext('2d')
-    myCanvas.style.backgroundColor = "white";
+    //myCanvas.style.backgroundColor = "white";
     ctx.clearRect(0, 0, myCanvas.width, myCanvas.height)
-    boardButtonFake.style.backgroundColor = "white"
+    //boardButtonFake.style.backgroundColor = "white"
     brushButtonFake.style.backgroundColor = "#102B5F"
 
 }
