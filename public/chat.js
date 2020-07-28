@@ -33,6 +33,9 @@ function pushChatPortionToChatOutput(ro){
     usernameDiv.innerHTML = ro.clientName
     messageDiv.innerHTML = ro.chatboxMessage
 
+    Array.from(messageDiv.children).forEach((child) =>{
+        child.style.all = 'unset';
+    })
     
     // firstLastCharecterDiv.setAttribute("class", "golla")
     firstLastCharecterDiv.setAttribute("class", "userIntial")

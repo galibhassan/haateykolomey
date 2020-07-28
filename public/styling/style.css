@@ -51,9 +51,17 @@
     grid-column: 1/2;
     grid-row: 2/4;
     
+
     
     
 }
+
+/*#clientChatInput{
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+}*/
+
 .input-container{
     grid-column: 2/3;
     grid-row: 3/4;
