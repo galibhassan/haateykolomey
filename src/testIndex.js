@@ -203,9 +203,12 @@ const changeprops_boardButtonClicked = ()=>{
 
 }
 
+// [TO do] relocate this line in a decent place
+window.addEventListener('load', ()=>{
+    changeprops_boardButtonClicked()
+})
 
-
-    drawingBoard.addEventListener("click", handleBoardButtonClicked )
+drawingBoard.addEventListener("click", handleBoardButtonClicked )
 
 
 //changeprops_boardButtonClicked();
