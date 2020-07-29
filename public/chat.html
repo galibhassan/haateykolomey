@@ -17,7 +17,7 @@
         var clientSocket = io.connect('http://localhost:8000')
 
     </script>
-    
+
 
 </head>
 
@@ -28,16 +28,14 @@
 
 
         <div class="nav">
-            <span id="chatTitle">H A T E E Y - K O L O M E Y</span>
+            <span id="chatTitle">HAATEY-KOLOMEY</span>
 
 
 
             <button id="drawingBoard">Board</button>
             <button id="slideButton">Slide</button>
-            
 
-         <div id="userButton">
-
+            <div id="userButton">
                 <ul>
                     <li><i id="usericon" class="fas fa-user"></i>
                         <ul>
@@ -51,31 +49,21 @@
 
 
         </div>
-            <!-- <input type="color" id="userChosenBoardColor">
-                <input type="color" id="colorUserChosen">-->
-
-        
-
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
-        
-        
-        <div class="canvas-container">
 
-                
-                
-            
+
+        <div class="canvas-container">
             <div id="slideContainer">
                 <form>
                     <label id="label"> Slide URL</label>
-                    <!--<label id="label">Google</label>-->
+
 
                     <input id="pdfUrlInput" class="urlinput" type="text" placeholder="./pdf/fileName.pdf">
                     <input type="button" id="loadPdf" value="Load">
-                    
-                </form>
-                
-            </div>
 
+                </form>
+
+            </div>
 
             <div id="my_pdf_viewer">
                 <div id="canvasForPdf">
@@ -91,40 +79,34 @@
                     <button id="zoom_out">-</button>
                 </div>
             </div>
-            
-     
+
             <canvas id="canvas">
-             
+
             </canvas>
-             <button class="boardButton" id="boardButtonFake">
+
+            <button class="boardButton" id="boardButtonFake">
                 <span class="tooltipForBoardButton">pour some color on board</span>
                 <input type="color" id="boardButtonReal">
-            </button> 
+            </button>
 
             <button class="brushButton" id="brushButtonFake">
                 <span class="tooltipForBrushButton">pick a colored brush</span>
                 <input type="color" id="brushButtonReal">
-        
+
             </button>
-            
-                    
-            
-                
+
             <button id="eraseButton">
                 <span class="tooltipForEraseButton">Clear all</span>
             </button>
 
-             
-                <button id="voiceButton">
-                    <span class ="tooltipForVoiceButton">make a call</span>
-                </button>
-            
 
-            
+            <button id="voiceButton">
+                <span class="tooltipForVoiceButton">make a call</span>
+            </button>
 
         </div>
-        
-     <div id="chatOutput">
+
+        <div id="chatOutput">
         </div>
 
 
@@ -136,13 +118,13 @@
             <input id="clientName" type="text" placeholder="Your name?">
             <button id="sendButton"></button>
         </div>
-        
+
 
         <script src="./pdf/pdf.js"></script>
         <script src="./webpackBuild/brushBoard.js"></script>
         <script src="./chat.js"></script>
 
-       
+
     </div>
 
 

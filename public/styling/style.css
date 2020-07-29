@@ -1,585 +1,391 @@
-*{
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-   
+* {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
 }
-.container{
-    border: 1px solid orange;
-    display: grid;
-    grid-template-columns: 1fr 3fr;
-    grid-template-rows: 5vh 90vh 5vh;
+.container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 5vh 90vh 5vh;
 }
-.nav{
-    grid-column: 1/3;
-    grid-row: 1/2;
-    background-color: #25313F;
-    width: 100%;
-    
-    
-    
+.nav {
+  grid-column: 1/3;
+  grid-row: 1/2;
+  background-color: #25313f;
+  width: 100%;
+  padding: .5rem;
 }
 
 #canvasForPdf {
-    width: 1130px;
-    height: 540px;
-    overflow: auto;
-    text-align: center;
-    border: 3px;
-    background: #cacccf;
-
+  width: 1130px;
+  height: 540px;
+  overflow: auto;
+  text-align: center;
+  border: 3px;
+  background: #cacccf;
 }
 
-#colorUserChosen{
-    display: none;
-    
+#colorUserChosen {
+  display: none;
 }
 
-#userChosenBoardColor{
-    display: none;
-    
+#userChosenBoardColor {
+  display: none;
 }
 
-
-.canvas-container{
-    grid-column: 2/3;
-    grid-row: 2/3;
-    position: relative;
-    
+.canvas-container {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  position: relative;
 }
-#chatOutput{
-    background: #1A222C;
-    grid-column: 1/2;
-    grid-row: 2/4;
-    
-
-    
-    
+#chatOutput {
+  background: #1a222c;
+  grid-column: 1/2;
+  grid-row: 2/4;
 }
 
-/*#clientChatInput{
-    -webkit-hyphens: auto;
-    -ms-hyphens: auto;
-    hyphens: auto;
-}*/
-
-.input-container{
-    grid-column: 2/3;
-    grid-row: 3/4;
-    background: #ECEBEB;
-    
+.input-container {
+  grid-column: 2/3;
+  grid-row: 3/4;
+  background: #ecebeb;
 }
 
-#chatTitle{
-    font-size: 2rem;
+#chatTitle {
+  font-size: 1.4rem;
+  color: #babbbd;
+  letter-spacing: .9rem;
+
 }
-.clientMessage{
-    background: rgb(233, 233, 233);
+.clientMessage {
+  background: rgb(233, 233, 233);
 
-    padding-left: 10px;
-    padding-right: 10px;
-    border-radius: 5px;
-    
-}
-
-
-
-#canvas{
-     /*border: 1px solid tomato; */
-    
-    top: -1px;
-    
-    
-    
-    position: absolute;
-    display: block;
-     /*border-radius: 150px; */
-    width: 100%;
-   height: 100%;
-   
-    
-    
-    
-    
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
 }
 
-
-
+#canvas {
+  top: -1px;
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 
 #clientChatInput {
-    display: block;
-}
-
-#chatTitle{
-    color: #BABBBD ;
-}
-
-.chatContainer{
-
-    background: #1A222C;
-    width: 400px ;
-    padding: 15px;
-    position: relative;
-    overflow-y: visible;
-}
-.userIntial{
-    background: #D22040;
-    color: white;
-    width: 60px;
-    height: 60px;
-    border-radius: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* font-size:  ; */
-}
-.usernameDiv{
-    color: #C9D4E1;
-    position: absolute;
-    left: 90px;
-    top: 25px;
-    font-weight: bold;
-}
-.chatChunk{
-    color: #878F98;
-    margin-left: 75px;
-    margin-top: -20px;
-    
-    
+  display: block;
 }
 
 
 
-  
-
-  .boardButton {
-    padding: 15px 15px;
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    box-shadow: 1px 1px 10px 1px rgba(0,0,0,0.5);
-    border: none;
-    background: #FFFFFF;
-    margin: 5px;
-    position: relative;
-
-    float: right;
-    display: block;
-    outline: none;
-
-
+.chatContainer {
+  background: #1a222c;
+  width: 400px;
+  padding: 15px;
+  position: relative;
+  overflow-y: visible;
+}
+.userIntial {
+  background: #d22040;
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.usernameDiv {
+  color: #c9d4e1;
+  position: absolute;
+  left: 90px;
+  top: 25px;
+  font-weight: bold;
+}
+.chatChunk {
+  color: #878f98;
+  margin-left: 75px;
+  margin-top: -20px;
 }
 
+.boardButton {
+  padding: 15px 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.5);
+  border: none;
+  background: #ffffff;
+  margin: 5px;
+  position: relative;
+
+  float: right;
+  display: block;
+  outline: none;
+}
 
 .tooltipForBoardButton {
-    /* visibility: hidden; */
-    
-    width: 120px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
 
-    bottom: 20%;
-    left: 50%;
-    margin-left: -160px;
-    opacity: 0;
-    padding: 5px;
-    transition: opacity 0.3s;
-
-    /*margin-left: 25px; */
-
+  bottom: 20%;
+  left: 50%;
+  margin-left: -160px;
+  opacity: 0;
+  padding: 5px;
+  transition: opacity 0.3s;
 }
 
 .boardButton:hover .tooltipForBoardButton {
-    /* visibility: visible; */
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
 .brushButton {
+  padding: 15px 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #102b5f;
 
-    padding: 15px 15px;
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    background-color: #102B5F;
-    
-    float: right;
-    margin-right: 5px;
-    margin-top: 1px; 
-    border: 1px solid gray;
-    position: relative;
-    margin-top: 60px;
-    margin-right: -45px;
-    
-    }
-    
-    .tooltipForBrushButton{
-    visibility: hidden;
-    
-    width: 140px;
-    background-color: #555;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    
-    bottom: 20%;
-    left: 50%;
-    
-    /*margin-left: -60px;*/
-    margin-left: -160px;
-    
-    }
-    
-    .brushButton:hover .tooltipForBrushButton {
-    visibility: visible;
-    opacity: 1;
-    
-    }
-    
+  float: right;
+  margin-right: 5px;
+  margin-top: 1px;
+  border: 1px solid gray;
+  position: relative;
+  margin-top: 60px;
+  margin-right: -45px;
+}
 
-  
+.tooltipForBrushButton {
+  visibility: hidden;
 
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
 
+  bottom: 20%;
+  left: 50%;
 
+  margin-left: -160px;
+}
 
-
+.brushButton:hover .tooltipForBrushButton {
+  visibility: visible;
+  opacity: 1;
+}
 
 #eraseButton {
-   height: 40px;
-    width: 40px;
-    background-color: #EE4E4E;
-    border-radius: 25px;
-    padding: 20px 20px;
-    position: relative;
-    display: block;
-    margin: 5px;
-    border: 1px solid gray;
-    float: right;
-    top: 100px;
-    left: 50px;
-    
-    
+  height: 40px;
+  width: 40px;
+  background-color: #ee4e4e;
+  border-radius: 25px;
+  padding: 20px 20px;
+  position: relative;
+  display: block;
+  margin: 5px;
+  border: 1px solid gray;
+  float: right;
+  top: 100px;
+  left: 50px;
 }
 
 #eraseButton:after {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    content: "\1F7A9"; /* use the hex value here... */
-    
-    font-size: 30px; 
-    color: #FFF;
-    line-height: 37px;
-    text-align: center;
-   
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: "\1F7A9"; /* use the hex value here... */
 
+  font-size: 30px;
+  color: #fff;
+  line-height: 37px;
+  text-align: center;
 }
 
-.tooltipForEraseButton{
-    visibility: hidden;
+.tooltipForEraseButton {
+  visibility: hidden;
 
-    width: 80px;
+  width: 80px;
   background-color: #555;
   color: #fff;
   text-align: center;
   border-radius: 6px;
   padding: 5px 0;
   position: absolute;
-  
+
   bottom: 20%;
   left: 50%;
-  /*margin-left: 25px;*/
+
   margin-left: -100px;
-
-  
-  
-
-  
 }
 
 #eraseButton:hover .tooltipForEraseButton {
-    visibility: visible;
-    opacity: 1;
-  }
-
-
-
-
-
-#sendButton{
-    
-    height: 25px;
-    width: 25px;
-    background-color: paleturquoise   ;
-    border-radius: 60%;
-    position: relative;
-    padding: 10px 10px;
-    float: right;
-    margin-right: 15px;
-    margin-top: -10px;
-    border: 2px solid gray;
-
-    
-      
-      
-  }
-  
-  #sendButton:after{
-  
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      content: "\27A2"; /* use the hex value here... */
-      font-size: 20px; 
-      color:black;
-      line-height: 20px;
-      text-align: center;
-
-      
-  } 
-
-  
-
-/*#voiceButton{
-    
-    line-height: 40px;
-    content: "\1F7A9";
-
-    
-   
-    
-    
-   
+  visibility: visible;
+  opacity: 1;
 }
 
-#voiceButton button{
-    color: white;
-    position: relative;
-    display: block;
-    border-radius: 50%;
-    height: 40px;
-    width: 40px;
-    background-color:  #FF6600 ;
-    text-align: center;
-    
-    
-    margin-top: 625px;
-    
-    margin-left: 5px;
-    font-size: 20px;
-    border: 1px solid gray;
-    
-    
-    
-    
-    
-    
-    
-}*/
+#sendButton {
+  height: 25px;
+  width: 25px;
+  background-color: paleturquoise;
+  border-radius: 60%;
+  position: relative;
+  padding: 10px 10px;
+  float: right;
+  margin-right: 15px;
+  margin-top: -10px;
+  border: 2px solid gray;
+}
+
+#sendButton:after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  content: "\27A2"; /* use the hex value here... */
+  font-size: 20px;
+  color: black;
+  line-height: 20px;
+  text-align: center;
+}
 
 #voiceButton {
-     height: 40px;
-     width: 40px;
-     background-color: #FF6600 ;
-     border-radius: 50%;
-     padding: 20px 20px;
-     position: relative;
-     display: block;
-     margin: 10px;
-     border: 1px solid gray;
-     
-     top: 618px;
-     
-     
-     
- }
- 
- #voiceButton:after {
-     position: absolute;
-     top: 0;
-     bottom: 0;
-     left: 0;
-     right: 0;
-     color: white;
-    
-     
-     content: "\0260E";  /*use the hex value here... */
-     
-     font-size: 25px; 
-     color: #FFF;
-     line-height: 40px;
-     text-align: center;
-    
- 
- }
- 
+  height: 40px;
+  width: 40px;
+  background-color: #ff6600;
+  border-radius: 50%;
+  padding: 20px 20px;
+  position: relative;
+  display: block;
+  margin: 10px;
+  border: 1px solid gray;
 
+  top: 618px;
+}
 
-.tooltipForVoiceButton{
-   
-    visibility: hidden;
-    width: 80px;
+#voiceButton:after {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: white;
+
+  content: "\0260E"; /*use the hex value here... */
+
+  font-size: 25px;
+  color: #fff;
+  line-height: 40px;
+  text-align: center;
+}
+
+.tooltipForVoiceButton {
+  visibility: hidden;
+  width: 80px;
   background-color: #555;
   color: #fff;
   text-align: center;
   border-radius: 6px;
   padding: 5px 0;
   position: absolute;
-  
+
   bottom: 125%;
   left: 50%;
   margin-left: -60px;
-  
-  
-
-  
 }
 
 #voiceButton:hover .tooltipForVoiceButton {
-    visibility: visible;
-    opacity: 1;
-  }
-
-
-
-#slideButton{
-    
-    width: 130px;
-    height: 30px;
-     border-radius: 90px 250px 50px 90px;
-     background-color: #FFFFFF;
-     top: -6px;
-     position: relative;
-     color: #CFCFCF;
-     border: 1px;
-}
-#loadPdf{
-    background-color: #2A6561;
-    border: 1px;
-    height: 22px;
-    
-    color: #CFCFCF;
-    left: -5px;
-    
-    position: relative;
+  visibility: visible;
+  opacity: 1;
 }
 
-#drawingBoard{
-    
-    width: 130px;
-    height: 30px;
-    border-radius: 90px 250px 50px 90px;
-     background-color: #FFFFFF;
-     border-width: 1px;
-     margin-left: 5px;
-     color: #CFCFCF;
-     top: -6px;
-     position: relative;
-    
-     
-     
-    
+#slideButton {
+  width: 130px;
+  height: 30px;
+  border-radius: 90px 250px 50px 90px;
+  background-color: #ffffff;
+  top: -6px;
+  position: relative;
+  color: #cfcfcf;
+  border: 1px;
 }
-.urlinput{
-    width: 75%;
-    background-color: #898F98;
-    border: 0px;
-    height: 20px;
- 
-    
-    
-    
+#loadPdf {
+  background-color: #2a6561;
+  border: 1px;
+  height: 22px;
+
+  color: #cfcfcf;
+  left: -5px;
+
+  position: relative;
 }
 
-#label{
-    color: #CFCFCF;
-    font-size: 15px;
+#drawingBoard {
+  width: 130px;
+  height: 30px;
+  border-radius: 90px 250px 50px 90px;
+  background-color: #ffffff;
+  border-width: 1px;
+  margin-left: 5px;
+  color: #cfcfcf;
+  top: -6px;
+  position: relative;
+}
+.urlinput {
+  width: 75%;
+  background-color: #898f98;
+  border: 0px;
+  height: 20px;
 }
 
-
-
-
-
-
-
-
-
-
-#userButton{
- 
-    font-size: 20px;
-    float: right;
-    
+#label {
+  color: #cfcfcf;
+  font-size: 15px;
 }
 
-#usericon{
-    float: right;
+#userButton {
+  font-size: 20px;
+  float: right;
 }
-   
-   
-   
-   #userButton ul{
-       padding: 0px
-   }
-   
-   #userButton ul li{
-       
-       color: #5A6879;
-       background-color: #25313F;
-       cursor: pointer;
-       /*width: 200px; */
-      
-      
-        
-       list-style: none;
-       float: left;
-       opacity: 0.9;
-       
-       
-   }
 
-  
+#usericon {
+  float: right;
+}
 
-  
-   
-   
-   
-   
-   
-   #userButton ul li ul{
-       display: none;
-       height: 40px;
-       line-height: 50px;
-      
-       
-   }
-   
-   
-   
-   
-   
-   #userButton ul li:hover > ul {
-      display: block;
-     }
-   
+#userButton ul {
+  padding: 0px;
+}
 
-     #cursorOnBoardButton{
- 
-        font-size: 20px;
-        float: right;
-        
-    }
-    
-    
-       
-       
-       
-      
+#userButton ul li {
+  color: #5a6879;
+  background-color: #25313f;
+  cursor: pointer;
+  list-style: none;
+  float: left;
+  opacity: 0.9;
+}
+
+#userButton ul li ul {
+  display: none;
+  height: 40px;
+  line-height: 50px;
+}
+
+#userButton ul li:hover > ul {
+  display: block;
+}
+
+#cursorOnBoardButton {
+  font-size: 20px;
+  float: right;
+}

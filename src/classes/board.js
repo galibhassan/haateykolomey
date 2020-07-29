@@ -13,7 +13,7 @@ class Board {
         this._updateBoardColor(this.boardColor)
 
         this.fitCanvasToParent();
-        // ei kotha ti mone rekho
+        
     }
 
     getCanvas(){

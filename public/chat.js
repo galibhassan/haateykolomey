@@ -14,11 +14,10 @@ sendButton.addEventListener('click', () => {
      clientChatInput.innerHTML = ''
      var name = clientName.value.split(" ");
      
-})
+  })
 
 clientSocket.on('serverEmittingSomeonesWords', (roFromServer) => {
     pushChatPortionToChatOutput(roFromServer)
-
 
 })
 
@@ -37,19 +36,16 @@ function pushChatPortionToChatOutput(ro){
         child.style.all = 'unset';
     })
     
-    // firstLastCharecterDiv.setAttribute("class", "golla")
     firstLastCharecterDiv.setAttribute("class", "userIntial")
     usernameDiv.setAttribute("class", "usernameDiv")
     messageDiv.setAttribute("class", "chatChunk")
     chatPortionContainer.setAttribute("class", "chatContainer")
-
 
     chatPortionContainer.appendChild(firstLastCharecterDiv)
     chatPortionContainer.appendChild(usernameDiv)
     chatPortionContainer.appendChild(messageDiv)
 
     chatOutput.appendChild(chatPortionContainer)
-
 }
 
 function getInitials(username) {
@@ -57,6 +53,5 @@ function getInitials(username) {
     var lastName = username.split(" ")[1];
     var intials = firstName.charAt(0).toUpperCase() + lastName.charAt(0).toUpperCase();
     return intials;
-
 }
 

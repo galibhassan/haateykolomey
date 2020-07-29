@@ -21,7 +21,7 @@ class Brush {
     }
     drawLine() {
         console.log("line tana hocche");
-        // ki shob ghorar dim
+        
     }
     drawCircle(x, y, color) {
         const ctx = this.canvas.getContext("2d")
