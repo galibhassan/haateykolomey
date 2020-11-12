@@ -28,7 +28,10 @@ app.use(express.static('public'))
 app.use('/chatPage', (reqest, response, next) => {
     
     // response.sendFile(path.resolve(__dirname, '../', 'public', 'chat.html'))
-    response.render('chat')
+    response.render('chat', {
+        firstname:"JeLoginKorbe",
+        lastname: "Shey"
+    })
 })
 /* 
 app.use('/', (reqest, response, next) => {
