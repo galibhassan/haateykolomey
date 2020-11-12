@@ -112,7 +112,7 @@
 
             <!-- <input id="clientName" type="text" placeholder="Your name?">
              -->
-             <div id="clientName"> <%= firstname %> <%= lastname%> </div>
+            <div id="clientName"> </div>
             <button id="sendButton"></button>
         </div>
 
@@ -123,6 +123,14 @@
 
 
     </div>
+
+    <script>
+        window.addEventListener('load', (e) => {
+            const firstname = localStorage.getItem('firstname')
+            const lastname = localStorage.getItem('lastname')
+            document.getElementById('clientName').innerHTML = `${firstname} ${lastname}`
+        })
+    </script>
 
 
 </body>

@@ -6,6 +6,9 @@ const loginFailedRoutes = require('./routes/loginFailed')
 const registerRoutes = require('./routes/register')
 const registerFailedRoutes = require('./routes/registerFailed')
 const homeRoutes = require('./routes/home')
+const createChatRoutes = require('./routes/createChatRoom')
+
+
 const express = require('express');
 const app = express();
 app.set('view engine', 'ejs');
@@ -18,6 +21,7 @@ app.use(loginFailedRoutes);
 app.use(registerRoutes);
 app.use(registerFailedRoutes);
 app.use(homeRoutes);
+app.use(createChatRoutes);
 
 
 

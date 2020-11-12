@@ -15,10 +15,27 @@
         <a href="/register">Register</a>
     </div>
 
-    <h1>Hello  <%= amarnam  %> !</h1>
+    <h1>Hello !</h1>
+    <div id="firstname"><%= firstname %></div>
+    <div id="lastname"><%= lastname %></div>
 
+    <p>Want to create a room?</p>
 
+    <form action="/createChatRoom" method="POST">
+        <input id="roomNameInput" name="roomName" type="text" placeholder="Name of your room">
+        <input type="submit" value="Go!">
 
-    <input type="text">
+    </form>
+
+    <script>
+        window.addEventListener('load', (e)=>{
+            const firstname = document.getElementById('firstname').innerHTML
+            const lastname = document.getElementById('lastname').innerHTML
+
+            localStorage.setItem('firstname', firstname)
+            localStorage.setItem('lastname', lastname)
+
+        })
+    </script>
 </body>
 </html>
