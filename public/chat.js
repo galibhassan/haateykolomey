@@ -7,12 +7,12 @@ var clientName = document.getElementById('clientName')
 
 sendButton.addEventListener('click', () => {
     clientSocket.emit('somoneSaidSomething', {
-            clientName: clientName.value,
+            clientName: clientName.innerHTML,
             chatboxMessage: clientChatInput.innerHTML
         }
     );
      clientChatInput.innerHTML = ''
-     var name = clientName.value.split(" ");
+     var name = clientName.innerHTML.split(" ");
      
   })
 

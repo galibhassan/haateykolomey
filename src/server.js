@@ -1,22 +1,39 @@
 const path = require('path');
 const serversideSocketIO = require('socket.io')
-const cors = require('cors')
-
+// const cors = require('cors')
+const loginRoutes = require('./routes/login')
+const loginFailedRoutes = require('./routes/loginFailed')
+const registerRoutes = require('./routes/register')
+const registerFailedRoutes = require('./routes/registerFailed')
+const homeRoutes = require('./routes/home')
 const express = require('express');
 const app = express();
+app.set('view engine', 'ejs');
+app.use(express.static("public"));
+app.use(express.urlencoded());
 
-app.use(cors());
+
+app.use(loginRoutes);
+app.use(loginFailedRoutes);
+app.use(registerRoutes);
+app.use(registerFailedRoutes);
+app.use(homeRoutes);
+
+
+
+// app.use(cors());
 app.use(express.static('public'))
 
 
 app.use('/chatPage', (reqest, response, next) => {
     
-    response.sendFile(path.resolve(__dirname, '../', 'public', 'chat.html'))
+    // response.sendFile(path.resolve(__dirname, '../', 'public', 'chat.html'))
+    response.render('chat')
 })
-
+/* 
 app.use('/', (reqest, response, next) => {
     response.sendFile(path.resolve(__dirname, '../', 'public', 'index.html'))
-})
+}) */
 
 
 
