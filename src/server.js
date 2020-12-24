@@ -1,24 +1,33 @@
 const path = require('path');
+const formatMessage = require('../utils/message');
+
 const serversideSocketIO = require('socket.io')
 // const cors = require('cors')
+
+const express = require('express');
+const app = express();
+app.set('view engine', 'ejs');
+app.use(express.static("public"));
+app.use(express.urlencoded());
+
+
+const server = app.listen(8000, () => {
+    console.log('listening to port 8000')
+})
+const serversideIO = serversideSocketIO(server);
+
 const loginRoutes = require('./routes/login')
 const loginFailedRoutes = require('./routes/loginFailed')
 const registerRoutes = require('./routes/register')
 const registerFailedRoutes = require('./routes/registerFailed')
 const homeRoutes = require('./routes/home')
-const createChatRoutes = require('./routes/createChatRoom')
+const createChatRoutes = require('./routes/createChatRoom')(serversideIO)
 //const userName = require('../public/chat')
 //var clientName = document.getElementById('clientName')
-    //var username = clientName.innerHTML
-    var username = 'USER'
+var username = 'USER'
+//var username = clientName.innerHTML
 
 
-const express = require('express');
-const formatMessage = require('../utils/message');
-const app = express();
-app.set('view engine', 'ejs');
-app.use(express.static("public"));
-app.use(express.urlencoded());
 
 
 app.use(loginRoutes);
@@ -27,54 +36,19 @@ app.use(registerRoutes);
 app.use(registerFailedRoutes);
 app.use(homeRoutes);
 app.use(createChatRoutes);
-
-
-
-// app.use(cors());
 app.use(express.static('public'))
-/*const rooms = {name: {}}
-const users = {}
-app.get('/', (req, res)=>{
-    res.render('dashboard', {rooms: rooms})
-  })
-
-  app.get('/:room', (req, res)=>{
-    res.render('createChatRoom', {roomName: req.params.room})
-    })
-    app.post("/createChatRoom", (req, res, next) => {
-      
-      if(rooms[req.body.roomName] != null){
-        return res.redirect('/  ')
-      }
-      
-      rooms[req.body.roomName] = {users: {}}
-      res.redirect(req.body.roomName)*/
-    
-    
-  
-
 
 app.use('/chatPage', (reqest, response, next) => {
-    
-    // response.sendFile(path.resolve(__dirname, '../', 'public', 'chat.html'))
     response.render('chat', {
         firstname:"JeLoginKorbe",
         lastname: "Shey"
     })
 })
-/* 
-app.use('/', (reqest, response, next) => {
-    response.sendFile(path.resolve(__dirname, '../', 'public', 'index.html'))
-}) */
 
 
 
 
-const server = app.listen(8000, () => {
-    console.log('listening to port 8000')
-})
 
-const serversideIO = serversideSocketIO(server);
 serversideIO.on('connection', (clientSocket) => {
 
     clientSocket.on('somoneSaidSomething', (roFromOneClient) => {
@@ -157,4 +131,4 @@ serversideIO.on('connection', (clientSocket) => {
 
 //serversideIo.emit('message', "A user has left the chat")
 
-module.exports = serversideIO
+// module.exports = serversideIO
