@@ -7,9 +7,14 @@ const registerRoutes = require('./routes/register')
 const registerFailedRoutes = require('./routes/registerFailed')
 const homeRoutes = require('./routes/home')
 const createChatRoutes = require('./routes/createChatRoom')
+//const userName = require('../public/chat')
+//var clientName = document.getElementById('clientName')
+    //var username = clientName.innerHTML
+    var username = 'USER'
 
 
 const express = require('express');
+const formatMessage = require('../utils/message');
 const app = express();
 app.set('view engine', 'ejs');
 app.use(express.static("public"));
@@ -27,6 +32,26 @@ app.use(createChatRoutes);
 
 // app.use(cors());
 app.use(express.static('public'))
+/*const rooms = {name: {}}
+const users = {}
+app.get('/', (req, res)=>{
+    res.render('dashboard', {rooms: rooms})
+  })
+
+  app.get('/:room', (req, res)=>{
+    res.render('createChatRoom', {roomName: req.params.room})
+    })
+    app.post("/createChatRoom", (req, res, next) => {
+      
+      if(rooms[req.body.roomName] != null){
+        return res.redirect('/  ')
+      }
+      
+      rooms[req.body.roomName] = {users: {}}
+      res.redirect(req.body.roomName)*/
+    
+    
+  
 
 
 app.use('/chatPage', (reqest, response, next) => {
@@ -51,9 +76,11 @@ const server = app.listen(8000, () => {
 
 const serversideIO = serversideSocketIO(server);
 serversideIO.on('connection', (clientSocket) => {
-   
+
     clientSocket.on('somoneSaidSomething', (roFromOneClient) => {
         serversideIO.emit('serverEmittingSomeonesWords', roFromOneClient)
+        
+        
     })
     clientSocket.on("somebodyIsDrawing", (drawingInfo) => {
         console.log(drawingInfo)
@@ -114,11 +141,20 @@ serversideIO.on('connection', (clientSocket) => {
         clientSocket.broadcast.emit("receivePdf", myPdfPath )
     
     })
-
     
     
+    clientSocket.broadcast.emit('message', formatMessage(username , 'has join the chat'))
+    clientSocket.on('disconnect', ()=>{
+        serversideIO.emit('message', formatMessage(username, 'has left the chat') )
+    })
+    
 
+    
 
 })
 
 
+
+//serversideIo.emit('message', "A user has left the chat")
+
+module.exports = serversideIO

@@ -2,6 +2,8 @@ var clientChatInput = document.getElementById('clientChatInput')
 var sendButton = document.getElementById('sendButton')
 var chatOutput = document.getElementById('chatOutput')
 var clientName = document.getElementById('clientName')
+var userName = clientName.innerHTML
+
 
 
 
@@ -20,6 +22,23 @@ clientSocket.on('serverEmittingSomeonesWords', (roFromServer) => {
     pushChatPortionToChatOutput(roFromServer)
 
 })
+
+
+
+clientSocket.on('message', (message)=>{
+    console.log(message)
+    userConnectionInfo(message)
+    chatOutput.scrollTop= chatOutput.scrollHeight
+})
+
+
+function userConnectionInfo(message){
+    const div = document.createElement('div')
+    div.innerHTML = `<p>at ${message.time}</p>
+    <p>${message.username} ${message.text}</p>`
+    document.getElementById('chatOutput').appendChild(div)
+}
+
 
 function pushChatPortionToChatOutput(ro){
     var firstLastCharecterDiv = document.createElement("div")
@@ -55,3 +74,6 @@ function getInitials(username) {
     return intials;
 }
 
+
+    
+//module.exports = userName
