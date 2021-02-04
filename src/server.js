@@ -15,6 +15,7 @@ const server = app.listen(8000, () => {
     console.log('listening to port 8000')
 })
 const serversideIO = serversideSocketIO(server);
+app.set('socketio', serversideIO)
 
 const loginRoutes = require('./routes/login')
 const loginFailedRoutes = require('./routes/loginFailed')
@@ -117,7 +118,7 @@ serversideIO.on('connection', (clientSocket) => {
     })
     
     
-    clientSocket.broadcast.emit('message', formatMessage(username , 'has join the chat'))
+    clientSocket.broadcast.emit('message', formatMessage(username , 'has joined the chat'))
     clientSocket.on('disconnect', ()=>{
         serversideIO.emit('message', formatMessage(username, 'has left the chat') )
     })
