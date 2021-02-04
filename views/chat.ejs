@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="./styling/style.css">
+    <link rel="stylesheet" href="http://localhost:8000/styling/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Haatey Kolomey</title>
-    <script src="./ext/socket.io.js"></script>
+    <script src="http://localhost:8000/ext/socket.io.js"></script>
     <script>
         var clientSocket = io.connect('http://localhost:8000')
     </script>
@@ -20,6 +20,7 @@
 
     <h3>Room name:  <%= roomName %> </h3>
     <h3>Room password: <%= roomPassword %> </h3>
+    <h1> amaderPub <%= publicFolder %> </h1>
 
     <div class="container">
 
@@ -55,7 +56,7 @@
                     <label id="label"> Slide URL</label>
 
 
-                    <input id="pdfUrlInput" class="urlinput" type="text" placeholder="./pdf/fileName.pdf">
+                    <input id="pdfUrlInput" class="urlinput" type="text" placeholder="http://localhost:8000/pdf/fileName.pdf">
                     <input type="button" id="loadPdf" value="Load">
 
                 </form>
@@ -119,9 +120,9 @@
         </div>
 
 
-        <script src="./pdf/pdf.js"></script>
-        <script src="./webpackBuild/brushBoard.js"></script>
-        <script src="./chat.js"></script>
+        <script src="http://localhost:8000/pdf/pdf.js"></script>
+        <script src="http://localhost:8000/webpackBuild/brushBoard.js"></script>
+        <script src="http://localhost:8000/chat.js"></script>
 
 
     </div>

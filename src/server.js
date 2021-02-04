@@ -23,6 +23,7 @@ const registerRoutes = require('./routes/register')
 const registerFailedRoutes = require('./routes/registerFailed')
 const homeRoutes = require('./routes/home')
 const createChatRoutes = require('./routes/createChatRoom')
+const chatSessionRoutes = require('./routes/chatSession')
 //const userName = require('../public/chat')
 //var clientName = document.getElementById('clientName')
 var username = 'USER'
@@ -37,6 +38,7 @@ app.use(registerRoutes);
 app.use(registerFailedRoutes);
 app.use(homeRoutes);
 app.use(createChatRoutes);
+app.use(chatSessionRoutes)
 app.use(express.static('public'))
 
 app.use('/chatPage', (reqest, response, next) => {

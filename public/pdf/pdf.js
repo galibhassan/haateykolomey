@@ -5,7 +5,7 @@ var myState = {
 }
 
 
-let myPdfPath = "./pdf/haatey-kolomey sample pdf.pdf";
+let myPdfPath = "http://localhost:8000/pdf/haatey-kolomey sample pdf.pdf";
 
 const pdfUrlInput = document.getElementById('pdfUrlInput')
 const loadPdf = document.getElementById('loadPdf')
