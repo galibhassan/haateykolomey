@@ -14,9 +14,10 @@ router.post("/createChatRoom", (req, res, next) => {
   serversideIO.on("connection", (clientSocket) => {
 
     clientSocket.join(roomNameSanitized);
+    console.log(serversideIO.sockets.adapter.rooms)
 
     clientSocket.on("somoneSaidSomething", (roFromOneClient) => {
-      serversideIO.emit("serverEmittingSomeonesWords", roFromOneClient);
+      serversideIO.to(roomNameSanitized).emit("serverEmittingSomeonesWords", roFromOneClient);
     });
 
     clientSocket.on("somebodyIsDrawing", (drawingInfo) => {
