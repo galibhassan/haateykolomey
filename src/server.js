@@ -54,70 +54,8 @@ app.use('/chatPage', (reqest, response, next) => {
 
 serversideIO.on('connection', (clientSocket) => {
 
-    clientSocket.on('somoneSaidSomething', (roFromOneClient) => {
-        serversideIO.emit('serverEmittingSomeonesWords', roFromOneClient)
-        
-        
-    })
-    clientSocket.on("somebodyIsDrawing", (drawingInfo) => {
-        console.log(drawingInfo)
-        clientSocket.broadcast.emit("serveremittedDrawingInfo", drawingInfo)
-    })
+   
 
-    clientSocket.on("someoneColoringBoard", (boardColorInfo)=>{
-        clientSocket.broadcast.emit("serverEmittingBoardColor", boardColorInfo)
-        
-    })
-
-    clientSocket.on("emitBoardColorChange", (boardColorChange)=>{
-        clientSocket.broadcast.emit("serverEmitBoardColorChange", boardColorChange)
-    })
-
-    clientSocket.on("emitBrushColorChange", (brushColorChange)=>{
-        clientSocket.broadcast.emit("serverEmitBrushColorChange", brushColorChange)
-    })
-
-    clientSocket.on("slideButtonClicked", () => {
-        serversideIO.emit("showSlide")
-
-    })
-
-    clientSocket.on("nextButtonClicked", ()=>{
-        clientSocket.broadcast.emit('goToNextPage')
-    })
-
-    clientSocket.on("prevButtonClicked", ()=>{
-        clientSocket.broadcast.emit("goToPrevButton")
-    })
-
-    clientSocket.on("pageNumberEntered", (desiredPage)=>{
-        console.log(desiredPage)
-       clientSocket.broadcast.emit("pressEnter", desiredPage)
-    })
-
-    clientSocket.on("zoomInClicked", ()=>{
-        clientSocket.broadcast.emit("zoomIn")
-    })
-
-    clientSocket.on("zoomOutClicked", ()=>{
-        clientSocket.broadcast.emit("zoomOut")
-    })
-
-    clientSocket.on("boardButtonClicked", ()=>{
-        serversideIO.emit("showBoard")
-    })
-
-    
-    clientSocket.on("eraseButtonPress", ()=>{
-        serversideIO.emit("eraseButtonDown")
-    })
-
-    
-    clientSocket.on("appearPdf", (myPdfPath) =>{ 
-        console.log(myPdfPath)
-        clientSocket.broadcast.emit("receivePdf", myPdfPath )
-    
-    })
     
     
     clientSocket.broadcast.emit('message', formatMessage(username , 'has joined the chat'))
