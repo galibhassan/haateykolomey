@@ -12,6 +12,8 @@ const brushButtonReal = document.getElementById("brushButtonReal");
 const brushButtonFake = document.getElementById("brushButtonFake");
 var eraseButton = document.getElementById("eraseButton");
 
+var roomName = document.getElementById('roomName').innerText
+
 brushButtonReal.style.opacity = 0;
 brushButtonFake.addEventListener("click", (e) => {
   brushButtonReal.click();
@@ -21,7 +23,10 @@ brushButtonFake.addEventListener("change", (e) => {
   brushButtonFake.style.backgroundColor = e.target.value;
 
   myBrush.setBrushColor(e.target.value);
-  clientSocket.emit("emitBrushColorChange", e.target.value);
+  clientSocket.emit("emitBrushColorChange", {
+    eventTargetValue: e.target.value,
+    roomName
+  });
 });
 
 clientSocket.on("serverEmitBrushColorChange", (brushColorChage) => {
@@ -39,7 +44,10 @@ boardButtonFake.addEventListener("click", () => {
 boardButtonFake.addEventListener("change", (e) => {
   boardButtonFake.style.backgroundColor = e.target.value;
   myBoard.setBoardColor(e.target.value);
-  clientSocket.emit("emitBoardColorChange", e.target.value);
+  clientSocket.emit("emitBoardColorChange", {
+    eventTargetValue: e.target.value,
+    roomName
+  });
 });
 
 clientSocket.on("serverEmitBoardColorChange", (boardColorChage) => {
@@ -60,7 +68,7 @@ const eraseButtonClickedInfo = () => {
 
 const eraseButtonClicked = () => {
   eraseButtonClickedInfo();
-  clientSocket.emit("eraseButtonPress");
+  clientSocket.emit("eraseButtonPress", {roomName});
 };
 
 eraseButton.addEventListener("click", eraseButtonClicked);
@@ -113,7 +121,9 @@ slideButton.addEventListener("click", handleSlideButtonClick);
 
 function handleSlideButtonClick() {
   changeProps_slideButtonClicked();
-  clientSocket.emit("slideButtonClicked");
+  clientSocket.emit("slideButtonClicked", {
+    roomName
+  });
 }
 
 clientSocket.on("showSlide", () => {
@@ -160,7 +170,7 @@ drawingBoard.addEventListener("click", handleBoardButtonClicked);
 
 function handleBoardButtonClicked() {
   changeprops_boardButtonClicked();
-  clientSocket.emit("boardButtonClicked");
+  clientSocket.emit("boardButtonClicked", {roomName});
 }
 
 clientSocket.on("showBoard", () => {
@@ -176,14 +186,17 @@ const mainDrawingLoop = () => {
       currentX: myBoard.drawingInfo.currentX,
       currentY: myBoard.drawingInfo.currentY,
       currentColor: myBrush.getBrushColor(),
+      roomName
     };
 
     myBoard._updateBoardColor(myBoard.getBoardColor());
     const drawingBoardColor = {
       currentBoardColor: myBoard.getBoardColor(),
+      roomName
     };
 
     clientSocket.emit("someoneColoringBoard", drawingBoardColor);
+
 
     clientSocket.emit("somebodyIsDrawing", combainedDrawingInfo);
   }

@@ -9,6 +9,7 @@ let myPdfPath = "http://localhost:8000/pdf/haatey-kolomey sample pdf.pdf";
 
 const pdfUrlInput = document.getElementById('pdfUrlInput')
 const loadPdf = document.getElementById('loadPdf')
+var roomName = document.getElementById('roomName').innerText;
 
 const handlePdf = (pdfPath) => {
     myPdfPath = pdfPath
@@ -18,7 +19,10 @@ const handlePdf = (pdfPath) => {
 
 const handlePdfInfo = () => {
     handlePdf(pdfUrlInput.value)
-    clientSocket.emit('appearPdf', pdfUrlInput.value)
+    clientSocket.emit('appearPdf', {
+        pdfUrlInputValue: pdfUrlInput.value,
+        roomName
+    })
 
 }
 
@@ -79,7 +83,7 @@ const handlePreviousButtonClicked = () => {
 }
 document.getElementById('go_previous').addEventListener('click', (e) => {
     handlePreviousButtonClicked()
-    clientSocket.emit(prevButtonClicked)
+    clientSocket.emit(prevButtonClicked, {roomName})
 })
 
 
@@ -91,8 +95,9 @@ const handleNextButtonClicked = () => {
 }
 document.getElementById('go_next').addEventListener('click', (e) => {
     handleNextButtonClicked()
-    clientSocket.emit(nextButtonClicked)
-
+    clientSocket.emit(nextButtonClicked, {
+        roomname
+    })
 })
 
 clientSocket.on('goToNextPage', () => {
@@ -116,7 +121,7 @@ const handlePageNumber = (e) => {
             myState.currentPage = desiredPage
             render();
 
-            clientSocket.emit("pageNumberEntered", desiredPage)
+            clientSocket.emit("pageNumberEntered", {desiredPage, roomName})
         }
     }
 }
@@ -146,7 +151,7 @@ zoomInButtonClicked = (e) => {
 
 document.getElementById('zoom_in').addEventListener('click', (e) => {
     zoomInButtonClicked()
-    clientSocket.emit(zoomInClicked)
+    clientSocket.emit(zoomInClicked, {roomName})
 })
 
 clientSocket.on("zoomIn", () => {
@@ -162,7 +167,7 @@ const zoomOutClickedButton = () => {
 
 document.getElementById('zoom_out').addEventListener('click', (e) => {
     zoomOutClickedButton()
-    clientSocket.emit(zoomOutClicked)
+    clientSocket.emit(zoomOutClicked, {roomName})
 })
 
 clientSocket.on("zoomOut", () => {
