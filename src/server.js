@@ -54,8 +54,76 @@ app.use('/chatPage', (reqest, response, next) => {
 
 serversideIO.on('connection', (clientSocket) => {
 
-   
+    clientSocket.on('userJoined', (ro) =>{
+        const {roomName} = ro;
+        clientSocket.join(roomName)
+        // console.log(JSON.stringify(serversideIO.sockets.adapter.rooms, null, 2))
+    })
 
+    console.log('just joined: socket.id: ' + clientSocket.id)
+
+    clientSocket.on("somoneSaidSomething", (roFromOneClient) => {
+        const {roomName} = roFromOneClient;
+        serversideIO.to(roomName).emit("serverEmittingSomeonesWords", roFromOneClient);
+      });
+      
+
+/* 
+      
+      clientSocket.on("somebodyIsDrawing", (drawingInfo) => {
+        console.log(drawingInfo);
+        clientSocket.to(roomNameSanitized).broadcast.emit("serveremittedDrawingInfo", drawingInfo);
+      });
+  
+      clientSocket.on("someoneColoringBoard", (boardColorInfo) => {
+        clientSocket.to(roomNameSanitized).broadcast.emit("serverEmittingBoardColor", boardColorInfo);
+      });
+  
+      clientSocket.on("emitBoardColorChange", (boardColorChange) => {
+        clientSocket.to(roomNameSanitized).broadcast.emit("serverEmitBoardColorChange", boardColorChange);
+      });
+  
+      clientSocket.on("emitBrushColorChange", (brushColorChange) => {
+        clientSocket.to(roomNameSanitized).broadcast.emit("serverEmitBrushColorChange", brushColorChange);
+      });
+  
+      clientSocket.on("slideButtonClicked", () => {
+        serversideIO.to(roomNameSanitized).emit("showSlide");
+      });
+  
+      clientSocket.on("nextButtonClicked", () => {
+        clientSocket.to(roomNameSanitized).broadcast.emit("goToNextPage");
+      });
+  
+      clientSocket.on("prevButtonClicked", () => {
+        clientSocket.to(roomNameSanitized).broadcast.emit("goToPrevButton");
+      });
+  
+      clientSocket.on("pageNumberEntered", (desiredPage) => {
+        console.log(desiredPage);
+        clientSocket.to(roomNameSanitized).broadcast.emit("pressEnter", desiredPage);
+      });
+  
+      clientSocket.on("zoomInClicked", () => {
+        clientSocket.to(roomNameSanitized).broadcast.emit("zoomIn");
+      });
+  
+      clientSocket.on("zoomOutClicked", () => {
+        clientSocket.to(roomNameSanitized).broadcast.emit("zoomOut");
+      });
+  
+      clientSocket.on("boardButtonClicked", () => {
+        serversideIO.to(roomNameSanitized).emit("showBoard");
+      });
+  
+      clientSocket.on("eraseButtonPress", () => {
+        serversideIO.to(roomNameSanitized).emit("eraseButtonDown");
+      });
+  
+      clientSocket.on("appearPdf", (myPdfPath) => {
+        console.log(myPdfPath);
+        clientSocket.to(roomNameSanitized).broadcast.emit("receivePdf", myPdfPath);
+      });
     
     
     clientSocket.broadcast.emit('message', formatMessage(username , 'has joined the chat'))
@@ -63,7 +131,7 @@ serversideIO.on('connection', (clientSocket) => {
         serversideIO.emit('message', formatMessage(username, 'has left the chat') )
     })
     
-
+ */
     
 
 })

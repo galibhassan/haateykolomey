@@ -13,70 +13,14 @@ router.post("/createChatRoom", (req, res, next) => {
 
   serversideIO.on("connection", (clientSocket) => {
 
-    clientSocket.join(roomNameSanitized);
-    console.log(serversideIO.sockets.adapter.rooms)
+    // clientSocket.join(roomNameSanitized);
+    // console.log(serversideIO.sockets.adapter.rooms)
 
-    clientSocket.on("somoneSaidSomething", (roFromOneClient) => {
-      serversideIO.to(roomNameSanitized).emit("serverEmittingSomeonesWords", roFromOneClient);
-    });
-
-    clientSocket.on("somebodyIsDrawing", (drawingInfo) => {
-      console.log(drawingInfo);
-      clientSocket.to(roomNameSanitized).broadcast.emit("serveremittedDrawingInfo", drawingInfo);
-    });
-
-    clientSocket.on("someoneColoringBoard", (boardColorInfo) => {
-      clientSocket.to(roomNameSanitized).broadcast.emit("serverEmittingBoardColor", boardColorInfo);
-    });
-
-    clientSocket.on("emitBoardColorChange", (boardColorChange) => {
-      clientSocket.to(roomNameSanitized).broadcast.emit("serverEmitBoardColorChange", boardColorChange);
-    });
-
-    clientSocket.on("emitBrushColorChange", (brushColorChange) => {
-      clientSocket.to(roomNameSanitized).broadcast.emit("serverEmitBrushColorChange", brushColorChange);
-    });
-
-    clientSocket.on("slideButtonClicked", () => {
-      serversideIO.to(roomNameSanitized).emit("showSlide");
-    });
-
-    clientSocket.on("nextButtonClicked", () => {
-      clientSocket.to(roomNameSanitized).broadcast.emit("goToNextPage");
-    });
-
-    clientSocket.on("prevButtonClicked", () => {
-      clientSocket.to(roomNameSanitized).broadcast.emit("goToPrevButton");
-    });
-
-    clientSocket.on("pageNumberEntered", (desiredPage) => {
-      console.log(desiredPage);
-      clientSocket.to(roomNameSanitized).broadcast.emit("pressEnter", desiredPage);
-    });
-
-    clientSocket.on("zoomInClicked", () => {
-      clientSocket.to(roomNameSanitized).broadcast.emit("zoomIn");
-    });
-
-    clientSocket.on("zoomOutClicked", () => {
-      clientSocket.to(roomNameSanitized).broadcast.emit("zoomOut");
-    });
-
-    clientSocket.on("boardButtonClicked", () => {
-      serversideIO.to(roomNameSanitized).emit("showBoard");
-    });
-
-    clientSocket.on("eraseButtonPress", () => {
-      serversideIO.to(roomNameSanitized).emit("eraseButtonDown");
-    });
-
-    clientSocket.on("appearPdf", (myPdfPath) => {
-      console.log(myPdfPath);
-      clientSocket.to(roomNameSanitized).broadcast.emit("receivePdf", myPdfPath);
-    });
+    
   });
 
-  res.redirect(`chatsession/${roomNameSanitized}/${roomPassword}`);
+  // res.redirect(`chatsession/${roomNameSanitized}/${roomPassword}`);
+  res.redirect(`chatsession/${roomNameSanitized}`);
 });
 
 module.exports = router;

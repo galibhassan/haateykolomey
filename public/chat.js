@@ -3,14 +3,20 @@ var sendButton = document.getElementById('sendButton')
 var chatOutput = document.getElementById('chatOutput')
 var clientName = document.getElementById('clientName')
 var userName = clientName.innerHTML
+var roomName = document.getElementById('roomName')
+var roomPassword = document.getElementById('roomPassword')
 
-
-
+window.addEventListener('load', ()=>{
+    clientSocket.emit("userJoined", {
+        roomName: roomName.innerText
+    })
+})
 
 sendButton.addEventListener('click', () => {
     clientSocket.emit('somoneSaidSomething', {
             clientName: clientName.innerHTML,
-            chatboxMessage: clientChatInput.innerHTML
+            chatboxMessage: clientChatInput.innerHTML,
+            roomName: roomName.innerText
         }
     );
      clientChatInput.innerHTML = ''

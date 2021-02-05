@@ -2,15 +2,13 @@ const path = require("path");
 const express = require("express");
 const router = express.Router();
 
-router.get("/chatSession/:roomName/:roomPassword", (req, res, next) => {
-  const { roomName, roomPassword } = req.params;
+router.get("/chatSession/:roomName", (req, res, next) => {
+  const { roomName } = req.params;
   const serversideIO = req.app.get("socketio");
-
- 
 
   res.render("chat", {
     roomName,
-    roomPassword,
+    roomPassword: 'amader password',
     publicFolder: path.resolve(__dirname, "../", "../", "public"),
   });
 });
