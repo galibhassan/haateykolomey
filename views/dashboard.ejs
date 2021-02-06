@@ -34,7 +34,8 @@
 
     <hr>
     <p>Want to join a chatroom?</p>
-    <form id="form_joinRoom" action="" method="">
+    <form id="form_joinRoom" action="/joinChatRoom" method="POST">
+        <input type="text" name="roomName" placeholder="Room name..">
         <input id="roomPassword" type="text" name="roomPassword" placeholder="Room password..">
         <input id="submitButton" type="submit" value="Join">
     </form>

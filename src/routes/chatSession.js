@@ -4,11 +4,11 @@ const router = express.Router();
 
 router.get("/chatSession/:roomName", (req, res, next) => {
   const { roomName } = req.params;
-  const serversideIO = req.app.get("socketio");
+  const {roomPassword} = req.query
 
   res.render("chat", {
     roomName,
-    roomPassword: 'amader password',
+    roomPassword,
     publicFolder: path.resolve(__dirname, "../", "../", "public"),
   });
 });

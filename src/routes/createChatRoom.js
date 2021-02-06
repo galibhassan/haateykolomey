@@ -47,7 +47,10 @@ router.post("/createChatRoom", async (req, res, next) => {
       res.send(err);
     });
 
-    res.redirect(`chatsession/${roomNameSanitized}`);
+   
+    
+    // res.redirect(`chatsession/${roomNameSanitized}`);
+    res.redirect(`chatsession/${roomNameSanitized}/?roomPassword=${roomPassword}`);
   }
 });
 
