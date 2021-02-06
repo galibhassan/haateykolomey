@@ -9,17 +9,8 @@ router.post("/createChatRoom", (req, res, next) => {
   const roomPassword = randomString.generate(PASSWORD_LENGTH);
   const { roomName } = req.body;
   roomNameSanitized = roomName.trim().replace(/ /g, "");
-//  roomNameSanitized = roomNameSanitized;
 
-  serversideIO.on("connection", (clientSocket) => {
 
-    // clientSocket.join(roomNameSanitized);
-    // console.log(serversideIO.sockets.adapter.rooms)
-
-    
-  });
-
-  // res.redirect(`chatsession/${roomNameSanitized}/${roomPassword}`);
   res.redirect(`chatsession/${roomNameSanitized}`);
 });
 
