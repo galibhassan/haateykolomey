@@ -131,6 +131,12 @@ function connectToNewUser(otherUserId, myStream, peer, videobox) {
 function addVideoStream(myVid, stream, videobox) {
   myVid.muted = true;
   myVid.srcObject = stream;
+  // styling
+  myVid.style.margin = "10px";
+  myVid.style.borderRadius = "7px";
+  myVid.style.boxShadow = "1px 1px 10px 1px rgba(0,0,0,0.3)";
+
+
   myVid.addEventListener("loadedmetadata", () => {
     myVid.play();
   });

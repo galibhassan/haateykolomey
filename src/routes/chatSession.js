@@ -8,8 +8,7 @@ router.get("/chatSession/:roomName", (req, res, next) => {
 
   res.render("chat", {
     roomName,
-    roomPassword,
-    publicFolder: path.resolve(__dirname, "../", "../", "public"),
+    roomPassword
   });
 });
 
