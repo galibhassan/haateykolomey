@@ -9,7 +9,7 @@ let myPdfPath = "http://localhost:8000/pdf/haatey-kolomey sample pdf.pdf";
 
 const pdfUrlInput = document.getElementById('pdfUrlInput')
 const loadPdf = document.getElementById('loadPdf')
-var roomName = document.getElementById('roomName').innerText;
+var roomName = document.getElementById('roomName');
 
 const handlePdf = (pdfPath) => {
     myPdfPath = pdfPath
@@ -21,7 +21,7 @@ const handlePdfInfo = () => {
     handlePdf(pdfUrlInput.value)
     clientSocket.emit('appearPdf', {
         pdfUrlInputValue: pdfUrlInput.value,
-        roomName
+        roomName: roomName.innerText
     })
 
 }
@@ -83,7 +83,7 @@ const handlePreviousButtonClicked = () => {
 }
 document.getElementById('go_previous').addEventListener('click', (e) => {
     handlePreviousButtonClicked()
-    clientSocket.emit(prevButtonClicked, {roomName})
+    clientSocket.emit(prevButtonClicked, {roomName: roomName.innerText})
 })
 
 
@@ -96,7 +96,7 @@ const handleNextButtonClicked = () => {
 document.getElementById('go_next').addEventListener('click', (e) => {
     handleNextButtonClicked()
     clientSocket.emit(nextButtonClicked, {
-        roomname
+        roomName: roomName.innerText
     })
 })
 
@@ -121,7 +121,7 @@ const handlePageNumber = (e) => {
             myState.currentPage = desiredPage
             render();
 
-            clientSocket.emit("pageNumberEntered", {desiredPage, roomName})
+            clientSocket.emit("pageNumberEntered", {desiredPage, roomName: roomName.innerText})
         }
     }
 }
