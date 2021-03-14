@@ -1,3 +1,5 @@
 node_modules
 build
 temp
+rough
+src/db/loginSystem.db
