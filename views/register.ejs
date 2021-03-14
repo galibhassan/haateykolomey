@@ -4,38 +4,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton-framework/1.1.1/skeleton.min.css" integrity="sha512-zzq8ZrbhP7DGbwClbqSYuo+di3FvAlMNykCKWE6pHuqmCgGjJSISDTzy7QkdI2ajLlgw0nx6hxIu8os2hYuN8w==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="style.css">
+   <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton-framework/1.1.1/skeleton.min.css" integrity="sha512-zzq8ZrbhP7DGbwClbqSYuo+di3FvAlMNykCKWE6pHuqmCgGjJSISDTzy7QkdI2ajLlgw0nx6hxIu8os2hYuN8w==" crossorigin="anonymous" />-->
+    <link rel="stylesheet" href="../styling/login.css">
 </head>
 <body>
-    <div class="nav">
-        <a href="/">Home </a>
-        <a href="/login">Log in </a>
-        <a href="/">Log out </a>
-        <a href="/register">Register</a>
-    </div>
-
-    <h1>Register</h1>
-
-    <form action="/register" method="POST">
-        <input type="text" name="username" value="" placeholder="username">
-        <br>
-        <input type="password" name="password" value="" placeholder="password"> 
-        <br>
-        <input type="password" name="confirmPassword" value="" placeholder="confirm password">
-        <br>
-        <input type="text" name="firstname" value="" placeholder="first name">
-        <br>
-        <input type="text" name="lastname" value="" placeholder="last name">
-        <br>
-        <input type="email" name="userEmail" value="" placeholder="email">
-        <br>
+    <div class="container">
         
-        <input type="submit" value="Register!">
-    </form>
+            
+                <div class="logo">
 
-    <p>
-        Not yet logged in? <a href="/login">Login here!</a>
-    </p>
+                </div>
+                <div class="clear"></div>
+                <div class="menu">
+                    <a href="/">Home </a>
+                    
+                    <a  href="">About</a>
+                    <a  href="">Help</a>
+                    <a  href="">Contact</a>
+                      
+                    <a href="/login">Log in </a>
+                    <a href="/">Log out </a>
+                    <a href="/register">Sign Up</a>
+                </div>
+                <div class="clear"></div>
+            
+
+            
+        
+        
+    </div>
+    
+    
+    <!--<h1>Register</h1>-->
+    <div class="register-page">
+        <form class="form" action="/register" method="POST">
+            <input type="text" name="username" value="" placeholder="username">
+            
+            <input type="password" name="password" value="" placeholder="password"> 
+            
+            <input type="password" name="confirmPassword" value="" placeholder="confirm password">
+            
+            <input type="text" name="firstname" value="" placeholder="first name">
+            
+            <input type="text" name="lastname" value="" placeholder="last name">
+            
+            <input type="email" name="userEmail" value="" placeholder="email">
+            
+            
+            <input id="submit" type="submit" value="Register!">
+            <p class="message">
+                Not yet logged in? <a id="loginLink" href="/login">Login here!</a>
+            </p>
+        </form>
+    
+    </div>
+    
+    
 </body>
 </html>

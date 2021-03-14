@@ -4,27 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton-framework/1.1.1/skeleton.min.css" integrity="sha512-zzq8ZrbhP7DGbwClbqSYuo+di3FvAlMNykCKWE6pHuqmCgGjJSISDTzy7QkdI2ajLlgw0nx6hxIu8os2hYuN8w==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="style.css">
+     -->
+    <link rel="stylesheet" href="../styling/login.css">
+    
 </head>
 <body>
-    <div class="nav">
-        <a href="/">Home </a>
-        <a href="/login">Log in </a>
-        <a href="/">Log out </a>
-        <a href="/register">Register</a>
+    <div class="container">
+        <div class="logo">
+
+        </div>
+        <div class="clear"></div>
+        <div class="menu">
+            <a href="/">Home </a>
+            <a  href="">About</a>
+            <a  href="">Help</a>
+            <a  href="">Contact</a>
+                        
+            <a href="/login">Log in </a>
+            <a href="/">Log out </a>
+            <a href="/register">Sign Up</a>
+        </div>
+        <div class="clear"></div>
+    
     </div>
-
-    <h1>Log in</h1>
-
-    <form action="/login" method="POST">
-        <input type="email" name="email" value="" placeholder="email"> 
-        <input type="password" name="password" value="" placeholder="password"> 
-        <input type="submit" value="log in!">
-    </form>
-
-    <p>
-        Not yet registered? <a href="/register">Register here!</a>
-    </p>
+    
+    <!-- <h1>Log in</h1> -->
+    <div class="login-page">
+        
+            <form class="form" action="/login" method="POST">
+                <input type="email" name="email" value="" placeholder="email"> 
+                <input type="password" name="password" value="" placeholder="password"> 
+                <input id="submit" type="submit" value="log in!">
+                
+                <p class="message">
+                    Not yet registered? <a id="registerLink" href="/register">Register here</a>
+                </p>
+            </form>
+        
+        
+        
+    </div>
+    
+    
 </body>
 </html>

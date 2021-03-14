@@ -1,0 +1,150 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    
+}
+
+.container{
+    max-width: 1330px;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.clear{
+    clear: both;
+}
+
+.nav-col{
+    float: left;
+    width: 75%;
+}
+
+.header-col1 h5{
+    color: #3b3663;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.header-col1 h2{
+    color: #3b3663;
+    font-size: 60px;
+    line-height: 65px;
+    margin: 21px 0px 15px;
+
+}
+.header-col1{
+    float: left;
+    width: 25%;
+}
+.logo{
+    float: left;
+    width: 30%;
+}
+.menu{
+    float: right;
+    width: 70%  ;
+}
+
+.cnt-info-col{
+    float: right;
+    text-align: right;
+    width: 25%;
+}
+
+.cnt-info-col a{
+    color: #4d4d4d;
+    margin: 23px;
+    display: inline-block;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 400;
+    transition: all 0.5s ease;
+    font-family: Georgia;
+    
+    
+}
+
+.active{
+    color: #f47514  !important;
+}
+
+
+.menu a {
+    text-decoration: none;
+    padding: 22px;
+    display: inline-block;
+    color: #4d4d4d;
+    transition: all 0.5s ease; 
+    font-family: Georgia;
+
+}
+.cnt-info-col a:hover{
+    color: #f47514;
+}
+
+.menu a:hover{
+    color: #f47514;
+}
+.header-col1{
+    float: left;
+    width: 25%;
+    position: absolute;
+    /*top: 36%;
+    left: 14%;*/
+     top: 25%;
+    left: 5%;
+}
+
+.header-col1 p {
+
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 26px;
+    margin: 20px 8px 8px
+}
+.header-col2{
+    background-image: url(../styling/images/catbook.jpg) ;
+    
+
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    float: right;
+    width: 75%;
+
+
+}
+
+
+#common-btn{
+    background: linear-gradient(90deg,#8b81ef, #6759e8);
+    padding: 10px 20px;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-family: "Nunito";
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.5s ease ;
+    
+    
+    
+    
+    
+
+}
+
+#common-btn:hover{
+    background: linear-gradient(180deg, #6759e8,#8b81ef );
+}
+
+header{
+    z-index: 1;
+    position: relative;
+}
+section.header-bg-parent{
+    position: relative;
+    top: -65px;
+}

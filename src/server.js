@@ -48,8 +48,9 @@ app.use("/chatPage", (reqest, response, next) => {
 
 serversideIO.on("connection", (clientSocket) => {
   clientSocket.on("userJoined", (ro) => {
-    const { roomName } = ro;
+    const { roomName, userId } = ro;
     clientSocket.join(roomName);
+    console.log(ro)
     // console.log(JSON.stringify(serversideIO.sockets.adapter.rooms, null, 2))
   });
 

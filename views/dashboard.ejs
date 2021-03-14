@@ -5,40 +5,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton-framework/1.1.1/skeleton.min.css"
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton-framework/1.1.1/skeleton.min.css"
         integrity="sha512-zzq8ZrbhP7DGbwClbqSYuo+di3FvAlMNykCKWE6pHuqmCgGjJSISDTzy7QkdI2ajLlgw0nx6hxIu8os2hYuN8w=="
-        crossorigin="anonymous" />
-    <link rel="stylesheet" href="http://localhost:8000/style.css">
+        crossorigin="anonymous" /> -->
+    <!-- <link rel="stylesheet" href="http://localhost:8000/style.css"> -->
+    <link rel="stylesheet" href="../styling/login.css">
+    
 </head>
 
 <body>
-    <div class="nav">
-        <a href="/">Home </a>
-        <a href="/login">Log in </a>
-        <a href="/">Log out </a>
-        <a href="/register">Register</a>
-    </div>
+    <div class="container">
+        <div class="logo">
 
+        </div>
+        <div class="clear"></div>
+        <div class="menu">
+            <a href="/">Home </a>
+            <a  href="">About</a>
+            <a  href="">Help</a>
+            <a  href="">Contact</a>
+                
+            <a href="/login">Log in </a>
+            <a href="/">Log out </a>
+            <a href="/register">Register</a>
+        </div>
+        <div class="clear"></div>
+    
+    </div>
+    
+    
+    
     <h1>Hello !</h1>
     <div id="firstname"><%= firstname %></div>
     <div id="lastname"><%= lastname %></div>
+    <p class="message1">Want to create a room?</p>
 
-    <hr>
-    <p>Want to create a room?</p>
+    <!-- <hr> -->
 
-    <form id="form_createRoom" action="/createChatRoom" method="POST">
-        <input id="roomNameInput" name="roomName" type="text" placeholder="Name of your room">
-        <!--<input id="roomNameInput" name="room" type="text" placeholder="Name of your room">-->
-        <input type="submit" value="Create">
-    </form>
+    <div class="dashboard-page">
+        <div class="form">
+            <form id="form_createRoom" action="/createChatRoom" method="POST">
+                <input id="roomNameInput" name="roomName" type="text" placeholder="Name of your room">
+                
+                <input id="submit" type="submit" value="Create">
+                <p class="message">Want to join a chatroom? <span id="registerLink">Join here</span></p>
+                
+            </form>
+        
+            <!-- <hr> -->
+            
+            <form id="form_joinRoom" action="/joinChatRoom" method="POST">
+                <input type="text" name="roomName" placeholder="Room name..">
+                <input id="roomPassword" type="text" name="roomPassword" placeholder="Room password..">
+                <input id="submitButton" type="submit" value="Join">
+                <p class="message"> Want to create a room? <span id="loginLink">Create here</span></p>
+            </form>
+            
 
-    <hr>
-    <p>Want to join a chatroom?</p>
-    <form id="form_joinRoom" action="/joinChatRoom" method="POST">
-        <input type="text" name="roomName" placeholder="Room name..">
-        <input id="roomPassword" type="text" name="roomPassword" placeholder="Room password..">
-        <input id="submitButton" type="submit" value="Join">
-    </form>
+        </div>
+    </div>
+    
+
     
     
     <script>
@@ -62,9 +89,25 @@
 
 
         })
+        var loginPage = document.getElementById('dashboard-page')
+        var registerLink = document.getElementById("registerLink");
+        var loginLink = document.getElementById("loginLink");
+    
+        var form_createRoom = document.getElementById('form_createRoom')
+        var form_joinRoom = document.getElementById('form_joinRoom')
 
+        registerLink.addEventListener("click", function(){
+            form_createRoom.style.display = "none";
+            form_joinRoom.style.display = "block";
+});
+
+    loginLink.addEventListener("click", function(){
+        form_createRoom.style.display = "block";
+        form_joinRoom.style.display = "none";
+});
        
     </script>
+    
 </body>
 
 </html>

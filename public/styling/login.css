@@ -1,0 +1,169 @@
+*{
+    padding: 0;
+    margin: 0;
+    
+    
+}
+
+.login-page{
+    width: 360px;
+    margin: auto;
+    margin-top: 150px;
+    
+    
+}
+
+.register-page{
+    width: 360px;
+    margin: auto;
+    margin-top: 40px;
+    
+    
+}
+
+.dashboard-page{
+    width: 360px;
+    margin: auto;
+    margin-top: -20px;
+    
+}
+
+
+.form{
+    
+    background: rgba(100, 107, 130, 0.3);
+    max-width: 360px;
+    padding: 45px;
+    text-align: center;
+    
+}
+
+
+#registerLink{
+    color: #1A0DAB;
+    text-decoration-line: underline;
+    cursor: pointer;
+}
+
+
+
+.form input{
+    font-family: "Roboto";
+    background: #f2f2f2;
+    width: 100%;
+    margin: 0 0 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    font-size: 14px;
+   
+}
+
+#form_joinRoom{
+    display: none;
+}
+
+#loginLink{
+    color:#1A0DAB;
+    text-decoration-line: underline;
+    cursor: pointer;
+}
+
+
+#submit{
+    font-family: "Roboto";
+    text-transform: uppercase;
+    background: #4CAF50;
+    width: 100px;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    cursor: pointer;
+    top: 10px;
+}
+
+#submitButton{
+    font-family: "Roboto";
+    text-transform: uppercase;
+    background: #4CAF50;
+    width: 100px;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    cursor: pointer;
+    top: 10px;
+}
+.form .message{
+    margin: 15px;
+    color: aliceblue;
+}
+ .message a{
+    color: #150d36
+}
+
+.container{
+    max-width: 1330px;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+.clear{
+    clear: both;
+}
+
+/*.nav-col{
+    float: left;
+    width: 75%;
+}*/
+
+.logo{
+    float: left;
+    width: 30%;
+}
+.menu{
+    float: right;
+    width: 50% ;
+    
+   
+    
+}
+
+.menu a {
+    text-decoration: none;
+    padding: 22px;
+    display: inline-block;
+    color: #4d4d4d;
+    transition: all 0.5s ease;
+    font-family: Georgia;
+    
+   
+
+}
+
+#submit:hover{
+    background:rgb(66, 245, 78);
+}
+
+
+.menu a:hover{
+    color: #f47514;
+}
+
+#firstname{
+    margin-top: 20px;
+    font-size: 30px;
+    
+}
+
+#lastname{
+    
+    font-size: 30px;
+    
+}
+
+.message1{
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+
+
