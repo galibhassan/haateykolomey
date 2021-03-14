@@ -10,21 +10,29 @@ window.addEventListener("load", () => {
   const constraints = { audio: false, video: { width: 100, height: 70 } };
   const videobox = document.querySelector(".videobox");
 
-  function addVideoStream(myVid, stream) {
-    myVid.muted = true;
-    myVid.srcObject = stream;
-    myVid.addEventListener("loadedmetadata", () => {
-      myVid.play();
-    });
-    videobox.append(myVid);
-  }
+  const peer = new Peer(undefined, {
+    host: "/",
+    port: "8001",
+  });
 
   const addVideo = (constraints) => {
     navigator.mediaDevices
       .getUserMedia(constraints)
       .then((stream) => {
         const myVid = document.createElement("video");
-        addVideoStream(myVid, stream);
+        addVideoStream(myVid, stream, videobox);
+
+        peer.on("call", (call) => {
+          call.answer(stream);
+          call.on("stream", (otheruservideoStream) => {
+            setTimeout(addVideoStream, 200, document.createElement("video"), otheruservideoStream, videobox);
+          });
+        });
+
+        clientSocket.on("user-connected", (otherUserId) => {
+          // connectToNewUser(otherUserId, stream, peer, videobox);
+          setTimeout(connectToNewUser, 200, otherUserId, stream, peer, videobox);
+        });
       })
       .catch((err) => {
         console.log(err);
@@ -33,20 +41,14 @@ window.addEventListener("load", () => {
 
   addVideo(constraints);
 
-  /* const peer = new Peer(undefined, {
-        host: '/',
-        port: '8001'
-    }) 
-    
-    peer.on('open', (id)=>{
-        console.log("peer id: " + id)
-        // addVideo(constraints)
-        clientSocket.emit("userJoined", {
-            roomName: roomName.innerText,
-            userId: id
-        })
-    })
-    */
+  peer.on("open", (id) => {
+    console.log("peer id: " + id);
+    // addVideo(constraints)
+    clientSocket.emit("userJoined", {
+      roomName: roomName.innerText,
+      userId: id,
+    });
+  });
 });
 
 sendButton.addEventListener("click", () => {
@@ -110,4 +112,27 @@ function getInitials(username) {
   return intials;
 }
 
-//module.exports = userName
+function connectToNewUser(otherUserId, myStream, peer, videobox) {
+  // send my video stream to otherUser
+  const call = peer.call(otherUserId, myStream);
+  console.log("otherUserId: ", otherUserId);
+
+  // get other user's video stream
+  const otherUserVideoElement = document.createElement("video");
+  call.on("stream", (otherUserStream) => {
+    // append otherUserStream to my DOM
+    addVideoStream(otherUserVideoElement, otherUserStream, videobox);
+  });
+  call.on("close", () => {
+    otherUserVideoElement.remove();
+  });
+}
+
+function addVideoStream(myVid, stream, videobox) {
+  myVid.muted = true;
+  myVid.srcObject = stream;
+  myVid.addEventListener("loadedmetadata", () => {
+    myVid.play();
+  });
+  videobox.append(myVid);
+}

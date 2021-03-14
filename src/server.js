@@ -50,11 +50,8 @@ serversideIO.on("connection", (clientSocket) => {
   clientSocket.on("userJoined", (ro) => {
     const { roomName, userId } = ro;
     clientSocket.join(roomName);
-    console.log(ro)
-    // console.log(JSON.stringify(serversideIO.sockets.adapter.rooms, null, 2))
+    clientSocket.to(roomName).broadcast.emit("user-connected", userId);
   });
-
-  console.log("just joined: socket.id: " + clientSocket.id);
 
   clientSocket.on("somoneSaidSomething", (roFromOneClient) => {
     const { roomName } = roFromOneClient;
