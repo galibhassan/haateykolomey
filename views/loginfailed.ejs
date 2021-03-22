@@ -1,30 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton-framework/1.1.1/skeleton.min.css" integrity="sha512-zzq8ZrbhP7DGbwClbqSYuo+di3FvAlMNykCKWE6pHuqmCgGjJSISDTzy7QkdI2ajLlgw0nx6hxIu8os2hYuN8w==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../styling/newStyle.css">
 </head>
+
 <body>
-    <div class="nav">
-        <a href="/">Home </a>
-        <a href="/login">Log in </a>
-        <a href="/">Log out </a>
-        <a href="/register">Register</a>
-    </div>
-
-    <h1>Log in is failed!</h1>
-
-    <form action="/login" method="POST">
-        <input type="email" name="email" value="" placeholder="email"> 
-        <input type="password" name="password" value="" placeholder="password"> 
-        <input type="submit" value="log in!">
-    </form>
-
-    <p>
-        Not yet logged in? <a href="/register">Register here!</a>
-    </p>
+    <nav>
+        <div class="logo">
+            Haatey Kolomey
+        </div>
+        <div class="nav-links">
+            <a class="" href="/">Home</a>
+            <a class="" href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="/login">Log in </a>
+        </div>
+    </nav>
+    <section class="main">
+        <div class="main-col1">
+            <div class="main-col1-content">
+                <div class="form-introducer-text">Log in</div>
+                <h3 class="message-error">Login failed! Try again..</h3>
+                <form id="form-login" class="form" action="/login" method="POST">
+                    <input type="email" name="email" value="" placeholder="email"> 
+                    <input type="password" name="password" value="" placeholder="password"> 
+                    
+                    <button id="submit" type="submit">Log in!</button>
+                    
+                    <p class="message">
+                        Not yet registered? Register <a id="registerLink" href="/register"> here</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+        <div class="main-col2">
+            <img src="./cat01.png" alt="">
+        </div>
+    </section>
 </body>
+
 </html>

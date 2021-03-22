@@ -18,7 +18,8 @@
    
 
     a:hover{
-        color:#8781da;  
+        color:#8781da;
+        cursor: pointer;
     }
 
     input{
@@ -68,8 +69,14 @@
         /* background-color: aquamarine; */
         display: flex;
         height: 90vh;
-
     }
+    
+
+    .loggedin-greetings{
+        height: 10vh;
+    }
+
+
 
     .main-col1 {
         width: 40%;
@@ -122,6 +129,7 @@
         width: 60%;
         /* background-color: rgb(182, 182, 31); */
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
     }
@@ -129,12 +137,56 @@
         opacity: 0.5;
     }
 
-    #form-register{
+    form{
         display: flex;
         flex-direction: column;
-        height: 400px;
         justify-content: space-around;
     }
+
+    .message-error{
+        color: rgb(226, 65, 127);
+    }
+    #form-register{
+        height: 400px;
+    }
+    #form-login{
+        height: 200px;
+    }
+
+    .forms-dashboard{
+        width: 100%;
+        height: 100%;
+        /* background-color: aqua; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form-vertical>input {
+        margin-bottom: 20px;
+    }
+    .form-vertical>div {
+        margin-bottom: 20px;
+    }
+    .form-vertical>button {
+        margin-bottom: 20px;
+    }
+
+    .loggedin-greetings-container{
+        /* background-color: aqua; */
+        width: 100%;
+        display: flex;
+        justify-content:flex-end;
+    }
+    
+    .loggedin-greetings{
+        text-align: right;
+        font-size: 1.3rem;
+        width:200px;
+        margin-right: 70px;
+        /* background-color: rgb(177, 21, 81); */
+    }
+
 
     @media screen and (max-width:600px) {
         

@@ -4,70 +4,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton-framework/1.1.1/skeleton.min.css"
-        integrity="sha512-zzq8ZrbhP7DGbwClbqSYuo+di3FvAlMNykCKWE6pHuqmCgGjJSISDTzy7QkdI2ajLlgw0nx6hxIu8os2hYuN8w=="
-        crossorigin="anonymous" /> -->
-    <!-- <link rel="stylesheet" href="http://localhost:8000/style.css"> -->
-    <link rel="stylesheet" href="../styling/login.css">
-    
+    <title>Document</title>
+    <link rel="stylesheet" href="../styling/newStyle.css">
 </head>
 
 <body>
-    <div class="container">
+    <nav>
         <div class="logo">
-
+            Haatey Kolomey
         </div>
-        <div class="clear"></div>
-        <div class="menu">
-            <a href="/">Home </a>
-            <a  href="">About</a>
-            <a  href="">Help</a>
-            <a  href="">Contact</a>
-                
+        <div class="nav-links">
+            <a class="" href="/">Home</a>
+            <a class="" href="/about">About</a>
+            <a href="/contact">Contact</a>
             <a href="/login">Log in </a>
-            <a href="/">Log out </a>
-            <a href="/register">Register</a>
         </div>
-        <div class="clear"></div>
-    
-    </div>
-    
-    
-    
-    <h1>Hello !</h1>
-    <div id="firstname"><%= firstname %></div>
-    <div id="lastname"><%= lastname %></div>
-    <p class="message1">Want to create a room?</p>
+    </nav>
 
-    <!-- <hr> -->
+    <div class="main">
 
-    <div class="dashboard-page">
-        <div class="form">
-            <form id="form_createRoom" action="/createChatRoom" method="POST">
-                <input id="roomNameInput" name="roomName" type="text" placeholder="Name of your room">
-                
-                <input id="submit" type="submit" value="Create">
-                <p class="message">Want to join a chatroom? <span id="registerLink">Join here</span></p>
-                
-            </form>
-        
-            <!-- <hr> -->
-            
-            <form id="form_joinRoom" action="/joinChatRoom" method="POST">
-                <input type="text" name="roomName" placeholder="Room name..">
-                <input id="roomPassword" type="text" name="roomPassword" placeholder="Room password..">
-                <input id="submitButton" type="submit" value="Join">
-                <p class="message"> Want to create a room? <span id="loginLink">Create here</span></p>
-            </form>
-            
+        <div class="main-col1">
+            <div class="forms-dashboard">
+                <form id="form_createRoom" class="form-vertical" action="/createChatRoom" method="POST">
+                    <div>Create a room</div>
+                    <input id="roomNameInput" name="roomName" type="text" placeholder="Name of your room">
 
+                    <button id="submit" type="submit">Create</button>
+                    <p class="message">Want to join a chatroom? <span id="registerLink"><a>Join here</a></span></p>
+
+                </form>
+
+                <!-- <hr> -->
+
+                <form id="form_joinRoom" class="form-vertical" action="/joinChatRoom" method="POST">
+                    <div>Join a room</div>
+                    <input type="text" name="roomName" placeholder="Room name..">
+                    <input id="roomPassword" type="text" name="roomPassword" placeholder="Room password..">
+                    <button id="submitButton" type="submit">Join!</button>
+                    <p class="message"> Want to create a room? <span id="loginLink"><a>Create here</a></span></p>
+                </form>
+
+
+            </div>
+        </div>
+
+        <div class="main-col2">
+            <div class="loggedin-greetings-container">
+                <div class="loggedin-greetings">
+                    Hello <span id="firstname">
+                        <%= firstname %>
+                    </span> <span id="lastname">
+                        <%= lastname %>
+                    </span>
+                </div>
+            </div>
+            <img src="./cat01.png" alt="">
         </div>
     </div>
-    
-
-    
-    
     <script>
         window.addEventListener('load', (e) => {
             const firstname = document.getElementById('firstname').innerHTML
@@ -76,38 +69,37 @@
             const submitButton = document.getElementById('submitButton');
             const roomNameInput = document.getElementById('roomNameInput');
 
+            var loginPage = document.getElementById('dashboard-page')
+            var registerLink = document.getElementById("registerLink");
+            var loginLink = document.getElementById("loginLink");
+
+            var form_createRoom = document.getElementById('form_createRoom')
+            var form_joinRoom = document.getElementById('form_joinRoom')
+
+            // initially hide the join room form
+            form_joinRoom.style.display = "none";
+
             localStorage.setItem('firstname', firstname)
             localStorage.setItem('lastname', lastname)
 
-            submitButton.addEventListener('click', (e)=>{
+            submitButton.addEventListener('click', (e) => {
                 clientSocket.emit('roomCreated', {
                     roomName: roomNameInput.value,
                 })
-
             })
-
-
-
         })
-        var loginPage = document.getElementById('dashboard-page')
-        var registerLink = document.getElementById("registerLink");
-        var loginLink = document.getElementById("loginLink");
-    
-        var form_createRoom = document.getElementById('form_createRoom')
-        var form_joinRoom = document.getElementById('form_joinRoom')
 
-        registerLink.addEventListener("click", function(){
+        registerLink.addEventListener("click", function () {
             form_createRoom.style.display = "none";
-            form_joinRoom.style.display = "block";
-});
+            form_joinRoom.style.display = "flex";
+        });
 
-    loginLink.addEventListener("click", function(){
-        form_createRoom.style.display = "block";
-        form_joinRoom.style.display = "none";
-});
-       
+        loginLink.addEventListener("click", function () {
+            form_createRoom.style.display = "flex";
+            form_joinRoom.style.display = "none";
+        });
     </script>
-    
+
 </body>
 
 </html>
