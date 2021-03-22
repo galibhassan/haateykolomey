@@ -24,6 +24,7 @@ const homeRoutes = require("./routes/home");
 const createChatRoutes = require("./routes/createChatRoom");
 const joinChatRoutes = require("./routes/joinChatRoom")
 const chatSessionRoutes = require("./routes/chatSession");
+const aboutRoutes = require("./routes/about");
 //const userName = require('../public/chat')
 //var clientName = document.getElementById('clientName')
 var username = "USER";
@@ -37,6 +38,7 @@ app.use(homeRoutes);
 app.use(createChatRoutes);
 app.use(joinChatRoutes)
 app.use(chatSessionRoutes);
+app.use(aboutRoutes);
 app.use(express.static("public"));
 
 app.use("/chatPage", (reqest, response, next) => {
