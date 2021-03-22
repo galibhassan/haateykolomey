@@ -1,72 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton-framework/1.1.1/skeleton.min.css" integrity="sha512-zzq8ZrbhP7DGbwClbqSYuo+di3FvAlMNykCKWE6pHuqmCgGjJSISDTzy7QkdI2ajLlgw0nx6hxIu8os2hYuN8w==" crossorigin="anonymous" /> -->
-    <!-- <link rel="stylesheet" href="http://localhost:8000/styling/style.css"> -->
     <link rel="stylesheet" href="../styling/dynamicHomePage.css">
 </head>
+
+<style>
+    * {
+        font-family: sans-serif;
+        margin: 0px;
+        transition: all .5s;
+    }
+    h1{
+        font-size: 3rem;
+    }
+    a{
+        text-decoration: none;
+        color: #3D3A68;
+        font-size: 1.1rem;
+    }
+    a:active{
+        background-color: red;
+    }
+    a:visited{
+        color: #3D3A68;
+    }
+    a:hover{
+        color: #d48234;  
+    }
+
+
+    nav {
+        display: flex;
+        justify-content: space-between;
+        height: 10vh;
+    }
+
+    .logo {
+        /* background-color: rgb(57, 133, 61); */
+        display: flex;
+        align-items: center;
+        font-size: 1.5rem;
+        color:#3D3A68;
+        margin-left: 30px;
+    }
+
+    .nav-links {
+        /* background-color: rgb(23, 206, 33); */
+        width: 30%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-right: 70px;
+    }
+
+    .main {
+        /* background-color: aquamarine; */
+        display: flex;
+        height: 90vh;
+
+    }
+
+    .main-col1 {
+        width: 40%;
+        /* background-color: beige; */
+        display: flex;
+        padding-left: 80px;
+        padding-right: 40px;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .main-col1-content {
+        /* background-color: rebeccapurple; */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-left: 100px;
+        margin-top: -100px;
+    }
+    .main-col1-content>h1 {
+        margin-bottom: 1.5rem;
+        color: #3D3A68;
+    }
+    .main-col1-content>p {
+        margin-bottom: 1.5rem;
+        color: #3D3A68;
+        font-size: 1.1rem;
+
+    }
+    button{
+        background-image: linear-gradient(to right, #3D3A68 , #7772c0);
+        color: white;
+        width: 120px;
+        height: 40px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+    button:hover{
+        box-shadow: 1px 1px 15px 1px #3D3A68;
+    }
+
+
+    .main-col2 {
+        width: 60%;
+        /* background-color: rgb(182, 182, 31); */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .main-col2>img{
+        opacity: 0.5;
+    }
+
+    @media screen and (max-width:600px) {
+        
+    }
+</style>
+
 <body>
-    <!--<div class="nav">
-        <a href="/">Home </a>
-        <a href="/login">Log in </a>
-        <a href="/">Log out </a>
-        <a href="/register">Register</a>
-    </div>
-
-    <h1>Home sweet home!</h1>
-
-    <input type="text">
-    <button>abcd</button>-->
-    <header>
-        <div class="container">
-            <div class="top-bar">
-                <div class="nav-col">
-                    <div class="Logo">
-                    
-                    </div>
-                    <div class="clear"></div>
-                    <div class="menu">
-                        <a class="active" href="">Home</a>
-                        <a  href="">Service</a>
-                        <a  href="">About</a>
-                        <a  href="">Help</a>
-                        <a  href="">Contact</a>
-                        <a  href="/login">Log in </a>
-                        <!-- <a href="/">Log out </a> -->
-                         <!-- <a href="/register">Register</a> -->
-
-                    </div>
-                    <div class="clear"></div>
-                </div>
-                
-                
-            
-            <div class="cnt-info-col">
-                <a  href="address: galia.giti@gmail.com"> <span>Address:</span> galia.giti@gmail.com</a>
-            </div>
-            <div class="clear"></div>
+    <nav>
+        <div class="logo">
+            Haatey Kolomey
+        </div>
+        <div class="nav-links">
+            <a class="active" href="">Home</a>
+            <a href="">About</a>
+            <a href="">Contact</a>
+            <a href="/login">Log in </a>
+        </div>
+    </nav>
+    <section class="main">
+        <div class="main-col1">
+            <div class="main-col1-content">
+                <h1>Haatey Kolomey</h1>
+                <p>Learn to study and do group works in home without payment.
+                    Make the communication easy between students and teachers.
+                    Take online classes for helping students by sitting at home. </p>
+                <a href="/register"> <button>Sign Up</button> </a>
             </div>
         </div>
-    </header>
-    <section class="header-bg-parent">
-        <div class="header-col1">
-            <h5>WELCOME </h5>
-            <h2>Haatey Kolomey</h2>
-            <p>Learn to study and do group works in home without payment.
-            Make the communication easy between students and teachers.
-            Take online classes for helping students by sitting at home. </p>
-             <a href ="/register"> <button   id="common-btn" type="button">Sign Up</button>   </a> 
-              <!-- <a  id="common-btn"  id="btn1" href="/register">Sign Up</a>  -->
-            
+        <div class="main-col2">
+            <img src="./cat01.png" alt="">
         </div>
-        <div class="header-col2">
-
-        </div>
-        <div class="clear"></div>
     </section>
-    
 </body>
+
 </html>
