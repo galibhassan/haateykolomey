@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../styling/newStyle.css">
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            Haatey Kolomey
+        </div>
+        <div class="nav-links">
+            <a class="" href="/">Home</a>
+            <a class="" href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="/login">Log in </a>
+        </div>
+    </nav>
+    <section class="main">
+        <div class="main-col1">
+            <h3 class="logOut">You are Logged out!</h3>
+            <div class="main-col1-content">
+                
+                  <div class="form-introducer-text">Log in</div> 
+                
+                <form id="form-login" class="form" action="/login" method="POST">
+                    <input type="email" name="email" value="" placeholder="email"> 
+                    <input type="password" name="password" value="" placeholder="password"> 
+                    
+                    <button id="submit" type="submit">Log in!</button>
+                    
+                    <p class="message">
+                        Not yet registered? Register <a id="registerLink" href="/register"> here</a>
+                    </p>
+                </form>
+            </div>
+        </div>
+        <div class="main-col2">
+            <img src="./cat01.png" alt="">
+        </div>
+    </section>
+</body>
+
+</html>

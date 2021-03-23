@@ -183,6 +183,10 @@
         flex-direction: column;
         justify-content: space-around;
     }
+    .logOut{
+        color: rgb(226, 65, 127); 
+        
+    }
 
     .message-error{
         color: rgb(226, 65, 127);
