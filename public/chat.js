@@ -59,6 +59,7 @@ sendButton.addEventListener("click", () => {
   });
   clientChatInput.innerHTML = "";
   var name = clientName.innerHTML.split(" ");
+  
 });
 
 clientSocket.on("serverEmittingSomeonesWords", (roFromServer) => {
@@ -73,9 +74,10 @@ clientSocket.on("message", (message) => {
 
 function userConnectionInfo(message) {
   const div = document.createElement("div");
-  div.innerHTML = `<p>at ${message.time}</p>
+  div.innerHTML = `<p> ${message.time}</p>
     <p>${message.username} ${message.text}</p>`;
   document.getElementById("chatOutput").appendChild(div);
+  div.setAttribute("class", "userJoinedTime")
 }
 
 function pushChatPortionToChatOutput(ro) {

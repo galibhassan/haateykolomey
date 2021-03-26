@@ -29,8 +29,11 @@ const contactRoutes = require("./routes/contact");
  const logoutRoutes = require("./routes/logout"); 
 //const userName = require('../public/chat')
 //var clientName = document.getElementById('clientName')
+//const firstname = localStorage.getItem('firstname')
+//const lastname = localStorage.getItem('lastname')
+            
 var username = "USER";
-//var username = clientName.innerHTML
+//var username = document.getElementById('clientName').innerHTML = `${firstname} ${lastname}`
 
 app.use(loginRoutes);
 app.use(loginFailedRoutes);
@@ -125,14 +128,14 @@ serversideIO.on("connection", (clientSocket) => {
         clientSocket.to(roomName).broadcast.emit("receivePdf", myPdfPath);
     });
     
-    /* 
+    
     
     clientSocket.broadcast.emit('message', formatMessage(username , 'has joined the chat'))
     clientSocket.on('disconnect', ()=>{
         serversideIO.emit('message', formatMessage(username, 'has left the chat') )
     })
     
- */
+ 
 });
 
 //serversideIo.emit('message', "A user has left the chat")

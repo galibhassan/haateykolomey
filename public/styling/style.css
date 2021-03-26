@@ -74,6 +74,11 @@
 #clientChatInput {
   display: block;
 }
+.userJoinedTime{
+   color: rgb(128, 119, 119); 
+  /*color: #BABBBD;*/
+  text-align: center;
+}
 
 
 
