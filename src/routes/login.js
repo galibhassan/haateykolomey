@@ -32,8 +32,6 @@ router.post("/login", async (req, res, next) => {
     } else {
       res.render("loginfailed");
     }
-  } else {
-    res.render("loginfailed");
   }
 });
 
