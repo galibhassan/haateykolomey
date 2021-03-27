@@ -8,12 +8,33 @@
   grid-template-rows: 5vh 90vh 5vh;
 }
 .nav {
+  z-index: 100;
   grid-column: 1/3;
   grid-row: 1/2;
-  background-color: #25313f;
+  background-color: #19192c;
+  box-shadow: 0px 5px 10px 1px rgba(0,0,0,.5);
   width: 100%;
-  padding: .5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
+.view-buttons-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.view-button{
+  width: 130px;
+  height: 30px;
+  border-radius: 90px 250px 50px 90px;
+  background-color: #ffffff;
+  position: relative;
+  color: #111122;
+  border: 1px;
+}
+
 
 #canvasForPdf {
   width: 1130px;
@@ -32,48 +53,101 @@
   display: none;
 }
 
-.canvas-container {
-  grid-column: 2/3;
-  grid-row: 2/3;
-  position: relative;
-}
-#chatOutput {
-  background: #1a222c;
+.side-bar{
+  z-index: 0;
+  background: #19192c;
   grid-column: 1/2;
   grid-row: 2/4;
 }
-
+.videobox-container{
+  height: 50%;
+}
+.chat-output-container{
+  height: 50%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.title-bar{
+  background-color: #090916;
+  color: #79778d;
+  padding: 5px;
+  box-shadow: 1px 1px 15px 2px rgba(0, 0, 0, 0.5);
+}
 .input-container {
   grid-column: 2/3;
   grid-row: 3/4;
-  background: #ecebeb;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow: 1px -1px 10px 1px rgba(0, 0, 0, 0.5);
+}
+
+#clientName{
+  width:10%;
+  background-image: linear-gradient(to right, #19192c , #7772c0);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  
+}
+#clientChatInput {
+  width:80%;
+  color: #595f66;
+  max-height: 100%;
+  overflow: auto;
+  padding: 10px;
+  outline: none;
+  font-size: .9rem;
+}
+
+#sendButton {
+  background-image: linear-gradient(to right , #7772c0, #211f38);
+  width:10%;
+  background-color: paleturquoise;
+  border-radius: 3px;
+  color: white;
+  cursor: pointer;
+  border: 0px;
+  outline: none;
+}
+#sendButton:hover{
+  background-image: linear-gradient(to right , #201f38, #79778d);
 }
 
 #chatTitle {
   font-size: 1.4rem;
   color: #babbbd;
   letter-spacing: .9rem;
+  margin-left: 5px;
 
 }
+
 .clientMessage {
   background: rgb(233, 233, 233);
-
   padding-left: 10px;
   padding-right: 10px;
   border-radius: 5px;
 }
 
-#canvas {
-  top: -1px;
-  position: absolute;
-  display: block;
-  width: 100%;
-  height: 100%;
+.canvas-container {
+  grid-column: 2/3;
+  grid-row: 2/3;
+  position: relative;
 }
 
-#clientChatInput {
+#canvas {
+  /*
+  top: -1px;
+  position: absolute; */
   display: block;
+  width: 50%;
+  height: 100%;
+  border: 1px solid red;
 }
+
 .userJoinedTime{
    color: rgb(128, 119, 119); 
   /*color: #BABBBD;*/
@@ -238,32 +312,6 @@
   opacity: 1;
 }
 
-#sendButton {
-  height: 25px;
-  width: 25px;
-  background-color: paleturquoise;
-  border-radius: 60%;
-  position: relative;
-  padding: 10px 10px;
-  float: right;
-  margin-right: 15px;
-  margin-top: -10px;
-  border: 2px solid gray;
-}
-
-#sendButton:after {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  content: "\27A2"; /* use the hex value here... */
-  font-size: 20px;
-  color: black;
-  line-height: 20px;
-  text-align: center;
-}
-
 #voiceButton {
   height: 40px;
   width: 40px;
@@ -314,16 +362,7 @@
   opacity: 1;
 }
 
-#slideButton {
-  width: 130px;
-  height: 30px;
-  border-radius: 90px 250px 50px 90px;
-  background-color: #ffffff;
-  top: -6px;
-  position: relative;
-  color: #cfcfcf;
-  border: 1px;
-}
+
 #loadPdf {
   background-color: #2a6561;
   border: 1px;
@@ -335,17 +374,6 @@
   position: relative;
 }
 
-#drawingBoard {
-  width: 130px;
-  height: 30px;
-  border-radius: 90px 250px 50px 90px;
-  background-color: #ffffff;
-  border-width: 1px;
-  margin-left: 5px;
-  color: #cfcfcf;
-  top: -6px;
-  position: relative;
-}
 .urlinput {
   width: 75%;
   background-color: #898f98;
@@ -360,37 +388,22 @@
 
 #userButton {
   font-size: 20px;
-  float: right;
-}
-
-#usericon {
-  float: right;
-}
-
-#userButton ul {
-  padding: 0px;
-}
-
-#userButton ul li {
-  color: #5a6879;
-  background-color: #25313f;
-  cursor: pointer;
-  list-style: none;
-  float: left;
-  opacity: 0.9;
-}
-
-#userButton ul li ul {
-  display: none;
-  height: 40px;
-  line-height: 50px;
-}
-
-#userButton ul li:hover > ul {
-  display: block;
+  color: white;
 }
 
 #cursorOnBoardButton {
   font-size: 20px;
   float: right;
+}
+
+.room-info{
+  color: white;
+  font-size: .9rem;
+  color: #91919e;
+}
+#roomName, #roomPassword{
+  font-family: monospace;
+  font-weight: bold;
+  color: #ffffff;
+  letter-spacing: 2px;
 }

@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="http://localhost:8000/styling/style.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Haatey Kolomey</title>
     <script defer src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
     <script src="http://localhost:8000/ext/socket.io.js"></script>
@@ -18,55 +17,44 @@
 </head>
 
 <body>
-
-    <div class="videobox"></div>
-
-    <h3>Room name:  <span id="roomName"> <%= roomName %> </span> </h3>
-    <h3>Room password: <span id="roomPassword"> <%= roomPassword %> </span> </h3>
-
     <div class="container">
 
 
         <div class="nav">
             <span id="chatTitle">HAATEY-KOLOMEY</span>
-
-
-
-            <button id="drawingBoard">Board</button>
-            <button id="slideButton">Slide</button>
-
-            <div id="userButton">
-                <ul>
-                    <li><i id="usericon" class="fas fa-user"></i>
-                        <ul>
-                           <!--  <li type="button" onclick="window.location.href = 'http://localhost:8000/users/login'">
-                                Logout</li> -->
-                                <li type="button" onclick="window.location.href = 'http://localhost:8000/logout'">
-                                    Logout</li>
-                        </ul>
-
-                </ul>
-
+            <div class="view-buttons-container">
+                <button class="view-button" id="drawingBoard">Board</button>
+                <button class="view-button" id="slideButton">Slide</button>
             </div>
-
-
+            <div class="room-info">
+                <div class="room-name-container">
+                    Room: <span id="roomName">
+                        <%= roomName %>
+                    </span>
+                </div>
+                <div class="room-password-container">
+                    Password: <span id="roomPassword">
+                        <%= roomPassword %>
+                    </span>
+                </div>
+            </div>
+            <div id="userButton">
+                user
+            </div>
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
+        <!-- 
 
         <div class="canvas-container">
             <div id="slideContainer">
                 <form>
                     <label id="label"> Slide URL</label>
-
-
-                    <input id="pdfUrlInput" class="urlinput" type="text" placeholder="http://localhost:8000/pdf/fileName.pdf">
+                    <input id="pdfUrlInput" class="urlinput" type="text"
+                        placeholder="http://localhost:8000/pdf/fileName.pdf">
                     <input type="button" id="loadPdf" value="Load">
-
                 </form>
-
             </div>
-
             <div id="my_pdf_viewer">
                 <div id="canvasForPdf">
                     <canvas id="pdf_renderer"></canvas>
@@ -81,55 +69,51 @@
                     <button id="zoom_out">-</button>
                 </div>
             </div>
-
             <canvas id="canvas">
 
             </canvas>
-
             <button class="boardButton" id="boardButtonFake">
                 <span class="tooltipForBoardButton">pour some color on board</span>
                 <input type="color" id="boardButtonReal">
             </button>
-
             <button class="brushButton" id="brushButtonFake">
                 <span class="tooltipForBrushButton">pick a colored brush</span>
                 <input type="color" id="brushButtonReal">
-
             </button>
-
             <button id="eraseButton">
                 <span class="tooltipForEraseButton">Clear all</span>
             </button>
-
-
-            <button id="voiceButton">
-                <span class="tooltipForVoiceButton">make a call</span>
-            </button>
-
         </div>
 
-        <div id="chatOutput">
+    -->
+        <div class="side-bar">
+            <div class="videobox-container">
+                <div class="title-bar">Participants</div>
+                <div class="videobox"></div>
+            </div>
+            <div class="chat-output-container">
+                <div class="title-bar">Text chat</div>
+                <div id="chatOutput"></div>
+            </div>
         </div>
-
 
         <div class="input-container">
+        
+            <div id="clientName"> </div>
             <div id="clientChatInput" contenteditable="true">
-                Write some stuff
+                Chat here...
             </div>
 
-            <!-- <input id="clientName" type="text" placeholder="Your name?">
-             -->
-            <div id="clientName"> </div>
-            <button id="sendButton"></button>
+            <button id="sendButton">
+                send
+            </button>
+        
         </div>
 
-
-        <script src="http://localhost:8000/pdf/pdf.js"></script>
-        <script src="http://localhost:8000/webpackBuild/brushBoard.js"></script>
-        <script src="http://localhost:8000/chat.js"></script>
-
-
     </div>
+    <script src="http://localhost:8000/pdf/pdf.js"></script>
+    <script src="http://localhost:8000/webpackBuild/brushBoard.js"></script>
+    <script src="http://localhost:8000/chat.js"></script>
 
     <script>
         window.addEventListener('load', (e) => {
@@ -138,8 +122,5 @@
             document.getElementById('clientName').innerHTML = `${firstname} ${lastname}`
         })
     </script>
-
-
 </body>
-
 </html>
