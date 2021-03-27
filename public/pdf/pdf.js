@@ -151,7 +151,9 @@ zoomInButtonClicked = (e) => {
 
 document.getElementById('zoom_in').addEventListener('click', (e) => {
     zoomInButtonClicked()
-    clientSocket.emit(zoomInClicked, {roomName})
+    clientSocket.emit(zoomInClicked, {
+        roomName: roomName.innerText
+    })
 })
 
 clientSocket.on("zoomIn", () => {
@@ -167,7 +169,9 @@ const zoomOutClickedButton = () => {
 
 document.getElementById('zoom_out').addEventListener('click', (e) => {
     zoomOutClickedButton()
-    clientSocket.emit(zoomOutClicked, {roomName})
+    clientSocket.emit(zoomOutClicked, {
+        roomName: roomName.innerText
+    })
 })
 
 clientSocket.on("zoomOut", () => {
