@@ -44,9 +44,9 @@
         </div>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
-        <!-- 
-
+        
         <div class="canvas-container">
+            <!-- 
             <div id="slideContainer">
                 <form>
                     <label id="label"> Slide URL</label>
@@ -69,23 +69,28 @@
                     <button id="zoom_out">-</button>
                 </div>
             </div>
-            <canvas id="canvas">
+        -->
 
-            </canvas>
-            <button class="boardButton" id="boardButtonFake">
+
+        <canvas class="drawing-canvas" id="canvas"></canvas>
+        <div class="drawing-tools">
+            <button class="color-picker-button boardButton" id="boardButtonFake">
                 <span class="tooltipForBoardButton">pour some color on board</span>
                 <input type="color" id="boardButtonReal">
             </button>
-            <button class="brushButton" id="brushButtonFake">
+            <button class="color-picker-button brushButton" id="brushButtonFake">
                 <span class="tooltipForBrushButton">pick a colored brush</span>
                 <input type="color" id="brushButtonReal">
             </button>
-            <button id="eraseButton">
+            <button class ="color-picker-button" id = "eraseButton">
                 <span class="tooltipForEraseButton">Clear all</span>
             </button>
         </div>
+        <!--
 
-    -->
+        -->
+        </div>
+
         <div class="side-bar">
             <div class="videobox-container">
                 <div class="title-bar">Participants</div>
@@ -97,7 +102,7 @@
             </div>
         </div>
 
-        <div class="input-container">
+        <div class="chat-input-container">
         
             <div id="clientName"> </div>
             <div id="clientChatInput" contenteditable="true">
