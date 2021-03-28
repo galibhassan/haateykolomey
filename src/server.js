@@ -128,9 +128,11 @@ serversideIO.on("connection", (clientSocket) => {
         clientSocket.to(roomName).broadcast.emit("receivePdf", myPdfPath);
     });
     
+    clientSocket.on("joinedWithUserName", ({firstname, lastname}) =>{
+      const username = `${firstname} ${lastname}`;
+      clientSocket.broadcast.emit('message', formatMessage(username , 'has joined the chat'))
+    })
     
-    
-    clientSocket.broadcast.emit('message', formatMessage(username , 'has joined the chat'))
     clientSocket.on('disconnect', ()=>{
         serversideIO.emit('message', formatMessage(username, 'has left the chat') )
     })
