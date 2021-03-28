@@ -53,7 +53,7 @@ window.addEventListener("load", () => {
 
 sendButton.addEventListener("click", () => {
   clientSocket.emit("somoneSaidSomething", {
-    clientName: clientName.innerHTML,
+    clientName: clientName.innerText,
     chatboxMessage: clientChatInput.innerHTML,
     roomName: roomName.innerText,
   });
@@ -91,6 +91,7 @@ function pushChatPortionToChatOutput(ro) {
   usernameDiv.innerHTML = ro.clientName;
   messageDiv.innerHTML = ro.chatboxMessage;
 
+  // removing copy-pasted style
   Array.from(messageDiv.children).forEach((child) => {
     child.style.all = "unset";
   });

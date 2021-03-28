@@ -182,6 +182,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: .7rem;
+  font-weight: bold;
   position: absolute;
   top: 10px;
   left: 5px;
@@ -194,7 +196,7 @@
   font-weight: bold;
 }
 .chatChunk {
-  color: #c0c7cf;
+  color: #aeb5bd;
   position: absolute;
   top: 30px;
   left: 50px;
