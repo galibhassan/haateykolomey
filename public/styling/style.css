@@ -169,9 +169,12 @@
 
 
 .chatContainer {
-  width: 100%;
-  position: relative;
   overflow-y: visible;
+  display: grid;
+  grid-template-columns: 10% 90%;
+  padding: 1rem;
+  padding-bottom: 0rem;
+
 }
 .userIntial {
   background: #d22040;
@@ -184,22 +187,28 @@
   align-items: center;
   font-size: .7rem;
   font-weight: bold;
-  position: absolute;
+  grid-column: 1/2;
+  /* position: absolute;
   top: 10px;
-  left: 5px;
+  left: 5px; */
 }
 .usernameDiv {
   color: #c9d4e1;
-  position: absolute;
+  /* position: absolute;
   left: 50px;
-  top: 10px;
+  top: 10px; */
   font-weight: bold;
+  grid-column: 2/3;
+  padding-left: 1rem;
 }
 .chatChunk {
   color: #aeb5bd;
-  position: absolute;
+  grid-column: 2/3;
+  padding: 1rem;
+  margin-top: -20px;
+  /* position: absolute;
   top: 30px;
-  left: 50px;
+  left: 50px; */
 }
 
 .drawing-tools{
