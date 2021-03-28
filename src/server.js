@@ -22,30 +22,23 @@ const registerRoutes = require("./routes/register");
 const registerFailedRoutes = require("./routes/registerFailed");
 const homeRoutes = require("./routes/home");
 const createChatRoutes = require("./routes/createChatRoom");
-const joinChatRoutes = require("./routes/joinChatRoom")
+const joinChatRoutes = require("./routes/joinChatRoom");
 const chatSessionRoutes = require("./routes/chatSession");
 const aboutRoutes = require("./routes/about");
 const contactRoutes = require("./routes/contact");
- const logoutRoutes = require("./routes/logout"); 
-//const userName = require('../public/chat')
-//var clientName = document.getElementById('clientName')
-//const firstname = localStorage.getItem('firstname')
-//const lastname = localStorage.getItem('lastname')
-            
-var username = "USER";
-//var username = document.getElementById('clientName').innerHTML = `${firstname} ${lastname}`
+const logoutRoutes = require("./routes/logout");
 
 app.use(loginRoutes);
 app.use(loginFailedRoutes);
 app.use(registerRoutes);
 app.use(registerFailedRoutes);
- app.use(logoutRoutes); 
+app.use(logoutRoutes);
 app.use(homeRoutes);
 app.use(createChatRoutes);
-app.use(joinChatRoutes)
+app.use(joinChatRoutes);
 app.use(chatSessionRoutes);
 app.use(aboutRoutes);
- app.use(contactRoutes); 
+app.use(contactRoutes);
 
 app.use(express.static("public"));
 
@@ -101,45 +94,39 @@ serversideIO.on("connection", (clientSocket) => {
     clientSocket.to(ro.roomName).broadcast.emit("goToPrevButton");
   });
 
-  clientSocket.on("pageNumberEntered", ({desiredPage, roomName}) => {
+  clientSocket.on("pageNumberEntered", ({ desiredPage, roomName }) => {
     console.log(desiredPage);
     clientSocket.to(roomName).broadcast.emit("pressEnter", desiredPage);
   });
 
-  clientSocket.on("zoomInClicked", ({roomName}) => {
-      clientSocket.to(roomName).broadcast.emit("zoomIn");
-    });
-    
-    clientSocket.on("zoomOutClicked", ({roomName}) => {
-        clientSocket.to(roomName).broadcast.emit("zoomOut");
-    });
-    
-    clientSocket.on("boardButtonClicked", ({roomName}) => {
-        serversideIO.to(roomName).emit("showBoard");
-    });
-    
-    clientSocket.on("eraseButtonPress", ({roomName}) => {
-        serversideIO.to(roomName).emit("eraseButtonDown");
-    });
-    
-    clientSocket.on("appearPdf", (ro) => {
-        const {roomName, pdfUrlInputValue: myPdfPath} = ro; 
-        console.log(myPdfPath);
-        clientSocket.to(roomName).broadcast.emit("receivePdf", myPdfPath);
-    });
-    
-    clientSocket.on("joinedWithUserName", ({firstname, lastname}) =>{
-      const username = `${firstname} ${lastname}`;
-      clientSocket.broadcast.emit('message', formatMessage(username , 'has joined the chat'))
-    })
-    
-    clientSocket.on('disconnect', ()=>{
-        serversideIO.emit('message', formatMessage(username, 'has left the chat') )
-    })
-    
- 
+  clientSocket.on("zoomInClicked", ({ roomName }) => {
+    clientSocket.to(roomName).broadcast.emit("zoomIn");
+  });
+
+  clientSocket.on("zoomOutClicked", ({ roomName }) => {
+    clientSocket.to(roomName).broadcast.emit("zoomOut");
+  });
+
+  clientSocket.on("boardButtonClicked", ({ roomName }) => {
+    serversideIO.to(roomName).emit("showBoard");
+  });
+
+  clientSocket.on("eraseButtonPress", ({ roomName }) => {
+    serversideIO.to(roomName).emit("eraseButtonDown");
+  });
+
+  clientSocket.on("appearPdf", (ro) => {
+    const { roomName, pdfUrlInputValue: myPdfPath } = ro;
+    console.log(myPdfPath);
+    clientSocket.to(roomName).broadcast.emit("receivePdf", myPdfPath);
+  });
+
+  clientSocket.on("joinedWithUserName", ({ firstname, lastname }) => {
+    const username = `${firstname} ${lastname}`;
+    clientSocket.broadcast.emit("message", formatMessage(username, "has joined the chat"));
+  });
+
+  clientSocket.on("disconnect", () => {
+    serversideIO.emit("message", formatMessage(username, "has left the chat"));
+  });
 });
-
-//serversideIo.emit('message', "A user has left the chat")
-
-// module.exports = serversideIO
