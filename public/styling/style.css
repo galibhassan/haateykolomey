@@ -92,6 +92,26 @@
 .videobox-container{
   height: 50%;
 }
+.videobox{
+  overflow: auto;
+  height: 100%;
+}
+.video-container{
+  margin: 5px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: "1px 1px 10px 1px rgba(0,0,0,0.3)";
+  border-radius: "7px";
+}
+.video-broadcaster-name{
+  color: rgb(209, 209, 209);
+  font-size: .8rem;
+  margin-top: 5px;
+}
+.video-element{
+}
 .chat-output-container{
   height: 50%;
   width: 100%;

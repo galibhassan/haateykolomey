@@ -2,6 +2,8 @@ var clientChatInput = document.getElementById("clientChatInput");
 var sendButton = document.getElementById("sendButton");
 var chatOutput = document.getElementById("chatOutput");
 var clientName = document.getElementById("clientName");
+let VID_ID = null;
+const voiceButton = document.getElementById("voiceButton");
 var userName = clientName.innerHTML;
 var roomName = document.getElementById("roomName");
 var roomPassword = document.getElementById("roomPassword");
@@ -9,17 +11,24 @@ var roomPassword = document.getElementById("roomPassword");
 window.addEventListener("load", () => {
   const constraints = { audio: false, video: { width: 100, height: 70 } };
   const videobox = document.querySelector(".videobox");
+  
+  let isVideoOn = false;
 
   const peer = new Peer(undefined, {
     host: "/",
     port: "8001",
   });
 
-  const addVideo = (constraints) => {
+  const addVideo = (constraints, vidId) => {
     navigator.mediaDevices
       .getUserMedia(constraints)
       .then((stream) => {
         const myVid = document.createElement("video");
+        if(vidId === null) {
+          vidId = `vid_${clientName.innerText.replace(" ", "_")}`
+        }
+        myVid.setAttribute("id", vidId);
+
         addVideoStream(myVid, stream, videobox);
 
         peer.on("call", (call) => {
@@ -39,7 +48,29 @@ window.addEventListener("load", () => {
       });
   };
 
-  addVideo(constraints);
+
+  voiceButton.innerHTML = `<i class="fas fa-video-slash"></i>`
+  voiceButton.addEventListener('click', (e) => {
+    if(isVideoOn) {
+      // toggle isVideoOn value
+      isVideoOn = false;
+      // make the video off
+      // show placeholder in video
+      // show video icon in crossed state
+      voiceButton.innerHTML = `<i class="fas fa-video-slash"></i>`
+    } else{
+      // make the video on
+      addVideo(constraints, VID_ID);
+      voiceButton.innerHTML = `<i class="fas fa-video"></i>`
+      
+      // toggle isVideoOn value
+      isVideoOn = true
+  
+    }
+  })
+
+
+
 
   peer.on("open", (id) => {
     console.log("peer id: " + id);
@@ -132,16 +163,23 @@ function connectToNewUser(otherUserId, myStream, peer, videobox) {
 }
 
 function addVideoStream(myVid, stream, videobox) {
+  const vidContainer = document.createElement("div")
+  const whoseVid = document.createElement("div")
+        
+  whoseVid.innerHTML = clientName.innerText;
+  vidContainer.appendChild(myVid);
+  vidContainer.appendChild(whoseVid);
+
   myVid.muted = true;
   myVid.srcObject = stream;
   // styling
-  myVid.style.margin = "10px";
-  myVid.style.borderRadius = "7px";
-  myVid.style.boxShadow = "1px 1px 10px 1px rgba(0,0,0,0.3)";
+  myVid.classList.add("video-element");
+  vidContainer.classList.add("video-container")
+  whoseVid.classList.add("video-broadcaster-name");
 
 
   myVid.addEventListener("loadedmetadata", () => {
     myVid.play();
   });
-  videobox.append(myVid);
+  videobox.append(vidContainer);
 }
