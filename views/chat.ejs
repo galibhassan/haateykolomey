@@ -13,7 +13,7 @@
         var clientSocket = io.connect('http://localhost:8000')
     </script>
 
-
+<script src="https://kit.fontawesome.com/250a75c0f3.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -46,7 +46,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
         
         <div class="canvas-container">
-            <!-- 
+            
             <div id="slideContainer">
                 <form>
                     <label id="label"> Slide URL</label>
@@ -59,17 +59,19 @@
                 <div id="canvasForPdf">
                     <canvas id="pdf_renderer"></canvas>
                 </div>
-                <div id="navigation_controls">
-                    <button id="go_previous">Previous</button>
-                    <input id="current_page" value="1" type="number" />
-                    <button id="go_next">Next</button>
-                </div>
-                <div id="zoom_controls">
-                    <button id="zoom_in">+</button>
-                    <button id="zoom_out">-</button>
+                <div class="pdfViewer-controls">
+                    <div id="navigation_controls">
+                        <button class="button-pdfViewer" id="go_previous">    <i class="fas fa-chevron-left"></i></button>
+                        <input class="input-pdfViewer" id="current_page" value="1" type="number" />
+                        <button class="button-pdfViewer" id="go_next">    <i class="fas fa-chevron-right"></i> </button>
+                    </div>
+                    <div id="zoom_controls">
+                        <button class="button-pdfViewer" id="zoom_in"><i class="fas fa-search-plus"></i></button>
+                        <button class="button-pdfViewer" id="zoom_out"><i class="fas fa-search-minus"></i></button>
+                    </div>
                 </div>
             </div>
-        -->
+    
 
 
         <canvas class="drawing-canvas" id="canvas"></canvas>
