@@ -42,7 +42,37 @@
   overflow: auto;
   text-align: center;
   border: 3px;
-  background: #cacccf;
+  background: #303947;
+}
+.pdfViewer-controls{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+
+.button-pdfViewer{
+  width: 2rem;
+  height: 2rem;
+  background-color: #102b5f;
+  border: 0px;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+.input-pdfViewer{
+  width: 4rem;
+  height: 2rem;
+  background-color: #102b5f;
+  border: 0px;
+  border-radius: 4px;
+  color: white;
+  text-align: center;
+}
+
+
+.button-pdfViewer:hover{
+  background-color: #7772c0;
 }
 
 #colorUserChosen {
