@@ -125,8 +125,4 @@ serversideIO.on("connection", (clientSocket) => {
     const username = `${firstname} ${lastname}`;
     clientSocket.broadcast.emit("message", formatMessage(username, "has joined the chat"));
   });
-
-  clientSocket.on("disconnect", () => {
-    serversideIO.emit("message", formatMessage(username, "has left the chat"));
-  });
 });
