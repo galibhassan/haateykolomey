@@ -476,6 +476,7 @@
   /* color: white; */
   color: #34495E;
   margin-right: 15px;
+  outline: 0px;
     
   background-color: #19192C;
    border: 0px; 
@@ -486,6 +487,7 @@
 #logoutTooltip{
   visibility: hidden;
   font-size: 1rem;
+  
 }
 
 #userButton:hover #logoutTooltip{
