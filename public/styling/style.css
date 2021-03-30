@@ -23,6 +23,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
 }
 
 .view-button{
@@ -33,6 +34,7 @@
   position: relative;
   color: #111122;
   border: 1px;
+  cursor: pointer;
 }
 
 
@@ -474,7 +476,7 @@
 #userButton {
   font-size: 20px;
   /* color: white; */
-  color: #34495E;
+  
   margin-right: 15px;
   outline: 0px;
     
@@ -482,6 +484,10 @@
    border: 0px; 
   cursor: pointer;
   
+}
+
+#userButton> a{
+  color: #34495E;
 }
 
 #logoutTooltip{
