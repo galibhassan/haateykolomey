@@ -280,6 +280,8 @@
   
 }
 
+
+
 .color-picker-button{
   padding: 15px 15px;
   width: 40px;
@@ -471,9 +473,27 @@
 
 #userButton {
   font-size: 20px;
-  color: white;
+  /* color: white; */
+  color: #34495E;
+  margin-right: 15px;
+    
+  background-color: #19192C;
+   border: 0px; 
+  cursor: pointer;
+  
 }
 
+#logoutTooltip{
+  visibility: hidden;
+  font-size: 1rem;
+}
+
+#userButton:hover #logoutTooltip{
+visibility: visible;
+color: #A0A0A0
+
+
+}
 #cursorOnBoardButton {
   font-size: 20px;
   float: right;
