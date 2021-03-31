@@ -11,12 +11,31 @@
     h1{
         font-size: 3rem;
     }
+
+     .aboutInfo{
+        font-family: 'Bitter';
+        
+    } 
+
+    .aboutInfo1{
+        font-family: 'Sans-serif';
+    } 
+
+     .signUp{
+          font-family: 'sans-serif';  
+         /* font-family: 'EB Garamond';  */
+        
+    } 
     a{
         text-decoration: none;
         color: #3D3A68;
         font-size: 1.1rem;
         
+        
+        
     }
+
+
    
 
     a:hover{
@@ -40,9 +59,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
-
+        
+        
     }
 
+    
     nav {
         display: flex;
         justify-content: space-between;
@@ -68,6 +89,9 @@
         align-items: center;
         margin-right: 70px;
         transition: all 0.5s ease;
+        font-family: 'EB Garamond';
+        
+        
     }
 
     .main {
@@ -158,13 +182,9 @@
         justify-content: center;
         margin-left: 60px;
         
-        
-        
-        
-        
-        
     }
 
+    
     .img1{
          box-shadow: 1px 20px 20px 1px rgba(0, 0, 0, 10); 
         /* box-shadow: 5px 5px 20px 5px rgba(0, 0, 0, 10) */
@@ -177,6 +197,7 @@
         
     }
 
+   
 
     form{
         display: flex;
