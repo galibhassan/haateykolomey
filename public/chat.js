@@ -3,10 +3,12 @@ var sendButton = document.getElementById("sendButton");
 var chatOutput = document.getElementById("chatOutput");
 var clientName = document.getElementById("clientName");
 let VID_ID = null;
+let isShowingVidForFirstTime = true;
 const voiceButton = document.getElementById("voiceButton");
 var userName = clientName.innerHTML;
 var roomName = document.getElementById("roomName");
 var roomPassword = document.getElementById("roomPassword");
+var roomPassword = document.getElementById("userButton");
 
 window.addEventListener("load", () => {
   const constraints = { audio: false, video: { width: 100, height: 70 } };
@@ -19,15 +21,26 @@ window.addEventListener("load", () => {
     port: "8001",
   });
 
+  const getVidId = (clientName) => {
+    return `vid_${clientName.innerText.replace(" ", "_")}`
+  }
+
   const addVideo = (constraints, vidId) => {
     navigator.mediaDevices
       .getUserMedia(constraints)
       .then((stream) => {
-        const myVid = document.createElement("video");
+        let myVid;
         if(vidId === null) {
-          vidId = `vid_${clientName.innerText.replace(" ", "_")}`
+          vidId = getVidId(clientName);
+          VID_ID = vidId;
         }
-        myVid.setAttribute("id", vidId);
+        if(isShowingVidForFirstTime) {
+          myVid = document.createElement("video");
+          myVid.setAttribute("id", vidId);
+        } else {
+          myVid = document.getElementById(vidId);
+        }
+
 
         addVideoStream(myVid, stream, videobox);
 
@@ -49,18 +62,39 @@ window.addEventListener("load", () => {
   };
 
 
+
+  clientSocket.on("videoTurnedOn", (ro)=>{
+    const {vidId} = ro;
+    addVideo(constraints, vidId)    
+  })
+  clientSocket.on("videoTurnedOff", (ro)=>{
+    const {vidId} = ro;
+    let jeiVideoTaTurnOffKorteHobey = document.getElementById(vidId);
+    const tracks =  jeiVideoTaTurnOffKorteHobey.srcObject.getVideoTracks()
+    for(let i=0; i<tracks.length; i++) {
+      tracks[i].stop();
+    }
+    // jeiVideoTaTurnOffKorteHobey.srcObject = null;
+  })
+
   voiceButton.innerHTML = `<i class="fas fa-video-slash"></i>`
   voiceButton.addEventListener('click', (e) => {
     if(isVideoOn) {
       // toggle isVideoOn value
       isVideoOn = false;
-      // make the video off
+      // emit video-turn-off event
+      clientSocket.emit("videoTurnedOff", {
+        vidId: getVidId(clientName)
+      })
       // show placeholder in video
       // show video icon in crossed state
       voiceButton.innerHTML = `<i class="fas fa-video-slash"></i>`
     } else{
       // make the video on
-      addVideo(constraints, VID_ID);
+      clientSocket.emit("videoTurnedOn", {
+        vidId: getVidId(clientName)
+      })
+
       voiceButton.innerHTML = `<i class="fas fa-video"></i>`
       
       // toggle isVideoOn value
@@ -163,23 +197,28 @@ function connectToNewUser(otherUserId, myStream, peer, videobox) {
 }
 
 function addVideoStream(myVid, stream, videobox) {
-  const vidContainer = document.createElement("div")
-  const whoseVid = document.createElement("div")
+  if(isShowingVidForFirstTime) {
+    const vidContainer = document.createElement("div")
+    const whoseVid = document.createElement("div")
+    whoseVid.innerHTML = clientName.innerText;
+    
+    vidContainer.appendChild(myVid);
+    vidContainer.appendChild(whoseVid);
+    // styling
+    myVid.classList.add("video-element");
+    vidContainer.classList.add("video-container")
+    whoseVid.classList.add("video-broadcaster-name");  
+    videobox.append(vidContainer);
+    isShowingVidForFirstTime = false
+  }
         
-  whoseVid.innerHTML = clientName.innerText;
-  vidContainer.appendChild(myVid);
-  vidContainer.appendChild(whoseVid);
 
   myVid.muted = true;
   myVid.srcObject = stream;
-  // styling
-  myVid.classList.add("video-element");
-  vidContainer.classList.add("video-container")
-  whoseVid.classList.add("video-broadcaster-name");
+  
 
 
   myVid.addEventListener("loadedmetadata", () => {
     myVid.play();
   });
-  videobox.append(vidContainer);
 }
