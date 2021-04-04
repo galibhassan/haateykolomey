@@ -23,7 +23,7 @@ const getRandomColor = () => {
 };
 const userColor = getRandomColor();
 
-sendButton.addEventListener("click", () => {
+function handleChatInput(){
   clientSocket.emit("somoneSaidSomething", {
     clientName: clientName.innerText,
     chatboxMessage: clientChatInput.innerHTML,
@@ -31,8 +31,14 @@ sendButton.addEventListener("click", () => {
     clientColor: userColor,
   });
   clientChatInput.innerHTML = "";
-  var name = clientName.innerHTML.split(" ");
-});
+}
+
+sendButton.addEventListener("click", handleChatInput);
+clientChatInput.addEventListener("keypress", (e)=>{
+  if(e.key === "Enter") {
+    handleChatInput()
+  }
+})
 
 clientSocket.on("serverEmittingSomeonesWords", (roFromServer) => {
   pushChatPortionToChatOutput(roFromServer);
