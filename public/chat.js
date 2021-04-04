@@ -10,6 +10,24 @@ var roomName = document.getElementById("roomName");
 var roomPassword = document.getElementById("roomPassword");
 var roomPassword = document.getElementById("userButton");
 
+const getRandomColor = () => {
+  const r = Math.floor(Math.random()*255);
+  const g = Math.floor(Math.random()*255);
+  const b = Math.floor(Math.random()*255);
+
+  const UPPER_LIMIT = 230;
+  let outputColor = null;
+  
+  if(r>UPPER_LIMIT && g>UPPER_LIMIT && b>UPPER_LIMIT) {
+    outputColor = getRandomColor()
+  } else {
+    outputColor = `rgb(${r},${g},${b})`
+  }
+  return outputColor
+}
+const userColor = getRandomColor();
+
+
 window.addEventListener("load", () => {
   const constraints = { audio: false, video: { width: 100, height: 70 } };
   const videobox = document.querySelector(".videobox");
@@ -121,6 +139,7 @@ sendButton.addEventListener("click", () => {
     clientName: clientName.innerText,
     chatboxMessage: clientChatInput.innerHTML,
     roomName: roomName.innerText,
+    clientColor: userColor
   });
   clientChatInput.innerHTML = "";
   var name = clientName.innerHTML.split(" ");
@@ -162,6 +181,7 @@ function pushChatPortionToChatOutput(ro) {
   });
 
   firstLastCharecterDiv.setAttribute("class", "userIntial");
+  firstLastCharecterDiv.style.background = ro.clientColor;
   usernameDiv.setAttribute("class", "usernameDiv");
   messageDiv.setAttribute("class", "chatChunk");
   chatPortionContainer.setAttribute("class", "chatContainer");
