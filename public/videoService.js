@@ -22,11 +22,11 @@ const getMyMediaStream = () => {
   })
 }
 
-const addVideo = (stream, streamerId)=> {
+const addVideo = (stream, streamerId, streamerName)=> {
   const videobox = document.querySelector(".videobox");
   const vidContainer = document.createElement("div");
   const whoseVid = document.createElement("div");
-  whoseVid.innerHTML = clientName.innerText;
+  whoseVid.innerHTML = streamerName;
   
   const streamerVid = document.createElement("video");
   streamerVid.srcObject = stream;
@@ -52,16 +52,19 @@ const addVideo = (stream, streamerId)=> {
   // isShowingVidForFirstTime = false;
 }
 
+getNameFromVidId = (vidId) => {
+  const arrayfiedVidiD = vidId.split("_");
+  return arrayfiedVidiD[1] + " " + arrayfiedVidiD[2]
+}
+
 clientSocket.on("someoneTurnedOnVideo", async (ro) => {
   const { vidId, peerId } = ro;
-
+  console.log(vidId);
   const myStream = await getMyMediaStream();
   const call = peer.call(peerId, myStream)
   call.on("stream", (otherUserStream)=>{
-    addVideo(otherUserStream, peerId)
+    addVideo(otherUserStream, peerId, getNameFromVidId(vidId))
   })
-
-  // addVideo(constraints, vidId);
 });
 
 peer.on("call", async (call)=>{
@@ -106,7 +109,7 @@ voiceButton.addEventListener("click", async (e) => {
   } else {
     // make the video on
     const myMediaStream = await getMyMediaStream()
-    addVideo(myMediaStream, peerId)
+    addVideo(myMediaStream, peerId, clientName.innerText)
 
     // emit event telling my video is turned on
     clientSocket.emit("myVideoTurnedOn", {
