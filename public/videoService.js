@@ -26,7 +26,7 @@ const addVideo = (stream, streamerId)=> {
   const videobox = document.querySelector(".videobox");
   const vidContainer = document.createElement("div");
   const whoseVid = document.createElement("div");
-  whoseVid.innerHTML = streamerId;
+  whoseVid.innerHTML = clientName.innerText;
   
   const streamerVid = document.createElement("video");
   streamerVid.srcObject = stream;
