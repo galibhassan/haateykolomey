@@ -80,7 +80,7 @@ clientSocket.on("videoTurnedOff", (ro) => {
 });
 
 voiceButton.innerHTML = `<i class="fas fa-video-slash"></i>`;
-voiceButton.addEventListener("click", (e) => {
+voiceButton.addEventListener("click", async (e) => {
   if (isVideoOn) {
     // toggle isVideoOn value
     isVideoOn = false;
@@ -93,6 +93,10 @@ voiceButton.addEventListener("click", (e) => {
     voiceButton.innerHTML = `<i class="fas fa-video-slash"></i>`;
   } else {
     // make the video on
+    const myMediaStream = await getMyMediaStream()
+    addVideo(myMediaStream, peerId)
+
+    // emit event telling my video is turned on
     clientSocket.emit("myVideoTurnedOn", {
       vidId: getVidId(clientName),
       peerId,
