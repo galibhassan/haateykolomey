@@ -69,14 +69,15 @@ peer.on("call", async (call)=>{
   call.answer(myMediaStream);
 })
 
-clientSocket.on("videoTurnedOff", (ro) => {
-  const { vidId } = ro;
-  let jeiVideoTaTurnOffKorteHobey = document.getElementById(vidId);
+clientSocket.on("someoneTurnedOffVideo", (ro) => {
+  const {peerId:otherPeerId, vidId } = ro;
+  let jeiVideoTaTurnOffKorteHobey = document.getElementById(otherPeerId);
   const tracks = jeiVideoTaTurnOffKorteHobey.srcObject.getVideoTracks();
   for (let i = 0; i < tracks.length; i++) {
     tracks[i].stop();
   }
-  // jeiVideoTaTurnOffKorteHobey.srcObject = null;
+  jeiVideoTaTurnOffKorteHobey.srcObject = null;
+  jeiVideoTaTurnOffKorteHobey.parentElement.remove();
 });
 
 voiceButton.innerHTML = `<i class="fas fa-video-slash"></i>`;
@@ -84,9 +85,20 @@ voiceButton.addEventListener("click", async (e) => {
   if (isVideoOn) {
     // toggle isVideoOn value
     isVideoOn = false;
+
+    // turn off my video
+    const myVid = document.getElementById(peerId);
+    const tracks = myVid.srcObject.getVideoTracks();
+    for (let i = 0; i < tracks.length; i++) {
+      tracks[i].stop();
+    }
+    myVid.srcObject = null;
+    myVid.parentElement.remove()
+
     // emit video-turn-off event
-    clientSocket.emit("videoTurnedOff", {
+    clientSocket.emit("myVideoTurnedOff", {
       vidId: getVidId(clientName),
+      peerId
     });
     // show placeholder in video
     // show video icon in crossed state

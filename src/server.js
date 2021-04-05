@@ -129,7 +129,7 @@ serversideIO.on("connection", (clientSocket) => {
   clientSocket.on("myVideoTurnedOn", (ro)=>{
     clientSocket.broadcast.emit("someoneTurnedOnVideo", ro);
   });
-  clientSocket.on("videoTurnedOff", (ro)=>{
-    clientSocket.emit("videoTurnedOff", ro);
+  clientSocket.on("myVideoTurnedOff", (ro)=>{
+    clientSocket.broadcast.emit("someoneTurnedOffVideo", ro);
   });
 });
