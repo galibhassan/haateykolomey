@@ -126,8 +126,8 @@ serversideIO.on("connection", (clientSocket) => {
     clientSocket.broadcast.emit("message", formatMessage(username, "has joined the chat"));
   });
 
-  clientSocket.on("videoTurnedOn", (ro)=>{
-    clientSocket.emit("videoTurnedOn", ro);
+  clientSocket.on("myVideoTurnedOn", (ro)=>{
+    clientSocket.broadcast.emit("someoneTurnedOnVideo", ro);
   });
   clientSocket.on("videoTurnedOff", (ro)=>{
     clientSocket.emit("videoTurnedOff", ro);
