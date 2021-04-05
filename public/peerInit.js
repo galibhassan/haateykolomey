@@ -1,9 +1,15 @@
 let peerId = null;
+
+// Running the peer server in cloud
+// const peer = new Peer(undefined);
+// or
+// Running the peer server locally
+// open terminal and execute: peerjs --port PEERJS_PORT_NUMBER
+const PEERJS_PORT_NUMBER = 8001
 const peer = new Peer(undefined, {
   host: "/",
-  port: "8001",
+  port: PEERJS_PORT_NUMBER,
 });
-
 
 peer.on("open", (id) => {
   console.log("peer id: " + id);
